@@ -1,13 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<h1 class="title">
-  {{ section.title }}
-</h1>
-<ul>
-  <!-- If you are using pagination, section.pages will be empty. You need to use the paginator object -->    {% for page in section.pages %}
-  <li><a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
-  {% endfor %}
-</ul>
+<div class="section-container">
+    <h1 class="section-title">
+        {{ section.title }}
+    </h1>
+    <ul class="section-list">
+        {% for page in section.pages %}
+        <li class="section-item">
+            <a href="{{ page.permalink | safe }}" class="section-link">
+                {{ page.title }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock content %}

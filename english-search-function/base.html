@@ -1,40 +1,58 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>凡学子的博客</title>
-    <!-- 引入通用的CSS文件 -->
-    <link rel="stylesheet" href="/css/tailwind-like.css">
-    <!-- 引入新的 section-styles.css 文件 -->
-    <link rel="stylesheet" href="/css/section-styles.css">
+  <meta charset="utf-8">
+  <title>凡学子的博客</title>
     <!-- 引入 ElasticLunr.js -->
     <script src="/elasticlunr.min.js"></script>
     <!-- 引入搜索索引 -->
     <script src="/search_index.en.js"></script>
+
+    {# 搜索结果样式 #}
+    <style>
+      #search-results {
+        display: none;
+        position: absolute;
+        background: white;
+        border: 1px solid #ddd;
+        max-height: 300px;
+        overflow-y: auto;
+        z-index: 1000;
+      }
+      #search-results a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: black;
+      }
+      #search-results a:hover {
+        background-color: #f0f0f0;
+      }
+    </style>
 </head>
 
 <body>
-    <nav>
-        <div class="container">
-            <a href="/">首页</a>
-            <a href="/blog/">博客文章</a>
-            <a href="/about/">关于我</a>
-            <a href="/social/">社交账号</a>
-        </div>
-    </nav>
+
+  <nav>
+    <a href="/">首页</a>
+    <a href="/blog/">博客文章</a>
+    <a href="/about/">关于我</a>
+    <a href="/social/">社交账号</a>
+  </nav>
   
+  <!-- 搜索框 -->
+  <div id="search-container">
+    <input type="text" id="search-input" placeholder="搜索博客文章...">
+    <div id="search-results"></div>
+  </div>
+
+  <section class="section">
     <div class="container">
-        <!-- 搜索框 -->
-        <div id="search-container" class="mb-4">
-            <input type="text" id="search-input" placeholder="搜索博客文章...">
-            <div id="search-results"></div>
-        </div>
-
-        <section class="section">
-            {% block content %} {% endblock %}
-        </section>
+      {% block content %} {% endblock %}
     </div>
-
+  </section>
 
   <!-- 搜索功能的JavaScript代码 -->
   <script>

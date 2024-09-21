@@ -1,0 +1,119 @@
+/* Reset and base styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  --primary: #3490dc;
+  --secondary: #ffed4a;
+  --danger: #e3342f;
+  --success: #38c172;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  color: #2d3748;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Navigation */
+nav {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+nav a {
+  color: #4a5568;
+  text-decoration: none;
+  margin-right: 1rem;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+/* Typography */
+h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2779bd;
+}
+
+/* Form elements */
+input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Search results */
+#search-results {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+#search-results a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+  text-decoration: none;
+}
+
+#search-results a:hover {
+  background-color: #f7fafc;
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.font-bold { font-weight: 700; }
+.text-lg { font-size: 1.125rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mt-4 { margin-top: 1rem; }
