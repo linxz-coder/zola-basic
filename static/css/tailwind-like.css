@@ -1,6 +1,13 @@
 /* Reset and base styles */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
+@font-face {
+    font-family: 'Taipei-Sans-TC-Beta-Light-2';
+    src: url('/fonts/Taipei-Sans-TC-Beta-Light-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
   --primary: #3490dc;
   --secondary: #ffed4a;
@@ -26,6 +33,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+font-family: 'Taipei-Sans-TC-Beta-Light-2', sans-serif;
 }
 
 /* Navigation */
@@ -48,8 +56,7 @@ nav a:hover {
 
 /* Typography */
 h1 {
-  font-size: 2.25rem;
-  font-weight: 700;
+  font-size: 2.0rem;
   margin-bottom: 1rem;
 }
 

@@ -11,25 +11,39 @@
     <script src="/elasticlunr.min.js"></script>
     <!-- 引入搜索索引 -->
     <script src="/search_index.en.js"></script>
+    {# 引入meili search #}
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/docs-searchbar.js@latest/dist/cdn/docs-searchbar.min.css"
+    />
+    {# 引入meili search的css #}
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/docs-searchbar.js@latest/dist/cdn/docs-searchbar.min.css"
+    />
+
 </head>
 
 <body>
     <nav>
         <div class="container">
-            <a href="/">首页</a>
-            <a href="/blog/">博客文章</a>
-            <a href="/about/">关于我</a>
-            <a href="/social/">社交账号</a>
+            <a href="/">题匾</a>
+            <a href="/blog/">修斋</a>
+            <a href="/about/">无我</a>
+            <a href="/social/">江湖</a>
         </div>
     </nav>
   
     <div class="container">
         <!-- 搜索框 -->
-        <div id="search-container" class="mb-4">
+        {# <div id="search-container" class="mb-4">
             <input type="text" id="search-input" placeholder="搜索博客文章...">
             <div id="search-results"></div>
-        </div>
+        </div> #}
 
+        {# meili search #}
+        <input type="search" id="search-bar-input" placeholder="搜索博客文章..." />
+        <br>
         <section class="section">
             {% block content %} {% endblock %}
         </section>
@@ -99,6 +113,18 @@
         }
       });
     });
+  </script>
+
+  {# meili search的js代码 #}
+  <script src="https://cdn.jsdelivr.net/npm/docs-searchbar.js@latest/dist/cdn/docs-searchbar.min.js"></script>
+  <script>
+    docsSearchBar({
+      hostUrl: 'http://127.0.0.1:7700',
+      apiKey: 'VEw9h1k99fgUolpnU6htXtLp20eEFYqte0WRxsWfjaY',
+      indexUid: 'docs',
+      inputSelector: '#search-bar-input',
+      debug: true, // Set debug to true if you want to inspect the dropdown
+    })
   </script>
 </body>
 

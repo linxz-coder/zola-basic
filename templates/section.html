@@ -5,6 +5,14 @@
     <h1 class="section-title">
         {{ section.title }}
     </h1>
+
+    {# 显示section里面的内容 #}
+    {% if section.content %}
+    <div class="section-content">
+        {{ section.content | safe }}
+    </div>
+    {% endif %}
+
     <ul class="section-list">
         {% for page in section.pages %}
         <li class="section-item">

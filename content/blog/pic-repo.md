@@ -117,3 +117,5 @@ https://github.com/settings/tokens
 如果不用代理，可能不能上传，所以需要设置代理。我用的端口是1087。如果没有，就不推荐用了。
 
 ![img](https://i.imgur.com/8eBQcuk.png)
+
+<!-- ![img](https://i.imgur.com/gDViYZc.jpeg) -->
