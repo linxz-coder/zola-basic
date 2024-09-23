@@ -1,7 +1,7 @@
 {
     "index_uid": "docs",
-    "start_urls": ["http://host.docker.internal:1111/blog/"],
-    "sitemap_urls": ["http://host.docker.internal:1111/sitemap.xml"],
+    "start_urls": ["https://zola-basic.pages.dev/blog/"],
+    "sitemap_urls": ["https://zola-basic.pages.dev/sitemap.xml"],
 
     "searchableAttributes": [
       "content",
