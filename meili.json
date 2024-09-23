@@ -2,11 +2,49 @@
     "index_uid": "docs",
     "start_urls": ["http://host.docker.internal:1111/blog/"],
     "sitemap_urls": ["http://host.docker.internal:1111/sitemap.xml"],
-    "stop_urls": [],
+
+    "searchableAttributes": [
+      "content",
+      "hierarchy_lvl0",
+      "hierarchy_lvl1",
+      "hierarchy_lvl2",
+      "hierarchy_lvl3",
+      "hierarchy_lvl4",
+      "hierarchy_lvl5",
+      "hierarchy_lvl6"
+    ],
+    "rankingRules": [
+      "words",
+      "typo",
+      "proximity",
+      "attribute",
+      "exactness",
+      "page_rank:desc",
+      "level:desc",
+      "position:asc"
+    ],
+    "distinctAttribute": null,
+    "typoTolerance": {
+      "enabled": true,
+      "minWordSizeForTypos": {
+        "oneTypo": 4,
+        "twoTypos": 8
+      }
+    },
+    "faceting": {
+      "maxValuesPerFacet": 100
+    },
+    "pagination": {
+      "maxTotalHits": 1000
+    },
+    "synonyms": {
+      "vue": ["vuejs", "vue.js"]
+    },
+
     "selectors": {
-      "lvl0": "h1",
-      "lvl1": "h2",
-      "lvl2": "h3",
-      "text": "p, li"
+      "lvl0": "section h1",
+      "lvl1": "section ul li",
+      "lvl2": "section h1 h2 p",
+      "text": "p, li, td, th, blockquote"
     }
   }

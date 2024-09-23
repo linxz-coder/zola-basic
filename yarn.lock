@@ -18,7 +18,7 @@ cross-fetch@^3.1.5:
 
 docs-searchbar.js@^2.5.0:
   version "2.5.0"
-  resolved "https://registry.npmmirror.com/docs-searchbar.js/-/docs-searchbar.js-2.5.0.tgz#7683ab4f32d3bc17a29effdc28ca4fa17756b263"
+  resolved "https://mirrors.huaweicloud.com/repository/npm/docs-searchbar.js/-/docs-searchbar.js-2.5.0.tgz#7683ab4f32d3bc17a29effdc28ca4fa17756b263"
   integrity sha512-n/dxVXV2uBqIMv828I9EXC+K89zNzhTXmFUEhGXjlNiACF5bdss2PpapjA+ZJZ/jOHzH93veYeXKDnnoA4GAHg==
   dependencies:
     autocomplete.js "^0.38.1"

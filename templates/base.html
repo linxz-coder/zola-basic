@@ -7,16 +7,10 @@
     <link rel="stylesheet" href="/css/tailwind-like.css">
     <!-- 引入新的 section-styles.css 文件 -->
     <link rel="stylesheet" href="/css/section-styles.css">
-    <!-- 引入 ElasticLunr.js -->
-    <script src="/elasticlunr.min.js"></script>
-    <!-- 引入搜索索引 -->
-    <script src="/search_index.en.js"></script>
-    {# 引入meili search #}
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/docs-searchbar.js@latest/dist/cdn/docs-searchbar.min.css"
-    />
-    {# 引入meili search的css #}
+    {# 引入search-bar的css，覆盖第三方样式 #}
+    <link rel="stylesheet" href="/css/search-bar.css">
+
+    {# 引入meili search css#}
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/docs-searchbar.js@latest/dist/cdn/docs-searchbar.min.css"
@@ -49,72 +43,6 @@
         </section>
     </div>
 
-
-  <!-- 搜索功能的JavaScript代码 -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var searchIndex = null;
-      var searchInput = document.getElementById('search-input');
-      var searchResults = document.getElementById('search-results');
-
-      // 简单的中文分词函数
-      function tokenizeChinese(text) {
-        return text.split('').filter(char => char.trim() !== '');
-      }
-
-      // 初始化搜索索引
-      if (window.searchIndex) {
-        searchIndex = elasticlunr.Index.load(window.searchIndex);
-        
-        // 添加中文分词器
-        searchIndex.tokenizer = tokenizeChinese;
-      }
-
-      searchInput.addEventListener('input', function() {
-        var query = this.value.trim();
-        if (!query) {
-          searchResults.style.display = 'none';
-          return;
-        }
-
-        if (searchIndex) {
-          var results = searchIndex.search(query, {
-            bool: "OR",
-            expand: true,
-            fields: {
-              title: {boost: 2},
-              body: {boost: 1}
-            }
-          });
-
-          displayResults(results);
-        }
-      });
-
-      function displayResults(results) {
-        searchResults.innerHTML = '';
-        if (results.length > 0) {
-          results.forEach(function(result) {
-            var item = document.createElement('a');
-            item.href = result.ref;
-            item.textContent = result.doc.title;
-            searchResults.appendChild(item);
-          });
-          searchResults.style.display = 'block';
-        } else {
-          searchResults.style.display = 'none';
-        }
-      }
-
-      // 点击其他地方时隐藏搜索结果
-      document.addEventListener('click', function(e) {
-        if (e.target !== searchInput && e.target !== searchResults) {
-          searchResults.style.display = 'none';
-        }
-      });
-    });
-  </script>
-
   {# meili search的js代码 #}
   <script src="https://cdn.jsdelivr.net/npm/docs-searchbar.js@latest/dist/cdn/docs-searchbar.min.js"></script>
   <script>
@@ -124,6 +52,9 @@
       indexUid: 'docs',
       inputSelector: '#search-bar-input',
       debug: true, // Set debug to true if you want to inspect the dropdown
+      meilisearchOptions: {
+        limit: 10,
+      },
     })
   </script>
 </body>

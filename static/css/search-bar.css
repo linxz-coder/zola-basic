@@ -1,0 +1,11 @@
+/* 去掉有效角水印 */
+.docs-searchbar-footer {
+    display: none !important;
+}
+
+/* 减小搜索框宽度 */
+.meilisearch-autocomplete .dsb-dropdown-menu {
+    max-width: 800px !important; /* 或者更小，根据你的需求调整 */
+    min-width: 350px !important; /* 允许宽度自适应内容 */
+    width: auto !important;
+}
