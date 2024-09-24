@@ -6,7 +6,7 @@ page_template = "page.html"
 +++
 
 
-![img](https://github.com/linxz-coder/picx-images-hosting/raw/master/qrcode_for_gh_5a0f9149c84c_258.2donuuz61m.webp)
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/qrcode_for_gh_5a0f9149c84c_258.jpg)
 
 
 <!-- ![img](https://i.imgur.com/gDViYZc.jpeg) -->
