@@ -128,5 +128,6 @@ input[type="text"] {
 img {
   max-width: 80%;   /* 最大宽度 */
   height: auto;       /* 保持宽高比 */
-  border: grey, 0.5px solid; /* 添加边框 */
+  box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.3); /* 添加边框，对所有浏览器有效 */
+  /* border: grey, 0.5px solid; */ /* 添加边框，仅对chrome有效 */
 }
