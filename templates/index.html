@@ -6,4 +6,20 @@
   一榻梦生琴上月，百花香入案头诗。
 </h1>
 
+<div class="posts">
+  {% set blog_pages = get_section(path="blog/_index.md") %}
+  {% for page in blog_pages.pages %}
+      <article class="post">
+        <div class="post-title"><a href="{{page.permalink}}" class="post-title-link">{{ page.title }}</a></div>
+        <div>
+          {# summary #}
+          {{ page.content | striptags | truncate(length=150) | safe }}
+        </div>
+        <div class="read-more">
+            <a>未完待续...</a>
+        </div>
+      </article>
+  {% endfor %}
+</div>
+
 {% endblock content %}
