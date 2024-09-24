@@ -11,10 +11,12 @@ date = 2024-09-21
 付费可以选40G空间的，6个月，4.98元。
 
 免费试用的套餐：
+
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/20240924232712.png)
 
 付费价格：
 选择OSS资源包-40G。
+
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/20240924232848.png)
 
 # 创建用户及其配置OSS权限
@@ -25,10 +27,12 @@ date = 2024-09-21
 
 选择你的头像-`AccessKey管理`-`新建AccessKey`-`开始使用子用户AccessKey`-`创建用户`。
 随便起个名字，选择OpenAPI的权限即可。
+
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/20240924233549.png)
 
 ## 配置OSS权限
 在OSS页面，点击`用户`-`添加权限`-`新增授权`，选择所有和OSS有关的权限。
+
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/20240924232349.png)
 
 # 配置OSS
@@ -57,6 +61,7 @@ PicGo是一个图床工具，可以实现本地快速上传，自动复制链接
 存储区域就是你的OSS区域，比如`oss-cn-shenzhen`。
 
 按照下图配置即可。
+
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/20240924233803.png)
 
 ## 参考
