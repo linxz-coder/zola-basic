@@ -1,7 +1,7 @@
 {
     "index_uid": "docs",
-    "start_urls": ["https://zola-basic.pages.dev/blog/"],
-    "sitemap_urls": ["https://zola-basic.pages.dev/sitemap.xml"],
+    "start_urls": ["https://linxz.online/blog/"],
+    "sitemap_urls": ["https://linxz.online/sitemap.xml"],
 
     "searchableAttributes": [
       "content",
