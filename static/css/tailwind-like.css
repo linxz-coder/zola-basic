@@ -2,10 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 @font-face {
-    font-family: 'Taipei-Sans-TC-Beta-Light-2';
-    src: url('/fonts/Taipei-Sans-TC-Beta-Light-2.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Taipei-Sans-TC-Beta-Light-2';
+  src: url('/fonts/Taipei-Sans-TC-Beta-Light-2.woff2') format('woff2'),
+       url('/fonts/Taipei-Sans-TC-Beta-Light-2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Fallback to invisible text until font is loaded */
 }
 
 :root {
@@ -21,7 +23,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.8;
   color: #2d3748;
 }
@@ -32,8 +34,13 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
-font-family: 'Taipei-Sans-TC-Beta-Light-2', sans-serif;
 }
+
+/* 新增一个类用于应用自定义字体，提高加载速度 */
+.custom-font {
+  font-family: 'Taipei-Sans-TC-Beta-Light-2', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
 
 /* Navigation */
 nav {
