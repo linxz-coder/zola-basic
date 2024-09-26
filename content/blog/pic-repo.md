@@ -34,7 +34,7 @@ xattr -cr /Applications/PicGo.app
 [解决参考链接](https://github.com/Molunerfinn/PicGo/blob/dev/FAQ.md)
 
 # 配置七牛云图床
-![img](https://pic.linxz.online/20240920232518.png)
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/1.png)
 
 可以参考官网教程：
 
@@ -71,7 +71,7 @@ xattr -cr /Applications/PicGo.app
 
 HTTPS需要单独提供证书，我的做法是在服务器申请好证书，然后直接把`fullchain.cer`和`linxz.online.key`里面的值复制到七牛云里面。
 
-![img](https://pic.linxz.online/20240920233153.png)
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/2.png)
 
 ## 配置外链域名
 点击【文件管理】，选择你的域名即可。
