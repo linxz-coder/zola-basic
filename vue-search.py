@@ -3,7 +3,7 @@ import sys
 
 # 确保这些值是正确的
 MEILISEARCH_HOST = "http://localhost:7700"
-MEILISEARCH_API_KEY = "VEw9h1k99fgUolpnU6htXtLp20eEFYqte0WRxsWfjaY"  # 替换为你的实际 API 密钥
+MEILISEARCH_API_KEY = "your-key"  # 替换为你的实际 API 密钥
 
 client = meilisearch.Client(MEILISEARCH_HOST, MEILISEARCH_API_KEY)
 
