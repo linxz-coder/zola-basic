@@ -1,6 +1,6 @@
 +++
 title = "如何用flex布局-横向竖向排列"
-date = 2024-09-21
+date = 2024-09-27
 +++
 
 注意，这里的flex布局用的是tailwindcss的flex类，而不是css的flex属性。道理是一样的，只是写法不同。

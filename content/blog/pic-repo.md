@@ -1,6 +1,6 @@
 +++
 title = "如何使用picGO的图床功能？（七牛云图床）"
-date = 2024-09-21
+date = 2024-09-27
 +++
 
 # 为什么选择picGO？
@@ -117,5 +117,3 @@ https://github.com/settings/tokens
 如果不用代理，可能不能上传，所以需要设置代理。我用的端口是1087。如果没有，就不推荐用了。
 
 ![img](https://i.imgur.com/8eBQcuk.png)
-
-<!-- ![img](https://i.imgur.com/gDViYZc.jpeg) -->

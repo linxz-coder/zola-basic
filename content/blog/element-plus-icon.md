@@ -1,6 +1,6 @@
 +++
 title = "如何用vue的UI库-element-plus里面的icon？"
-date = 2024-09-21
+date = 2024-09-27
 +++
 
 ## 安装icons-vue
