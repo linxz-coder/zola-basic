@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+        {# 显示section里面的内容 #}
+        {% if section.content %}
+        <div>
+            {{ section.content | safe }}
+        </div>
+        {% endif %}
+</div>
+{% endblock content %}
