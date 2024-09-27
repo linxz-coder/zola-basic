@@ -1,6 +1,6 @@
 +++
 title = "nginx常用命令"
-date = 2024-09-27
+date = 2024-09-21
 +++
 
 nginx是常用的web服务器，替代的web服务器还有apache。

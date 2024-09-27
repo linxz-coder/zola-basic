@@ -1,6 +1,6 @@
 +++
 title = "如何在vue中实现代码高亮-使用highlight.js"
-date = 2024-09-27
+date = 2024-09-26
 +++
 
 ## 安装highlight.js

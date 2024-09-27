@@ -1,6 +1,6 @@
 +++
 title = "如何用python-flask框架假设一个api后端"
-date = 2024-09-27
+date = 2024-09-21
 +++
 
 ## 写一个简单的python flask的api

@@ -1,6 +1,6 @@
 +++
 title = "zola搭建教程-如何开始一个zola项目"
-date = 2024-09-27
+date = 2024-09-21
 +++
 
 zola是一种ssg技术，即static site generator （静态网站生成器）

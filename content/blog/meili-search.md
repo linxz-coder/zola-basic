@@ -1,6 +1,6 @@
 +++
 title = "meili search的安装方法？最好的站内搜索工具"
-date = 2024-09-27
+date = 2024-09-26
 +++
 
 # 服务器端安装meili-search

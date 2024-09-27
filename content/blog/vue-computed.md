@@ -1,6 +1,6 @@
 +++
 title = "vue中的computed属性有什么用？"
-date = 2024-09-27
+date = 2024-09-20
 +++
 
 computed属性有两个特点：

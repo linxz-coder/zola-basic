@@ -1,6 +1,6 @@
 +++
 title = "如何使用github actions？"
-date = 2024-09-27
+date = 2024-09-21
 +++
 
 ## 获取一个github actions权限的toekn

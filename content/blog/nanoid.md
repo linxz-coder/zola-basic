@@ -1,6 +1,6 @@
 +++
 title = "怎么使用nanoid?uuid的替代方案"
-date = 2024-09-27
+date = 2024-09-21
 +++
 
 ## 什么是nanoid?

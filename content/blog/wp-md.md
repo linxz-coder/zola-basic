@@ -1,6 +1,6 @@
 +++
 title = "本地Markdown文档上传wordpress网站"
-date = 2024-09-27
+date = 2024-09-20
 +++
 
 ## 前言
@@ -20,7 +20,7 @@ XML-RPC server accepts POST requests only.
 https://github.com/jzj1993/PublishMarkdown/releases
 
 软件图片：
-![本地图](/Users/lxz/Downloads/图片/1.png)
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/publish-markdown1.png)
 
 ### 设置软件
 输入网址：
@@ -35,11 +35,11 @@ your-wordpress.com/xmlrpc.php
 在wordpress后台，打开’用户’-‘个人资料’，拉到最下面，输入密码名称（随便取），点击’新增的应用程序密码’即可。
 
 #### wordpress端：
-![本地图](/Users/lxz/Downloads/图片/2.png)
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/publish-markdown2.png)
 
 
 #### 软件端：
-![本地图](/Users/lxz/Downloads/图片/3.png)
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/publish-markdown3.png)
 
 ### 新建文章
 可以开始写文章啦。

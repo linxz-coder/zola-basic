@@ -1,6 +1,6 @@
 +++
 title = "如何在vue中使用tailwindcss"
-date = 2024-09-27
+date = 2024-09-20
 +++
 
 ## 开启一个vue项目
