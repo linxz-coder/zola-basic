@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="article-content">
+  <h1 class="title">
+    {{ page.title }}
+  </h1>
+  <p class="subtitle"><strong>{{ page.date }}</strong></p>
+  {{ page.content | safe }}
+</article>
+
+{# 引入图片双击放大 #}
+<div class="article-overlay" id="overlay"></div>
+
+{# 引入图片双击放大脚本 #}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('.article-content img');
+      const overlay = document.getElementById('overlay');
+
+      images.forEach(img => {
+          img.classList.add('zoomable');
+          img.addEventListener('dblclick', function(e) {
+              e.preventDefault();
+              this.classList.toggle('zoomed');
+              overlay.style.display = this.classList.contains('zoomed') ? 'block' : 'none';
+          });
+      });
+
+      overlay.addEventListener('click', function() {
+          const zoomedImg = document.querySelector('.zoomed');
+          if (zoomedImg) {
+              zoomedImg.classList.remove('zoomed');
+              overlay.style.display = 'none';
+          }
+      });
+  });
+</script>
+{% endblock content %}

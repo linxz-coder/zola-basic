@@ -18,38 +18,23 @@ Vimium C 是一款 Chrome 浏览器插件，可以让你不用鼠标浏览网页
 
 基本操作如下：
 
-f :
+**`f`** : 列出网页上可以点击的元素，输入对应的字母即可点击。这比以前的tab tab tab高效多了。
 
-列出网页上可以点击的元素，输入对应的字母即可点击。这比以前的`tab tab tab`高效多了。
+**`d`** : 对应scroll down，向下滚动半页。
 
-d :
+**`j`** : 对应scroll down little bit，向下滚动一行。
 
-对应`scroll down`，向下滚动半页。
+**`u`** : 对应scroll up，向上滚动半页。
 
-j :
+**`k`** : 对应scroll up little bit，向上滚动一行。
 
-对应`scroll down little bit`，向下滚动一行。
+**`x`** : 关闭当前标签页。与Ctrl + w效果一样。
 
-u :
+**`shift+x`** : 恢复关闭的标签页。与Ctrl + shift + t效果一样。
 
-对应`scroll up`，向上滚动半页。
+**`gg`** : 跳转到页面顶部。
 
-k :
-对应`scroll up little bit`，向上滚动一行。
-
-x :
-关闭当前标签页。与`Ctrl + w`效果一样。
-
-shift + x :
-恢复关闭的标签页。与`Ctrl + shift + t`效果一样。
-
-gg :
-
-跳转到页面顶部。
-
-G :
-
-跳转到页面底部。
+**`G`** : 跳转到页面底部。
 
 以上就是我常用的按键，更多功能可以查看插件的快捷键列表。
 

@@ -31,8 +31,8 @@ app.mount('#app')   //最后挂载应用，顺序不能倒过来。
 ```
 
 ## 参考
-https://github.com/highlightjs/vue-plugin
-https://highlightjs.readthedocs.io/en/latest/readme.html?highlight=vue#using-with-vue-js
+[github地址](https://github.com/highlightjs/vue-plugin)
 
-highlight.js官网：
-https://highlightjs.org/
+[highlightjs-vue操作指引](https://highlightjs.readthedocs.io/en/latest/readme.html?highlight=vue#using-with-vue-js)
+
+[highlight.js官网](https://highlightjs.org/)
