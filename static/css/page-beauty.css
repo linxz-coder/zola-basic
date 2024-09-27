@@ -35,22 +35,6 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
-  .article-content .zoomed {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(2);
-    z-index: 1000;
-    max-width: 90vw;
-    max-height: 90vh;
-    width: auto; /* 取消固定宽度 */
-    height: auto;
-    object-fit: contain; /* 确保整个图片可见 */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    float: none; /* 移除浮动 */
-    margin: 0; /* 移除边距 */
-  }
-  
   .article-overlay {
     display: none;
     position: fixed;
