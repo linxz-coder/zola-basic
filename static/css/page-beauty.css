@@ -61,18 +61,3 @@
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 999;
   }
-
-
-/* markdown重点符号的效果，不会影响代码块 */
-/* 自定义 Markdown 内联代码样式 - 黄色效果 */
-p code, li code, td code {
-    font-size: 1em; /* 保持与周围文本相同的字体大小 */
-    background-color: #fffacd; /* 浅黄色背景 (Lemon Chiffon) */
-    color: #8b4513; /* 深褐色文本 (Saddle Brown) 以增加对比度 */
-    padding: 2px 4px; /* 添加一些内边距 */
-    border-radius: 3px; /* 圆角边框 */
-    border: 0》5px solid #ffd700; /* 金色边框 */
-    font-family: 'Courier New', Courier, monospace; /* 等宽字体 */
-
-    transition: all 0.2s ease; /* 添加过渡效果 */
-  }
