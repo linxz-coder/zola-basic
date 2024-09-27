@@ -12,10 +12,6 @@ npm install json-server
 ```json
 {
   "posts": [
-    { "id": 1, "title": "json-server", "author
-```json
-{
-  "posts": [
     { "id": "1", "title": "a title", "views": 100 },
     { "id": "2", "title": "another title", "views": 200 }
   ],
