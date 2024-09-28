@@ -58,7 +58,7 @@ node server.js
 npm install -g nodemon
 ```
 
-## 用nodeon启动服务器
+## 用nodemon启动服务器
 ```bash
 nodemon server.js
 ```
