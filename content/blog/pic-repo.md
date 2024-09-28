@@ -18,13 +18,13 @@ date = 2024-09-26
 # 解决【文件已损坏】错误
 mac下载后，会遇到【文件已损坏】错误，解决方法如下：
 在`terminal`中输入以下命令：
-```shell
+```bash
 sudo spctl --master-disable
 ```
 会提示输入密码。
 
 随后，放行picGo，输入：
-```shell
+```bash
 xattr -cr /Applications/PicGo.app
 ```
 

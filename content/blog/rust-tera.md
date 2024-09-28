@@ -11,7 +11,7 @@ tera是一个用于渲染模板的引擎，类似于jinja2。它可以使用rust
 好处是，可以在html中使用rust的语法，比如if else，for循环等。
 
 # 新建一个rust项目
-```shell
+```bash
 cargo new tera-demo
 cd tera-demo
 ```
@@ -83,12 +83,12 @@ async fn main() -> std::io::Result<()> {
 ```
 
 # 安装cargo-watch
-```shell
+```bash
 cargo install cargo-watch
 ```
 
 # 运行项目
-```shell
+```bash
 cargo watch -x run
 ```
 

@@ -53,7 +53,7 @@ sudo nginx -t
 vim /etc/nginx/nginx.conf
 ```
 ### 在http模块中添加以下配置
-```nginx
+```bash
 server {
     listen 80;
     server_name your-domain.com;

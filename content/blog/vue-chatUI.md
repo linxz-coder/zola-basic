@@ -48,13 +48,13 @@ date = 2024-09-21
 
 ### 方式一：带数组的写法
 
-```vue
+```html
 <div :class="['总是显示的class', { '条件class' : 条件 }]">
 ```
 
 ### 方式二：不带数组的写法:纯对象
 
-```vue
+```html
 <div :class="{ '总是显示的class': true, '条件class1' : 条件1,'条件class2':条件2 }">
 ```
 

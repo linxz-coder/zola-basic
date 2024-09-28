@@ -11,7 +11,7 @@ date = 2024-09-20
 your-wordpress.com/xmlrpc.php
 
 结果要出现：
-```plaintext
+```bash
 XML-RPC server accepts POST requests only.
 ```
 
@@ -45,7 +45,7 @@ your-wordpress.com/xmlrpc.php
 可以开始写文章啦。
 记得加一些注释在前面，注释使用”—“来前后框住的。
 比如，我的这个文章注释是这样的:
-```plaintext
+```bash
 ---
 title: 本地Markdown文档上传wordpress网站
 url: wp-markdown
