@@ -34,7 +34,7 @@ xattr -cr /Applications/PicGo.app
 [解决参考链接](https://github.com/Molunerfinn/PicGo/blob/dev/FAQ.md)
 
 # 配置七牛云图床
-![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/1.png)
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/qiniuyun1.png)
 
 可以参考官网教程：
 

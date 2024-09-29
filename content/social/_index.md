@@ -5,6 +5,18 @@ template = "section.html"
 page_template = "page.html"
 +++
 
-微信公众号：凡学子
+[自我介绍](https://linxz.fun)
 
-github: linxz-coder
+邮箱：
+
+lxz#underfitting.com (请把#换成@)
+
+github: 
+
+[linxz-coder](https://github.com/linxz-coder)
+
+我的项目：
+
+[chatfun-react](https://chatfun.site)
+
+[chatfun-vue](https://183441.xyz)
