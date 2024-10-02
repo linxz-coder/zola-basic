@@ -1,5 +1,5 @@
 +++
-title = "如何用python-flask框架假设一个api后端"
+title = "如何用python-flask框架架设一个api后端"
 date = 2024-09-21
 +++
 
