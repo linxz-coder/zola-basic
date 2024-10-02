@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>
+    {% set blog_pages = get_section(path="blog/_index.md") %}
+    幸吾今已毕<strong><u>{{ blog_pages.pages | length }}</u></strong>篇文稿，尚祈君过目评阅。
+</p>
+
+<div class="section-container">
+    <h1 class="section-title">
+        {{ section.title }}
+    </h1>
+
+
+
+    {# 显示section里面的内容 #}
+    {% if section.content %}
+    <div class="section-content">
+        {{ section.content | safe }}
+    </div>
+    {% endif %}
+
+    <ul class="section-list">
+        {% for page in section.pages %}
+        <li class="section-item">
+            <a href="{{ page.permalink | safe }}" class="section-link">
+                {{ page.title }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
