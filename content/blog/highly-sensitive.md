@@ -1,6 +1,6 @@
 +++
 title = "害羞？内向？情绪化？别被骗了！你只是「高敏感族」"
-date = 2024-05-20
+date = 2020-05-20
 template = "page-beauty.html"
 +++
 
