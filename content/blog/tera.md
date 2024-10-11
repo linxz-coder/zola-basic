@@ -28,7 +28,10 @@ date = 2024-09-21
 ```
 
 # 空白控制
-![img](https://pic.linxz.online/20240921151241.png)
+## 添加空白
+可以在html代码中加入`&nbsp;`达成，比如`&nbsp;&nbsp;`代表两个空白。
+
+## 删除空白
 tera不会主动删除空白，需要用减号-来删除。
 ```html
 {%-if foo-%}...{%-endif-%}
