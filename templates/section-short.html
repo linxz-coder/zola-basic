@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .section-item {
+        list-style-type: none;
+    }
+    .section-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
+    .title-line {
+        margin-bottom: 5px;
+    }
+    .meta-line {
+        text-align: right;
+        font-size: 0.9em;
+        color: #666;
+    }
+</style>
+
+<div class="section-container">
+    <h1 class="section-title">
+        {{ section.title }}
+    </h1>
+
+    {% if section.content %}
+    <div class="section-content">
+        {{ section.content | safe }}
+    </div>
+    {% endif %}
+
+    <ul class="section-list">
+        {% for page in section.pages %}
+        <li class="section-item">
+            <a href="{{ page.permalink | safe }}" class="section-link">
+                <div class="title-line">{{ page.title }}</div>
+                <div class="meta-line">
+                    {% if page.authors and page.authors | length > 0 -%}
+                        —— {{ page.authors[0] }}&nbsp;&nbsp;&nbsp;
+                    {%- endif -%}
+                    {{ page.date }}
+                </div>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
