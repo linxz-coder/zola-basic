@@ -70,6 +70,8 @@ end
 require('colorscheme')
 ```
 
+我的所有nvim配置文件都放在~/.config/nvim目录下，已经上传到[github](https://github.com/linxz-coder/dotfiles/tree/main/nvim)，在任何电脑上，都可以克隆我的配置。
+
 ## 参考资料
 [MartinLwx's blog - 从零开始配置 Neovim(Nvim)](https://martinlwx.github.io/zh-cn/config-neovim-from-scratch/)
 
