@@ -1,5 +1,5 @@
 +++
-title = "看到一篇很好的博客-guangzhengli，关于独立开发者的技术栈，强推nextjs和cloudflare"
+title = "看到一篇很好的博客-guangzhengli，关于独立开发者的技术栈，强推nextjs和cloudflare."
 date = 2024-10-12
 authors = ["guangzhengli"]
 +++
