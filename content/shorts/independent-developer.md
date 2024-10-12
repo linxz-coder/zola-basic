@@ -1,6 +1,6 @@
 +++
 title = "看到一篇很好的博客，关于独立开发者的技术栈，地址是 https://guangzhengli.com/blog/zh/indie-hacker-tech-stack-2024/"
-date = 2024-10-11
+date = 2024-10-12
 authors = ["guangzhengli"]
 +++
 
