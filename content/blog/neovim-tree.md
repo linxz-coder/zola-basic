@@ -122,3 +122,6 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 ```
 
 这样，按`Ctrl+h`、`Ctrl+j`、`Ctrl+k`、`Ctrl+l`就可以在窗口之间快速导航。h是左，j是下，k是上，l是右。
+
+# 文件改名
+只要导航到文件夹窗口，按`r`即可。
