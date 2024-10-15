@@ -164,12 +164,15 @@ p code, li code, td code {
 
 /* 针对markdown表格的样式 */
 .section table {
-  border-collapse: separate;
+  display: table;
+  border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
   margin: 1em 0;
   font-size: 0.9em;
   border: 1px solid #ddd;
+  text-indent: initial;
+  unicode-bidi: isolate;
 }
 
 .section table th,
