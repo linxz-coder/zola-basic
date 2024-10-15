@@ -1,0 +1,47 @@
+/* 为特定文章内容创建一个包装类 */
+.article-content {
+    /* 这个类将包含所有文章特定的样式 */
+
+  }
+  
+  /* 使文章内的图片左对齐并保持统一尺寸 */
+  .article-content img {
+    display: block;
+    margin: 1em 0; /* 移除左右边距，只保留上下边距 */
+    width: 300px; /* 设置固定宽度，可以根据需要调整 */
+    height: auto; /* 保持宽高比 */
+    object-fit: cover; /* 确保图片填满容器 */
+    border-radius: 8px; /* 添加圆角 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加轻微阴影 */
+    margin-right: 1em; /* 在图片右侧添加间距，使文字不会紧贴图片 */
+  }
+  
+  /* 清除浮动，确保后续内容不会受到浮动影响 */
+  .article-content::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* 文章段落两端对齐 */
+  .article-content p {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  
+  /* 图片缩放相关样式 */
+  .article-content .zoomable {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .article-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+  }

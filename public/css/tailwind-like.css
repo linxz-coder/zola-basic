@@ -1,0 +1,221 @@
+/* Reset and base styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+@font-face {
+  font-family: 'Taipei-Sans-TC-Beta-Light-2';
+  src: url('/fonts/Taipei-Sans-TC-Beta-Light-2.woff2') format('woff2'),
+       url('/fonts/Taipei-Sans-TC-Beta-Light-2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Fallback to invisible text until font is loaded */
+}
+
+:root {
+  --primary: #3490dc;
+  --secondary: #ffed4a;
+  --danger: #e3342f;
+  --success: #38c172;
+}
+
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.8;
+  color: #2d3748;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* 新增一个类用于应用自定义字体，提高加载速度 */
+.custom-font {
+  font-family: 'Taipei-Sans-TC-Beta-Light-2', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+
+/* Navigation */
+nav {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+nav a {
+  color: #4a5568;
+  text-decoration: none;
+  margin-right: 1rem;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+/* Typography */
+h1 {
+  font-size: 2.0rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2779bd;
+}
+
+/* Form elements */
+input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Search results */
+#search-results {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+#search-results a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+  text-decoration: none;
+}
+
+#search-results a:hover {
+  background-color: #f7fafc;
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.font-bold { font-weight: 700; }
+.text-lg { font-size: 1.125rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mt-4 { margin-top: 1rem; }
+
+/* 限制图片大小 */
+img {
+  max-width: 80%;   /* 最大宽度 */
+  height: auto;       /* 保持宽高比 */
+  box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.3); /* 添加边框，对所有浏览器有效 */
+  /* border: grey, 0.5px solid; */ /* 添加边框，仅对chrome有效 */
+}
+
+/* 改动序列号的相对位置 */
+ol {
+  padding-left: 1em; /* 或者更大的值，根据需要调整 */
+}
+
+ul {
+  padding-left: 1em; /* 或者更大的值，根据需要调整 */
+}
+
+/* markdown重点符号的效果，不会影响代码块 */
+/* 自定义 Markdown 内联代码样式 - 黄色效果 */
+p code, li code, td code {
+  font-size: 1em; /* 保持与周围文本相同的字体大小 */
+  background-color: #fffacd; /* 浅黄色背景 (Lemon Chiffon) */
+  color: #8b4513; /* 深褐色文本 (Saddle Brown) 以增加对比度 */
+  padding: 2px 4px; /* 添加一些内边距 */
+  border-radius: 3px; /* 圆角边框 */
+  border: 0》5px solid #ffd700; /* 金色边框 */
+  font-family: 'Courier New', Courier, monospace; /* 等宽字体 */
+
+  transition: all 0.2s ease; /* 添加过渡效果 */
+}
+
+/* 针对markdown表格的样式 */
+section table {
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 0.9em;
+  border: 1px solid #ddd !important;
+  text-indent: initial;
+  unicode-bidi: isolate;
+}
+
+.section table th,
+.section table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.section table th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-top: none;
+}
+
+.section table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.section table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.section table tr:last-child td {
+  border-bottom: none;
+}
+
+/* 为表头添加圆角 */
+.section table tr:first-child th:first-child {
+  border-top-left-radius: 5px;
+}
+
+.section table tr:first-child th:last-child {
+  border-top-right-radius: 5px;
+}
+
+/* 为表格底部添加圆角 */
+.section table tr:last-child td:first-child {
+  border-bottom-left-radius: 5px;
+}
+
+.section table tr:last-child td:last-child {
+  border-bottom-right-radius: 5px;
+}
