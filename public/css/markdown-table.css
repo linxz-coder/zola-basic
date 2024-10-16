@@ -1,0 +1,57 @@
+/* 针对markdown表格的样式 */
+.section table {
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin: 1em 0;
+    font-size: 0.9em;
+    border: 1px solid #ddd;
+    text-indent: initial;
+    unicode-bidi: isolate;
+  }
+  
+  .section table th,
+  .section table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .section table th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-top: none;
+  }
+  
+  .section table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .section table tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .section table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* 为表头添加圆角 */
+  .section table tr:first-child th:first-child {
+    border-top-left-radius: 5px;
+  }
+  
+  .section table tr:first-child th:last-child {
+    border-top-right-radius: 5px;
+  }
+  
+  /* 为表格底部添加圆角 */
+  .section table tr:last-child td:first-child {
+    border-bottom-left-radius: 5px;
+  }
+  
+  .section table tr:last-child td:last-child {
+    border-bottom-right-radius: 5px;
+  }
