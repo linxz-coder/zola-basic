@@ -125,3 +125,12 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
 # 文件改名
 只要导航到文件夹窗口，按`r`即可。
+
+# 显示图标
+按`F2`打开文件树时，你会发现图标不能正常显示。你需要下载一个[nerd font](https://www.nerdfonts.com/font-downloads)，选择一个喜欢的下载就行了。
+
+下载后是.zip文件，直接解压会出现很多类型的字体，随便安装一个就行了。
+
+下一步是打开iTerm2，设置字体。在Profile-text-Font里面可以设置，换成刚刚下载的字体即可。
+
+重新用`nvim`打开neovim，会发现文件夹图标正常显示了。
