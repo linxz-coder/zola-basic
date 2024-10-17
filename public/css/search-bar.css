@@ -1,0 +1,30 @@
+/* 去掉有效角水印 */
+.docs-searchbar-footer {
+    display: none !important;
+}
+
+/* 减小搜索框下拉菜单宽度 */
+.meilisearch-autocomplete .dsb-dropdown-menu {
+    max-width: 800px !important; /* 或者更小，根据你的需求调整 */
+    min-width: 350px !important; /* 允许宽度自适应内容 */
+    width: auto !important;
+}
+
+/* 增大搜索框 */
+/* 默认样式（适用于所有屏幕尺寸） */
+#search-bar-input {
+    width: 180px !important;
+    height: 30px !important;
+    font-size: 16px !important;
+    padding: 10px !important;
+    max-width: 100% !important; /* 确保不会超出父容器 */
+  }  
+/* 针对移动设备的样式 */
+@media screen and (max-width: 480px) {
+#search-bar-input {
+    width: 100% !important; /* 占满容器宽度 */
+    height: 36px !important; /* 稍微减小高度 */
+    font-size: 14px !important; /* 稍微减小字体 */
+    padding: 8px !important; /* 稍微减小内边距 */
+}
+}
