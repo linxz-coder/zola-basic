@@ -3,7 +3,7 @@ title = "如何用 openai stream 做 Function calling？"
 date = 2023-09-15
 +++
 
-前段时间介绍了[如何用 openai 做 Function calling](@/blog/openai-functon-calling.md)，有朋友就问，如果我需要采用流式输出(stream)，那要怎么办呢？
+前段时间介绍了[如何用 openai 做 Function calling](@/blog/openai-function-calling.md)，有朋友就问，如果我需要采用流式输出(stream)，那要怎么办呢？
 
 今天就介绍一下 stream + Function calling。
 
