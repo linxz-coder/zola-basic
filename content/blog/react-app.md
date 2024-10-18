@@ -35,7 +35,28 @@ npx create-react-app your-app-name
 # react怎么访问跨域的服务器？
 跨域指不同源，比如3000端口访问5000端口的服务器。
 
-方法：
+## 在package.json里面添加proxy
+
+在package.json文件添加以下代码：
+
+```bash
+"proxy": "http://localhost:5000"
+```
+
+修改前端代码改向3000端口请求：
+
+```bash
+ axios.get('http://localhost:3000/students').then(
+      // 成功的回调
+      response => {console.log('成功了', response.data)},
+      // 失败的回调
+      error => {console.log('失败了', error)}
+    )
+```
+
+这个方法通过直接重定向3000请求到5000，解决跨域请求的问题。但是只能用一个服务器，如果有多个跨域服务器请求，就用以下`setupProxy`的方式。
+
+## setupProxy
 
 新建文件`setupProxy.js`（注意：名称不能变）在`src`文件夹下，添加以下代码：
 
@@ -55,4 +76,23 @@ module.exports = function(app){
 
 说明：所有访问3000/api1的都会重定向到5000端口上，因此避免了跨域问题。
 
-这个办法是通过`同源`策略来保证访问到服务器，跨域方法还可以在服务端设置CORS，可查看[跨域和同源介绍](@/blog/cors.md)。
+这个办法是通过`同源`策略来保证访问到服务器，可参考[官方文档](https://create-react-app.dev/docs/proxying-api-requests-in-development/)，跨域方法还可以在服务端设置CORS，可查看[跨域和同源介绍](@/blog/cors.md)。
+
+# 如何确定state/useState放在哪里？
+1. 如果数据只在某个组件用，就放到自身的state里面。
+2. 如果数据是共用的，就放到父组件的state里面。官方称此为`状态提升`。
+
+比如下图中的数据state，是子组件components中`Search`和`List`共用的，就放到父组件App里面。
+
+![react-state](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202410190715180.png)
+
+## 方法function放在哪里？
+状态state在哪里，方法就在哪里。
+
+# 组件间通信
+## 父传子
+通过props传递。
+## 子传父
+通过props传递，要求父提前给子传递一个函数。
+## 兄弟组件传递
+兄弟给父传递，参照【子传父】，再由父传递给另一个兄弟，参照【父传子】。
