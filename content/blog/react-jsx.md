@@ -69,3 +69,49 @@ date = 2024-10-20
  (2).for(){}
 
  (3).switch(){case:xxxx}
+
+ # jsx如何遍历？
+
+ 代码示例：
+ 
+ ```JavaScript
+users.map((userObj) => {
+    return (
+      <div key={userObj.id} className="card">
+          <a rel="noreferrer" href={userObj.html_url} target="_blank">
+            <img alt="avatar" src={userObj.avatar_url} style={{width: '100px'}}/>
+          </a>
+          <p className="card-text">{userObj.login}</p>
+      </div>
+    )
+})
+```
+
+核心思想：使用map方法遍历对象或者数组，注意遍历时需要指定id或者index来作为唯一值。
+
+# jsx如何做条件判断？
+
+代码示例：
+
+```JavaScript
+{
+    isFirst ? <h2>欢迎使用，输入关键字搜索</h2> :
+    isLoading ? <h2>Loading...</h2> :
+    err ? <h2 style={{color:'red'}}>{err}</h2> :
+    users.map((userObj) => {
+        return (
+          <div key={userObj.id} className="card">
+              <a rel="noreferrer" href={userObj.html_url} target="_blank">
+                <img alt="avatar" src={userObj.avatar_url} style={{width: '100px'}}/>
+              </a>
+              <p className="card-text">{userObj.login}</p>
+            </div>
+        )
+    })
+}
+```
+
+代码解释：
+以上代码是展示搜索结果的一个示例。
+如果是第一次使用，显示欢迎语；如果搜索中，显示Loading...，如果错误，显示错误信息；否则，则显示用户的信息。
+这里关键是，`jsx不能用if语句`，要用表达式?和:来进行判断。
