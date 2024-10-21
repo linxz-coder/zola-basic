@@ -95,4 +95,78 @@ module.exports = function(app){
 ## 子传父
 通过props传递，要求父提前给子传递一个函数。
 ## 兄弟组件传递
+### 传统方式
 兄弟给父传递，参照【子传父】，再由父传递给另一个兄弟，参照【父传子】。
+
+### PubSub工具
+任意两个组件的沟通，都可以借助[PubSub工具](https://github.com/mroderick/PubSubJS)。
+
+### 安装
+
+```bash
+yarn add pubsub-js
+```
+
+### 使用
+
+接收数据方`订阅Subscribe`，发送数据方`发布Publish`即可。
+
+假设\<List>组件是接收方，\<Search>组件是发送方。
+
+我们先看\<List/>组件：
+
+```javascript
+import PubSub from 'pubsub-js'
+
+state = {// 初始化状态
+users:[], //users初始值为数组
+isFirst:true, //是否为第一次打开页面
+isLoading:false, //标识是否处于加载中
+err:'' //存储请求相关的错误信息
+}
+
+componentDidMount() {
+// _表示不使用这个参数，这个参数是msg，现在只是占位。
+this.token = PubSub.subscribe('communication', (_,stateObj)=>{
+   console.log('List组件收到数据了', stateObj);
+    this.setState(stateObj)
+})
+}
+
+componentWillUnmount() {
+PubSub.unsubscribe(this.token)
+}
+```
+
+基本思路：
+1. 组件加载时，订阅组件，取好订阅的名称，比如`communication`，确定接收到的数据，比如`stateObje`，setState改变状态。
+2. 组件卸载时，删除订阅。
+3. 格式是`PubSub('name',data)`。
+4. 数据state放在订阅方。
+
+再看\<Search/>组件：
+
+```javascript
+import PubSub from 'pubsub-js'
+
+// 发送请求前通知List更新状态
+PubSub.publish('communication', {isFirst:false, isLoading:true})
+
+/* 发送api请求，比如axios */
+// 发送请求前通知List更新状态
+PubSub.publish('communication', {isFirst:false, isLoading:true})
+// 发送网络请求
+axios.get(`http://localhost:3000/api1/search/users?q=${KeyWord}`).then(
+  response => {
+    // 请求成功后通知List更新状态
+    PubSub.publish('communication', {isLoading:false, users:response.data.items})
+  },
+  error => {
+    console.log('失败了', error)
+    // 请求失败后通知List更新状态
+    PubSub.publish('communication', {isLoading:false, err:error.message})
+  }
+)
+```
+
+格式是`PubSub.publish('name', data)`。
