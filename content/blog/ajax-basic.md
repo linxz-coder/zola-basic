@@ -89,3 +89,5 @@ try {
     PubSub.publish('communication', {isLoading:false, err:error.message})
 }
 ```
+
+可以参考[fetch的使用方法](https://segmentfault.com/a/1190000003810652)。
