@@ -29,5 +29,63 @@ AJAX，即Asynchronous JavaScript and XML。
 4. 新闻网站页面滚到底，重新生成新的内容（比如今日头条）。
 
 # AJAX的使用方法
+原生方式xhr, jQuery，axios方式、内置fetch方式。
+无论是哪些方式，都是对原生方式xhr的封装，为了让请求更简单和易用。
+- axios兼容promise风格，更现代化。
+- fetch不是第三方库，可以直接使用，方便。
+
+
+## xhr原生方式
+```JavaScript
+// 获取button元素
+var btn = document.querySelector('button');
+// 绑定事件
+btn.onclick = function(){
+    // 创建xhr对象
+    var xhr = new XMLHttpRequest();
+    // 初始化：设置请求方法和url
+    xhr.open('GET', 'http://127.0.0.1:8000/server?a=100&b=200&c=300', true);
+    // 发送请求
+    xhr.send();
+    // 事件绑定，处理服务端返回结果
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300){ // readystate: 1未初始化 2已经发送 3正在接收 4完成; status: 200+都是成功
+            // 1.响应行
+            console.log(xhr.status); //状态码
+            console.log(xhr.statusText); //状态文本
+            // 2.响应头
+            console.log(xhr.getAllResponseHeaders());
+            // 3.响应体
+            console.log(xhr.response);
+            // 获取服务端返回的数据
+            var data = xhr.responseText; //responseText将响应体变成Text格式
+            // 获取result元素
+            var result = document.querySelector('#result');
+            // 将数据显示到result元素中
+            result.innerHTML = data;
+        }
+    }
+}
+```
+
 ## axios方式
 我总结在[axios基础知识](@/blog/axios_basic.md)。
+
+
+## fetch方式
+
+注意，用fetch的时候，因为用了`await`方法，函数名必须加上`async`。
+
+因为老版的浏览器不支持`fetch`，因此工作中一般不用，用以上三种`xhr`的方法居多。jQuery被逐渐淘汰，而原生xhr太难用，实际上用`axios`最多。
+
+```JavaScript
+try {
+    const response = await fetch(`http://localhost:3000/api1/search/users2?q=${KeyWord}`)
+    const data = await response.json()
+    // console.log(data);
+    PubSub.publish('communication', {isLoading:false, users:data.items})
+} catch (error) {
+    console.log('请求出错了', error);
+    PubSub.publish('communication', {isLoading:false, err:error.message})
+}
+```
