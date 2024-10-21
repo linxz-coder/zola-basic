@@ -59,5 +59,5 @@ p.then(() => {
 ```
 
 # 视频教程
-点击观看[Promise从入门到精通]教程(https://www.youtube.com/watch?v=FtXEUgiPUiM&list=PLmOn9nNkQxJF-I5BK-wNUnsBkuLXUumhr&index=4)。
+点击观看[Promise从入门到精通教程](https://www.youtube.com/watch?v=FtXEUgiPUiM&list=PLmOn9nNkQxJF-I5BK-wNUnsBkuLXUumhr&index=4)。
 
