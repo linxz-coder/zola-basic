@@ -170,3 +170,52 @@ axios.get(`http://localhost:3000/api1/search/users?q=${KeyWord}`).then(
 ```
 
 格式是`PubSub.publish('name', data)`。
+
+# react实现路由route页面切换
+
+## 安装react-router-dom库
+安装方法可以见[react-router-dom官方文档](https://reactrouter.com/en/main/router-components/browser-router)，用`yarn`安装：
+
+```bash
+yarn add react-router-dom
+```
+
+## 使用react-router-dom
+
+### 在最外层包一层\<BrowserRouter>
+打开`index.js`，包在最外层：
+
+```javascript
+// 引入react-router-dom库
+import { BrowserRouter } from 'react-router-dom';
+
+
+// 渲染App组件到页面
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+    <React.StrictMode> {/* StrictMode检查React代码不合理的地方 */}
+      <App />
+    </React.StrictMode>
+  </BrowserRouter>
+);
+```
+
+### 在父组件中使用routes
+
+```javascript
+import { Link, Route, Routes } from 'react-router-dom'
+
+{/* 在React中靠路由链接实现切换组件 */}
+{/* 编写路由链接 */}
+<Link className="list-group-item" to="/about">About</Link>
+<Link className="list-group-item" to="/home">Home</Link>
+
+{/* 注册路由 */}
+<Routes>
+    <Route path="/about" element={<About />} />
+    <Route path="/home" element={<Home />} />
+</Routes>
+```
+
+这样就可以实现多页面的切换了。
