@@ -1,6 +1,11 @@
 # The URL the site will be built for
 base_url = "https://linxz.online"
 
+# 标签
+taxonomies = [
+    {name = "tags"},
+]
+
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = false
 
@@ -16,3 +21,4 @@ highlight_theme = "base16-ocean-dark"
 
 [extra]
 # Put all your custom variables here
+
