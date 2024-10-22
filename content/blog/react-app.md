@@ -173,6 +173,19 @@ axios.get(`http://localhost:3000/api1/search/users?q=${KeyWord}`).then(
 
 # react实现路由route页面切换
 
+思路：
+
+- 明确导航区和展示区。
+
+- 导航区的a标签改为Link标签；展示区Route标签进行路径的匹配。
+
+- 最外层套一层BrowserRouter就行。
+
+注意：
+1. 路由组件比如\<About />要放在`pages`文件夹，而不是`components`文件夹
+
+2. 如果需要点击高亮，不用Link标签，用NavLink标签。
+
 ## 安装react-router-dom库
 安装方法可以见[react-router-dom官方文档](https://reactrouter.com/en/main/router-components/browser-router)，用`yarn`安装：
 
@@ -219,3 +232,19 @@ import { Link, Route, Routes } from 'react-router-dom'
 ```
 
 这样就可以实现多页面的切换了。
+
+### 高亮标签
+使用NavLink标签，示例代码：
+
+```javascript
+import { NavLink, Route, Routes } from 'react-router-dom'
+
+<NavLink className={({isActive}) => 'list-group-item' + (isActive ?' atguigu' : '')} to="/about">About</NavLink> 
+<NavLink className={({isActive}) => 'list-group-item' + (isActive ?' atguigu' : '')} to="/home">Home</NavLink>
+```
+
+### BrowserRouter和HashRouter
+
+两者都可以用。HashRouter的路径会带井号#。比如localhost:3000/#About
+
+区别是井号#后面的值是哈希值，是不会作为资源发送给服务器的。一般用BrowserRouter就可以。
