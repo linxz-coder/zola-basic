@@ -1,9 +1,23 @@
 +++
 title = "如何开始一个react项目"
 date = 2024-10-18
+
 +++
 
 官方推荐以框架开始，比如`nextjs`。但是，为了学习，我这里介绍的是纯血`react`开场。
+
+# 为什么要用react?
+简单来说，就是大家都用呗。
+
+复杂来讲，为什么大家用呢？因为react对前端页面渲染相对于传统JS更高效。利用了`虚拟DOM技术+diffing算法`，传统JS用的是`真实DOM`技术。
+
+真实DOM的缺点是：不能复用之前的数据，每一次都是刷新重新来。
+
+![real-DOM](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202410231111766.png)
+
+虚拟DOM：复用了原来的DOM，只需要渲染改变的那个数据。
+
+![virtual-DOM](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202410231112734.png)
 
 # 使用npm或者yarn开始
 
