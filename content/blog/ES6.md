@@ -90,3 +90,154 @@ console.log(xiaopin);
 
 xiaopin(); //如果不解构赋值，要zhao.xiaopin()触发
 ```
+
+# ES6模版字符串
+
+ES6模版字符串``
+
+用\``框起来的，和''以及""是一样的，类型都是字符串。
+
+特点：
+1. 可以直接出现换行符
+```javascript
+let str = `<ul>
+<li>沈腾</li>
+<li>玛丽</li>
+</ul>`
+```
+
+2. 实现变量的拼接
+```javascript
+let lovest = ‘魏翔’;
+let out = `${lovest}是我心目中最搞笑的演员。`
+```
+
+# ES6简化对象写法
+允许大括号里面，直接写入变量和函数。不用写冒号。
+
+```javascript
+let name = ‘尚硅谷’;
+let change = function(){console.log(‘我们可以改变你!”)}
+
+const school = {name, change, improve({console.log(“improve”)}}
+
+//正确写法应该是name: name, change:change, improve:function(){}， 只要key和value相同，就可以简写。 冒号和function也可以省略。
+```
+
+# ES6箭头函数
+什么是箭头函数的形式？
+```javascript
+let fn = () =>{}
+```
+
+箭头函数与传统函数function()的区别：
+
+1. this是静态的，始终指向函数声明时所在作用域下的this的值。传统函数的this是动态的，谁调用我，我就指向谁。
+
+```javascript
+function getName(){console.log(this.name)}
+
+let getName2 =  () => {console.log(this.name)}
+
+//设置window对象的name属性
+window.name = “尚硅谷”;
+const school = {name: “ATGUIGU”}
+
+//直接调用
+getName();
+getName2();
+//以上结果都一样，都是“尚硅谷”。
+
+//call方法调用：call方法是可以改变this指向的值的
+getName.call(school); //ATGUIGU
+getName2.call(school); //尚硅谷
+```
+
+2. 不能作为构造函数去实例化对象
+
+```javascript
+let Person = (name, age) => {this.name = name; this.age = age;}
+
+let me = new Person(‘xiao’, 30);
+console.log(me); //报错，Person不是一个构造器constructor
+```
+
+3. 不能使用arguments变量
+
+```javascript
+let fn = () => {console.log(arguments)};
+fn(1,2,3); //报错
+```
+
+4. 箭头函数的简写
+- 省略小括号，当形参有且只有一个。
+```javascript
+let add = n => {return n+n};
+```
+
+- 省略花括号，当代码体只有一条语句的时候。此时’return’必须省略。而且语句的执行结果就是函数的返回值。
+```javascript
+let pow = n => n*n;
+```
+
+## 案例-返回数组的偶数项
+
+```javascript
+const arr = [1,6,9,10,100,25]
+
+//传统做法:
+const result = arr.filter(function(item){
+	if(item%2===0){
+		return true;
+	}else{
+		return false	
+}
+})
+
+//箭头函数做法
+cosnt result = arr.filter(item => item % 2 === 0);
+//只要是偶数的值，就返回。
+```
+
+## 箭头函数不适合与this有关的回调
+比如（点击）事件回调，对象的方法
+
+```javascript
+{name: ‘atguigu’,
+getName: function(){
+	this.name}}
+
+//这个this是值当前对象的this，而不是外层函数的this。
+//箭头函数的this指的是创建时的this，即外层函数的this。
+//不适合，不是不能
+```
+
+# ES6允许参数的初始值
+1. 形参初始值
+```javascript
+//具有默认值的参数，一般位置靠后。
+function add(a,b,c=10){
+	return a+b+c
+}
+
+result = add(1,2) //这里不用传入c
+console.log(result);
+```
+
+2. 与解构赋值结合
+```javascript
+function connect({host,username,password}){
+	console.log(host);
+	console.log(username);
+	console.log(password);
+	console.log(port)
+}
+
+connect({
+	host: ‘localhost’,
+	username: ‘root’,
+	password: ‘root’,
+	port: 3306
+})
+```
+
