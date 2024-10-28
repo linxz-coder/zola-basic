@@ -9,13 +9,21 @@ date = 2024-10-24
 
 # 目录
 [ES是什么](#what-is-es)
+
 [为什么要学习 ES6](#why-es6)
+
 [let变量特性](#let)
+
 [cosnt常量特性](#const)
+
 [ES6解构赋值](#deconstruct)
+
 [ES6模版字符串](#template-string)
-[ES6简化对象写法](#object-simple)
+
+[ES6简化对象写法](#object-simple) 
+
 [ES6箭头函数](#arrow-function)
+
 [ES6允许参数的初始值](#default-argument)
 
 
