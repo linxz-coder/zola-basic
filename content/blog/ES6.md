@@ -7,18 +7,30 @@ date = 2024-10-24
 
 我看了一下[尚硅谷的教程](https://www.youtube.com/watch?v=aG1QPO4DTB8&list=PLmOn9nNkQxJFlj86lvBSpC2UsNw-pdmdq&index=2)。
 
-# ES
+# 目录
+[ES是什么](#what-is-es)
+[为什么要学习 ES6](#why-es6)
+[let变量特性](#let)
+[cosnt常量特性](#const)
+[ES6解构赋值](#deconstruct)
+[ES6模版字符串](#template-string)
+[ES6简化对象写法](#object-simple)
+[ES6箭头函数](#arrow-function)
+[ES6允许参数的初始值](#default-argument)
+
+
+# ES是什么{#what-is-es}
 ES是ECMAScript的简称，ECMAScript是脚本语言的规范。而我们所使用的JavaScript是ECMAScript的一种实现。
 
 ECMAScript 是由 Ecma 国际通过ECMA-262 标准化的脚本程序设计语言。
 
-# 为什么要学习 ES6？
+# 为什么要学习 ES6？{#why-es6}
 
 ES6 的版本变动内容最多，具有里程碑意义。
 
 如果发生了兼容问题，babel可以把ES6编译成ES5，解决部分落后浏览器不兼容的问题。
 
-# let变量特性
+# let变量特性{#let}
 1. 变量不能重复声明
 ```javascript
 let star = ‘罗志祥’
@@ -42,7 +54,7 @@ let song = ‘恋爱达人’
 //不允许使用
 ```
 
-# cosnt常量特性
+# cosnt常量特性{#const}
 
 1. 必须有初始值
 ```javascript
@@ -65,7 +77,7 @@ TEAM.push(‘MEIKO’)
 //因为常量对应的引用地址（指针）没变，因此不会报错。
 ```
 
-# ES6解构赋值
+# ES6解构赋值{#deconstruct}
 
 ```javascript
 //数组结构
@@ -91,7 +103,7 @@ console.log(xiaopin);
 xiaopin(); //如果不解构赋值，要zhao.xiaopin()触发
 ```
 
-# ES6模版字符串
+# ES6模版字符串{#template-string}
 
 ES6模版字符串``
 
@@ -112,7 +124,7 @@ let lovest = ‘魏翔’;
 let out = `${lovest}是我心目中最搞笑的演员。`
 ```
 
-# ES6简化对象写法
+# ES6简化对象写法{#object-simple}
 允许大括号里面，直接写入变量和函数。不用写冒号。
 
 ```javascript
@@ -124,7 +136,7 @@ const school = {name, change, improve({console.log(“improve”)}}
 //正确写法应该是name: name, change:change, improve:function(){}， 只要key和value相同，就可以简写。 冒号和function也可以省略。
 ```
 
-# ES6箭头函数
+# ES6箭头函数{#arrow-function}
 什么是箭头函数的形式？
 ```javascript
 let fn = () =>{}
@@ -212,7 +224,7 @@ getName: function(){
 //不适合，不是不能
 ```
 
-# ES6允许参数的初始值
+# ES6允许参数的初始值{#default-argument}
 1. 形参初始值
 ```javascript
 //具有默认值的参数，一般位置靠后。
