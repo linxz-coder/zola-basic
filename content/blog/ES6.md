@@ -5,7 +5,9 @@ date = 2024-10-24
 
 前端要会ES6，那么什么是传说中的`ES6`。
 
-我看了一下[尚硅谷的教程](https://www.youtube.com/watch?v=aG1QPO4DTB8&list=PLmOn9nNkQxJFlj86lvBSpC2UsNw-pdmdq&index=2)。
+视频教程推荐[尚硅谷的教程](https://www.youtube.com/watch?v=aG1QPO4DTB8&list=PLmOn9nNkQxJFlj86lvBSpC2UsNw-pdmdq&index=2)。另推荐阮一峰的[ECMAScript 入门](https://es6.ruanyifeng.com/#docs/intro)，一本开源书。
+
+以下是我的总结：
 
 # 目录
 [ES是什么](#what-is-es)
