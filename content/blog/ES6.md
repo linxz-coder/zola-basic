@@ -261,3 +261,71 @@ connect({
 })
 ```
 
+# ES6 rest参数，即省略号 - 参数转数组{#rest}
+1. 可以快速获取arguments，而且是数组的形式
+
+```javascript
+function date(…args){
+	console.log(args); //因为结果是数组，可以用数组方法比如filter some every map
+}
+
+date(‘阿娇’,’柏芝’, ‘思慧’)
+```
+
+2. rest参数必须放到参数最后
+
+```javascript
+function fn(a,b,…args){
+console.log(a);
+console.log(b);
+console.log(args);
+}
+
+fn(1,2,3,4,5,6)
+```
+
+# ES6扩展运算符 - 数组转参数{#spread-operator}
+
+将[数组]转换为逗号分隔的[参数序列]。
+
+```javascript
+//声明一个数组
+const tfboys = [‘易烊千玺’, ‘王源’, ‘王俊凯’];
+
+//声明一个函数
+function chunwan(){
+	console.log(arguments);
+}
+
+chunwan(…tfboys); //等同于chunwan(‘易烊千玺,’王源’,’王俊凯’)，1个数组元素变3个参数。
+```
+
+## 扩展运算符的运用
+1. 数组的合并
+
+```javascript
+const kuaizi = [‘王太利’,’肖央’]：
+const fenghuang = [‘曾毅’,’玲花’];
+
+//传统方法
+//const zuixuanxiaopingguo = kuaizi.concat(fenghuang)
+
+//扩展运算符方法
+const zuixuanxiaopingguo = […kuaizi, …fenghuang]
+
+console.log(zuixuanxiaopingguo)
+```
+
+2. 数组的克隆
+
+```javascript
+const sanzhihua = [‘E’, ‘G’, ‘M’]
+const sanyecao = […sanzhihua];
+```
+
+3. 将伪数组转化为真正的数组。
+
+```javascript
+const divs = document.querySelectorAll(‘div’)
+const divArr = […divs];
+```
