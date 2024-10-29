@@ -26,6 +26,11 @@ date = 2024-10-24
 
 [ES6允许参数的初始值](#default-argument)
 
+[ES6 rest参数，即省略号 - 参数转数组](#rest)
+
+[ES6扩展运算符 - 数组转参数](#spread-operator)
+
+
 
 # ES是什么{#what-is-es}
 ES是ECMAScript的简称，ECMAScript是脚本语言的规范。而我们所使用的JavaScript是ECMAScript的一种实现。
