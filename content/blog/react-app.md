@@ -262,3 +262,26 @@ import { NavLink, Route, Routes } from 'react-router-dom'
 两者都可以用。HashRouter的路径会带井号#。比如localhost:3000/#About
 
 区别是井号#后面的值是哈希值，是不会作为资源发送给服务器的。一般用BrowserRouter就可以。
+
+# 如何测试react的上线效果？
+我们用`serve`这个库就行。
+
+全局安装：
+
+```javascript
+npm i serve -g
+```
+
+生成build文件：
+
+```javascript
+npm run build
+```
+
+在项目路径下使用serve命令：
+
+```javascript
+serve build
+```
+
+这样，就能在本地3000或者5000端口来模拟服务器运行网站的效果了。
