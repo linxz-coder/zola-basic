@@ -1,5 +1,5 @@
 +++
-title = react组件间通信的方法"
+title = "react组件间通信的方法"
 date = 2024-10-30
 +++
 
