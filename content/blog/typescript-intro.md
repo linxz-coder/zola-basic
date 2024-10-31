@@ -180,9 +180,9 @@ typeof(str1); // string
 typeof(str2); // object
 ```
 
-## 常用类型
+# 常用类型
 
-### any
+## any
 
 任意类型。放弃变量的类型检查。
 
@@ -214,7 +214,7 @@ let x: string;
 x = q; // 不会报错，因为 q 是 any 类型
 ```
 
-### unknown
+## unknown
 可以理解为一个类型安全的`any`，适用于不确定数据的具体类型。
 
 unknown和any不一样，因为不会踩any的坑，即不能赋值给任何数据类型。
@@ -245,6 +245,295 @@ x = a as string;
 x = <string>a;
 ```
 
+unknown也不能使用任何方法，any则相反：
+
+```typescript
+let str1: string;
+str1 = 'Hello World';
+str1.toUpperCase();
+
+let str2: any;
+str2 = 'Hello TypeScript';
+str2.toUpperCase();
+
+let str3: unknown;
+str3 = 'Hello TypeScript';
+str3.toUpperCase(); // 报错。unknown不能调用string类型的方法
+```
+
+## never
+
+never用来限制函数的返回值，让函数不返回任何值。注意：一般函数至少会返回undefined，除非抛出错误。
+
+```typescript
+function demo(): never{
+    throw new Error('程序运行异常！'); // 函数会抛出异常，不会有返回值；正常函数至少会返回undefined
+}
+```
+
+## void
+
+和`never`类似，也是用于函数的返回值。区别是void可以接受`undefined`。
+
+```typescript
+// void可以接受的“空”值：undefined
+
+function logMessage(msg:string): void {
+    console.log(msg);
+}
+
+function logMessage2(msg:string): void {
+    console.log(msg);
+    return;
+}
+
+function logMessage3(msg:string): void {
+    console.log(msg);
+    return undefined;
+}
+```
+
+## object
+
+### 小object和大Object一般不用
+
+因为太宽泛了。
+
+```typescript
+// object 类型
+
+let a: object; //a能存储的类型是【非原始类型】
+let b: Object; //b能存储的类型是可以调用到Object上所有方法的类型
+
+
+// a能存储的类型
+a = {};
+a = {name: 'lison'};
+a = function () {};
+a = new String('aaa');
+class Person {}
+a = new Person();
+
+// a不能存储的类型
+a = 1;
+a = 'aaa';
+a = true;
+a = undefined;
+a = null;
+
+// b能存储的类型
+b = {};
+b = {name: 'lison'};
+b = function () {};
+b = new String('aaa');
+b = new Person();
+b = 1;
+b = 'aaa';
+b = true;
+
+// b不能存储的类型
+b = undefined;
+b = null;
+```
+
+### 怎么声明对象？
+```typescript
+let person: {name: string, age?: number}; //?代表age属性是可选的
+
+person = {name: 'Jack', age: 32};
+```
+
+### 声明对象追加属性
+```typescript
+let person: {
+    name: string
+    age?: number //?代表age属性是可选的
+    [key: string]: any //含义：除了name和age属性外，还可以有其他任意属性，属性名是字符串类型，属性值是任意类型
+}; 
+
+person = {name: 'Jack', age: 32, gender: '男', height: 180};
+```
+
+### 声明函数类型
+
+```typescript
+let count: (a: number, b: number) => number;
+
+count = (a, b) => {
+    return a + b;
+}
+```
+
+### 声明数组类型
+```typescript
+let arr: string[]; //第一种方式
+let arr2: Array<string>; //第二种方式，泛型方式
+
+arr = ['a', 'b', 'c'];
+arr2 = ['a', 'b', 'c'];
+```
+
+## tuple
+元组(tuple)是一种特殊的数组类型，它限定了数组的长度和每个元素的类型。
+
+```typescript
+// tuple是一种特殊的数组，它限定了数组的长度和每个元素的类型
+let arr1: [string, number];
+let arr2: [string, boolean?];
+let arr3: [number, ...string[]]; //含义：你可以有任意多个string类型的元素，但是第一个元素必顼是number类型
+
+arr1 = ['Hello', 10];
+arr2 = ['Hello'];
+arr3 = [10, 'Hello', 'World'];
+```
+
+## enum
+枚举(enum)可以定义`一组命名常量`，作用是增强代码的可读性，让代码更好维护。
+
+### 数字枚举
+
+```typescript
+enum Direction {
+    Up,
+    Down,
+    Left,
+    Right
+}
+
+console.log(Direction); // Direction是一个对象 { '0': 'Up', '1': 'Down', '2': 'Left', '3': 'Right', Up: 0, Down: 1, Left: 2, Right: 3 }
+console.log(Direction.Up); // 0
+console.log(Direction.Down); // 1
+console.log(Direction.Left); // 2
+console.log(Direction.Right); // 3
+
+console.log(Direction[0]); // Up
+console.log(Direction[1]); // Down
+console.log(Direction[2]); // Left
+console.log(Direction[3]); // Right
+
+function walk(data:Direction){
+    if (data === Direction.Up){ //避免直接使用字符串，避免写错
+        console.log("向【上】走");
+    } else if (data === Direction.Down){
+        console.log("向【下】走");
+    } else if (data === Direction.Left){
+        console.log("向【左】走");
+    } else if (data === Direction.Right){
+        console.log("向【右】走");
+    } else {
+        console.log("未知");
+    }
+}
+
+walk(Direction.Up); // 向【上】走
+```
+
+### 字符串枚举
+
+```typescript
+enum Direction {
+    Up = "up",
+    Down = "down",
+    Left = "left",
+    Right = "right"
+}
+```
+
+### 常量枚举
+
+把枚举包在一个常量const中。
+
+作用：ts编译成js后，只输出使用的枚举属性，比如Up，其他属性不输出，简化js代码。
+
+```typescript
+const enum Direction {
+    Up,
+    Down,
+    Left,
+    Right
+}
+
+console.log(Direction.Up);
+```
+
+## type
+能为任意多种数据类型创建别名。
+
+### 联合类型（“或”）
+
+```typescript
+type Status = number | string;
+type Gender = "男" | "女";
+
+function printStatus(status: Status): void {
+  console.log(status);
+}
+
+printStatus(200); // 200
+
+
+function printGender(gender: Gender): void  {
+  console.log(gender);
+}
+
+printGender("不男不女"); // 报错
+```
+
+### 交叉类型（“并且”）
+
+```typescript
+// 面积
+type Area = {
+    width: number;
+    height: number;
+}
+
+// 地址
+type Address = {
+    city: string;
+    country: string;
+    room: number;
+}
+
+type House = Area & Address;
+
+const house: House = {
+    width: 100,
+    height: 200,
+    city: 'Beijing',
+    country: 'China',
+    room: 505
+}
+```
+
+### 一种例外情况
+type定义的函数，返回void的定义是无效的。
+
+```typescript
+type LogFunc = () => void;
+
+const f1: LogFunc = () => {
+    // return undefined;
+    return 999; // 没有报错，因为没做限制；如果做限制，箭头函数默认返回值可能不是undefined，会报错，就不能使用箭头函数。
+}
+```
+
+可查看[TypeScript视频教学](https://www.youtube.com/watch?v=pBUouUw7A7M)具体了解情况，TypeScript官网上也有详细的案例解析。
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 参考资料
+[禹神：三小时快速上手TypeScript](https://www.youtube.com/watch?v=Chu1IBKm_oE)
 
 
 

@@ -7,16 +7,22 @@ date = 2023-11-15
 
 可以理解是一个字典dict。
 
+注意：枚举不是必要的数据类型，只是为了避免程序员打错字，比如green会打成gerrn这样的错误，才推出的，完全可以不用。
+
 如何使用：
 
 ```python
 from enum import Enum
 
 class Color(Enum):
-    RED = 1
-    GREEN = 2
-    BLUE = 3
+    RED = "red"
+    GREEN = "green"
+    BLUE = "blue"
 
-print(Color.RED)
-#输出1
+# 使用枚举
+color = Color.RED
+
+# 比较时直接与字符串进行比较
+if color == Color.RED:
+    print("The color is red.")
 ```
