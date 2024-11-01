@@ -342,3 +342,145 @@ const sanyecao = […sanzhihua];
 const divs = document.querySelectorAll(‘div’)
 const divArr = […divs];
 ```
+
+# ES模块化{#module}
+
+模块化是指将一个大的程序文件，拆分成许多小的文件，然后将小文件组合起来。
+
+## 模块化的好处
+
+1. 防止命名冲突。把大文件分为若干小文件，小文件中的代码命名是互不干扰的。
+
+2. 代码复用。封装功能代码，暴露一个接口即可。下一个项目就可以复用这个功能。
+
+3. 高维护性。允许多人同时修改一个项目，升级时也只变动某些模块即可。
+
+## 模块化规范产品
+
+ES6之前的模块化规范，主要是社区推出的：
+
+1. CommonJS => NodeJS, Browserify
+
+2. AMD => requireJS
+
+3. CMD => seaJS
+
+## ES6模块化语法
+
+主要是两个命令：exprt import
+
+### ES6暴露语法规则
+
+- 分别暴露
+
+```javascript
+// 分别暴露
+export let school = 'MIT';
+
+export function teach() {
+  console.log('teach');
+}
+```
+
+- 统一暴露
+
+```javascript
+// 统一暴露
+
+let school = 'MIT';
+
+function findJob() {
+  console.log('we can help you find a job');
+}
+
+export {school, findJob};
+```
+
+- 默认暴露
+
+```javascript
+// 默认暴露
+
+export default {
+    school: 'MIT',
+    change() {
+        console.log('we can change the world');
+    }
+}
+```
+
+### ES6引入语法规则
+
+- 三种引入方式：通用的导入方式、解构赋值的方式导入、简便导入方式（仅针对默认暴露）
+
+```html
+
+<script type="module">
+// 1. 通用的导入方式
+/*         //引入m1.js模块内容
+import * as m1 from './js/m1.js';
+
+// 引入m2.js模块内容
+import * as m2 from './js/m2.js';
+
+// 引入m3.js模块内容
+import * as m3 from './js/m3.js';
+
+//调用m3.js模块中的方法
+m3.default.change(); */
+
+// 2. 解构赋值的方式导入
+/*         import {school, teach} from './js/m1.js';
+import {school as guigu, findJob} from './js/m2.js'; //school重名，起别名guigu
+import {default as m3} from './js/m3.js'; //default为m3.js中的默认导出
+*/
+
+// 3. 简便导入方式 - 只针对默认暴露
+import m3 from './js/m3.js';
+
+// console.log(school);
+// teach();
+
+// console.log(guigu);
+// findJob();
+
+console.log(m3.school);
+m3.change();
+
+</script>
+```
+
+- 入口文件方式
+
+html引入app.js:
+
+```javascript
+<script src="./js/app.js" type="module">'
+```
+
+app.js再引入其他js文件：
+
+```javascript
+// 入口文件
+
+// 模块引入
+import * as m1 from './m1.js';
+import * as m2 from './m2.js';
+import * as m3 from './m3.js';
+
+console.log(m1);
+console.log(m2);
+console.log(m3);
+```
+
+- Babel方式
+
+Babel是一个JavaScript编译器，可以把ES6语法转化为更具兼容性的ES5语法，使浏览器的显示正常。
+
+[babel方式教学视频](https://www.youtube.com/watch?v=UEhDZ-jdjAo&list=PLmOn9nNkQxJFlj86lvBSpC2UsNw-pdmdq&index=46)。
+
+
+
+
+
+
