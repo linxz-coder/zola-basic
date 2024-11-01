@@ -520,17 +520,387 @@ const f1: LogFunc = () => {
 
 可查看[TypeScript视频教学](https://www.youtube.com/watch?v=pBUouUw7A7M)具体了解情况，TypeScript官网上也有详细的案例解析。
 
+# 类class
 
+```typescript
+class Person {
+    name: string;
+    age: number;
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;   
+    }
+    speak() {
+        console.log(`My name is ${this.name} and I am ${this.age} years old.`);
+    }
+}
 
+const p1 = new Person('Alice', 30);
+console.log(p1);
+p1.speak();
 
+class Student extends Person {
+    grade: string;
+    constructor(name: string, age: number, grade: string) {
+        super(name, age);
+        this.grade = grade;
+    }
+    study() {
+        console.log(`${this.name} is studying.`);
+    }
+    override speak() { // 重写父类方法
+        console.log(`My name is ${this.name} and I am ${this.age} years old. I am in grade ${this.grade}.`);
+    }
+}
 
+const s1 = new Student('Bob', 20, '高三');
+console.log(s1);
+s1.study();
+s1.speak();
+```
 
+# 属性修饰符
 
+如果有C和Java基础，很容易理解：public, protected, private, readonly:
 
+![attribute](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411011017219.png)
 
+## public修饰符
+在类的外部、内部、子类都能访问到，默认情况下(不加public)，就是public的修饰符。
 
+```typescript
+class Person {
+    public name: string;
+    public age: number;
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;   
+    }
+    speak() {
+        console.log(`My name is ${this.name} and I am ${this.age} years old.`); //在类的内部使用name
+    }
+}
 
+class Student extends Person {
+    study() {
+        console.log(`${this.name} is studying.`); //在子类中使用name
+    }
+}
 
+const p1 = new Person('Alice', 20);
+console.log(p1.name); //在类的外部使用name
+```
+
+## 属性的简写形式
+```typescript
+class Person {
+    constructor(public name: string, public age: number) {}
+}
+```
+
+## protected修饰符
+只能在类内部、子类访问。
+
+```typescript
+class Person {
+    constructor(
+        protected name: string, 
+        protected age: number
+    ) {}
+
+    protected getDetails() {
+        return `${this.name} is ${this.age} years old`;
+    }
+
+    introduce(){
+        console.log(this.getDetails())
+    }
+}
+
+const p1 = new Person('John', 30);
+p1.name; // 不能访问，属于外部访问。
+p1.age; // 不能访问，属于外部访问。
+p1.getDetails(); // 不能访问，属于外部访问。
+p1.introduce(); // 可以访问
+
+class Student extends Person {
+    study(){
+        this.introduce(); // introduce可以访问
+        console.log(`${this.name} is studying`); // protected name可以访问
+    }
+}
+```
+
+## private修饰符
+
+只能在类内部访问。
+
+```typescript
+class Person {
+    constructor(
+        public name: string, 
+        public age: number,
+        private IDcard: string
+    ) {}
+
+    private getPrivateInfo(){
+        return `身份证号码：${this.IDcard}`
+    }
+
+    getInfo(){
+        return `姓名：${this.name}，年龄：${this.age}`
+    }
+
+    getFullInfo(){
+        return this.getInfo() + ',' + this.getPrivateInfo()
+    }
+}
+
+const p1 = new Person('张三', 18, '123456789')
+p1.name; // '张三'
+p1.age; // 18
+p1.IDcard; // 错误，无法访问
+p1.getInfo(); // '姓名：张三，年龄：18'
+p1.getPriavteInfo(); // 错误，无法访问
+p1.getFullInfo(); // '姓名：张三，年龄：18，身份证号码：123456789'
+```
+
+## readonly修饰符
+
+只读属性，一旦实例确定值，不可更改。
+
+```typescript
+class Person {
+    constructor(
+        public name: string, 
+        public readonly age: number,
+    ) {}
+}
+
+const p1 = new Person('Mark', 39);
+console.log(p1); // Person { name: 'Mark', age: 39 }
+p1.age = 22; // Error: Cannot assign to 'age' because it is a read-only property.
+```
+
+# 抽象类
+无法被实例化的类。即不能new出一个对象。
+
+抽象类的意义是别人可以继承它。
+
+```typescript
+abstract class Package {
+    //构造方法
+    constructor(public weight: number) {
+    }
+
+    //抽象方法
+    abstract calculate(): void;
+
+    //具体方法
+    printPackage() {
+        console.log(`Package weight: ${this.weight}, cost: ${this.calculate()}`);
+    }
+
+}
+
+const p1 = new Package(); // Error: Cannot create an instance of an abstract class.
+
+class StandardPackage extends Package {
+    constructor(
+        weight: number,
+        public unitPrice: number
+    ) {super(weight);}
+
+    calculate() {
+        return this.weight * this.unitPrice;
+    }
+}
+
+const s1 = new StandardPackage(10, 2);
+s1.printPackage(); // Package weight: 10, cost: 20
+```
+
+# interface （接口）
+
+定义结构的一种方式。
+
+针对类、对象、函数等规定一种契约。
+
+只能定义格式，不能包含任何实现。
+
+## 接口定义类结构
+
+```typescript
+// PersonInterface 接口
+interface PersonInterface {
+    name: string;
+    age: number;
+    speak(n: number): void;
+}
+
+class Person implements PersonInterface {
+
+    constructor(public name: string, public age: number) {}
+
+    speak(n: number): void {
+        for (let i = 0; i < n; i++) {
+            console.log('Hello, my name is ' + this.name);
+            console.log('I am ' + this.age + ' years old');
+        }
+    }
+}
+```
+
+## 接口定义对象结构
+
+接口可以当数据类型用。
+
+```typescript
+interface UserInterface{
+    name: string;
+    readonly gender: string; // 只读属性
+    age?: number; // 可选属性
+    run: (n: number) => void;
+}
+
+const user: UserInterface = {
+    name: 'zhangsan',
+    gender: 'male',
+    age: 18,
+    run(n) {
+        console.log(`I am running ${n}m`);
+    }
+}
+```
+
+## 接口定义函数结构
+
+```typescript
+interface CountInterface {
+    (a: number, b: number): number;
+}
+
+const count: CountInterface = (a, b) => a + b;
+```
+
+## 接口之间的继承
+
+类似类（class）的继承。
+
+```typescript
+interface PersonInterface {
+    name: string;
+    age: number;
+}
+
+interface StudentInterface extends PersonInterface {
+    grade: number; //年级
+}
+```
+
+## 接口的自动合并
+
+同名的接口会自动合并。
+
+```typescript
+interface PersonInterface {
+    name: string;
+    age: number;
+}
+
+interface PersonInterface {
+    gender: string;
+}
+
+const person: PersonInterface = {
+    name: 'John Doe',
+    age: 30,
+    gender: "male"
+};
+```
+
+## 何时使用接口？
+1. 定义对象的格式。描述数据模型，api相应格式，配置对象。
+2. 类的契约。指定一个类需要的属性和方法。
+3. 自动合并。扩展第三方库可能会用到，用在大型项目比较多。
+
+# 一些相似的概念
+
+## interface和type的区别
+
+相同点：interface和type都可以定义对象结构，两者在许多场景都可以互换。
+
+不同点：
+
+interface: 更专注于定义对象和类的结构，支持继承、合并；
+
+type：可以定义类型别名、联合类型、交叉类型，不支持继承、合并。
+
+## interface与抽象类的区别
+
+相同点：都用于定义一个类的格式（应该遵循的契约）
+
+不同点：
+
+interface: 只能描述结构，不能有任何实现代码。一个类可以有多个接口。
+
+抽象类：既可以包括抽象方法，也可以包括具体方法。一个类只能继承一个抽象类。
+
+# 泛型
+
+定义函数、类或接口时，允许未指定的类型。
+
+使用时，才指定具体的类型。
+
+加个T标签就可以实现，以下是泛型函数举例：
+
+## 泛型函数
+
+```typescript
+function logData<T>(data: T){
+    console.log(data);
+}
+
+logData<number>(1);
+logData<string>('Hello');
+```
+
+## 泛型可以有多个
+
+```typescript
+function logData<T, U>(data1: T, data2: U) {
+    Date.now() % 2 ？ console.log(data1) : console.log(data2);
+}
+
+logData<number, boolean>(1, true);
+logData<string, number>('Hello', 2);
+```
+
+## 泛型接口
+
+```typescript
+interface PersonInterface <T> {
+    name: string;
+    age: number;
+    extraInfo: T;
+}
+
+let p: PersonInterface<string> = {
+    name: 'John',
+    age: 30,
+    extraInfo: 'Hello'
+}
+```
+
+# 类型声明文件
+
+类型声明文件是 TypeScript 中的一种特殊文件，通常以.d.ts作为扩展名。它的主要作用是为现有的 JavaScript 代码提供类型信息，使得 TypeScript 能够在使用这些 JavaScript 库或模块时进行类型检查和提示。
+
+简言之，主要用于ts文件引入js文件造成的数据类型丢失。
+
+js本身不定义数据类型，如果要在ts文件内引入demo.js，还需要创建一个`demo.d.ts`，在该文件里面声明数据类型即可，这样浏览器就不会报错。
+
+这个文件通常保存在@types文件夹。
 
 ## 参考资料
 [禹神：三小时快速上手TypeScript](https://www.youtube.com/watch?v=Chu1IBKm_oE)
