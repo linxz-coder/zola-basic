@@ -68,6 +68,35 @@ btn.onclick = function(){
 }
 ```
 
+### xhr + Promise
+注意,简单的代码，Promise封装会加大代码的复杂度，但是在`无限回调`（回调地狱）的情形下很好用，能把代码组织得更好。
+
+```html
+// 实例化promise对象，参数是一个函数，函数有两个参数，一个是成功的回调，一个是失败的回调
+const p = new Promise((resolve, reject) => {
+    // 异步操作
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://api.apiopen.top/api/sentences'); //api地址：https://api.apiopen.top/swagger/index.html#/%E5%BC%80%E6%94%BE%E6%8E%A5%E5%8F%A3/get_api_sentences
+    xhr.send();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                resolve(xhr.responseText);
+            } else {
+                reject('失败');
+            }
+        }
+    }
+});
+
+// then方法，参数是两个函数，第一个是成功的回调，第二个是失败的回调
+p.then((value) => {
+    console.log(value);
+}, (reason) => {
+    console.log(reason);
+});
+```
+
 ## axios方式
 我总结在[axios基础知识](@/blog/axios_basic.md)。
 
