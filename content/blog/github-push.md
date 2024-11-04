@@ -177,3 +177,36 @@ git branch -m master main
 ```
 
 这样就把本地仓库的master分支改成main分支了。
+
+# 11. 如果错误提交了文件，如何才暂存区删除？
+
+```bash
+git rm --cached file.txt
+```
+
+如果是文件夹，比如node\_modules，从暂存区删除：
+
+```bash
+# 比如误提交了 node_modules
+git rm --cached -r node_modules/
+echo "node_modules/" >> .gitignore
+git commit -m "Remove node_modules from git tracking"
+```
+
+这样push以后就不会有这个文件夹了。
+
+有的时候.gitignore没有生效，可以：
+```bash
+# 有时候 .gitignore 没有生效，可以：
+git rm --cached -r .
+git add .
+git commit -m "Reset git cache"
+```
+
+特别说明：
+* --cached 选项表示只从 Git 仓库中删除，保留本地文件
+* 不带 --cached 的 git rm 会同时删除文件和 Git 跟踪
+* -r 选项用于递归删除目录
+* 删除后记得更新 .gitignore 以防止文件再次被追踪
+* 操作后需要提交更改才能生效
+* 可以用`git status`检查将要发生的变更。
