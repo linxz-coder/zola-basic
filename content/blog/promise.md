@@ -58,6 +58,42 @@ p.then(() => {
 });
 ```
 
-# 视频教程
-点击观看[Promise从入门到精通教程](https://www.youtube.com/watch?v=FtXEUgiPUiM&list=PLmOn9nNkQxJF-I5BK-wNUnsBkuLXUumhr&index=4)。
+## then方法的链式回调
+说明：Promise.prototype.then()通常是跟着一个异步任务，异步任务后面也可以跟异步任务。这样就是解决`回调地狱`的问题。
 
+```javascript
+// then方法的链式回调
+p.then((value) => {
+    console.log(value);
+    return '第一个then的返回值';
+}).then((value) => {
+    console.log(value);
+    return '第二个then的返回值';
+}).then((value) => {
+    console.log(value);
+});
+```
+
+## catch方法
+指定失败状态返回的值。
+
+```javascript
+const p = new Promise((resolve, reject) => {
+   setTimeout(() => {
+        //设置p对象的状态为失败，并设置失败的值
+       reject('失败');
+   }, 1000);
+});
+
+//catch方法，参数是一个函数，函数的参数是失败的值
+p.then((value) => {
+    console.log(value);
+}).catch((reason) => {
+    console.warn(reason);
+});
+```
+
+# 视频教程
+1. [尚硅谷-Promise从入门到精通教程](https://www.youtube.com/watch?v=FtXEUgiPUiM&list=PLmOn9nNkQxJF-I5BK-wNUnsBkuLXUumhr&index=4)。
+
+2. [尚硅谷-ES6 Promise部分教材](https://www.youtube.com/watch?v=XVf_o9sPKfM&list=PLmOn9nNkQxJFlj86lvBSpC2UsNw-pdmdq&index=28)

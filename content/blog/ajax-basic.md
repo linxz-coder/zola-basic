@@ -120,3 +120,69 @@ try {
 ```
 
 可以参考[fetch的使用方法](https://segmentfault.com/a/1190000003810652)。
+
+
+# async 和 await 方式介绍
+这是`ES8`的新特性。也是一种异步编程的解决方案。
+
+async函数的返回值是promise对象。
+
+promise对象的结果由async函数执行的返回值决定。
+
+## async代码示例
+```JavaScript
+async function fn() {
+// 关于promise对象的返回结果：
+// 返回的结果只要不是promise对象，都是成功的结果，即Promise状态是resolve/fufilled状态
+// 返回的结果是promise对象，才会根据promise对象的状态来决定
+    return '成功';
+// 返回结果也可以抛出异常，Promise状态是rejected
+// throw '失败';
+}
+
+
+const result = fn();
+console.log(result);
+
+result.then((value) => {
+    console.log(value);
+}).catch((reason) => {
+    console.log(reason);
+});
+```
+
+## await表达式
+
+1. await 必须写在 async 函数里。
+
+2. await 右边表达式一般为 Promise 对象
+
+3. await 返回的是 promise 成功的值。
+
+4. await 的 promise 失败了，会抛出异常，需要通过try...catch捕获处理。
+
+### async + await + try catch
+
+```JavaScript
+const p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        // resolve('成功');
+        reject('失败');
+    }, 1000);
+});
+
+// await 要放在 async 函数中
+async function main(){
+    try{
+        let result = await p;
+        console.log(result);
+    }catch(e){
+        console.log(e);
+    }
+}
+
+// 调用 async 函数
+main();
+```
+
+
