@@ -21,5 +21,8 @@ public class Second{}
 
 以上代码报错，因为有两个public的类。但可以有两个`public static...`。
 
+# 参考资料
+[尚硅谷Java视频课程](https://www.youtube.com/watch?v=P6HvqS79XXw&list=PLmOn9nNkQxJG_AbAUeyAPH3fO0i_APAM9&index=3)
 
+[Java课件资料](https://github.com/linxz-coder/atguigu-java)
 
