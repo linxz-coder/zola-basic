@@ -103,4 +103,4 @@ fn makes_copy(some_integer: i32) { // some_integer 进入作用域
 ```
 
 ## 参考资料
-![Rust所有权知识](https://kaisery.github.io/trpl-zh-cn/ch04-01-what-is-ownership.html)
+[Rust所有权知识](https://kaisery.github.io/trpl-zh-cn/ch04-01-what-is-ownership.html)
