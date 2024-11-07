@@ -27,6 +27,14 @@
     {# 引入search-bar的css，覆盖第三方样式 #}
     <link rel="stylesheet" href="/css/search-bar.css">
 
+    <!--引入数学公式 -->
+    <!-- 添加 KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <!-- 添加 KaTeX JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <!-- 添加 auto-render 扩展，用于自动渲染页面中的数学公式 -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
     {# 引入meili search css#}
     <link
       rel="stylesheet"
@@ -95,6 +103,22 @@
       },
     })
   </script>
+
+      <!-- 配置 KaTeX 自动渲染 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\(", right: "\\)", display: false}
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+
 </body>
 
 </html>
