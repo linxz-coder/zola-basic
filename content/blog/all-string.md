@@ -40,6 +40,8 @@ System.out.println(greeting); // 输出仍然是 "Hello"
 ```
 
 ### +运算符
+注意，String和其他数据类型只能做`连接运算`，所以只能用+号，不能用减、乘、除号。
+
 ```java
 String first = "Hello";
 String second = "World";
@@ -77,6 +79,15 @@ int age = 30;
 String formatted = String.format("Name: %s, Age: %d", name, age);
 ```
 
+也可以直接用+运算：
+
+```java
+String a = "hello";
+String name = "Alice";
+int age = 30;
+System.out.println(a+" world,I am " + name +",age is "+age);
+```
+
 ## 字符串分割
 
 split(String regex)方法可以按指定的正则表达式将字符串拆分成数组。
@@ -86,3 +97,13 @@ String sentence = "Hello,World,Java";
 String[] words = sentence.split(",");
 ```
 
+## 字符串转成int
+
+借助Integer类。
+
+```java
+// string to number
+String s = "123";
+int num = Integer.parseInt(s);
+System.out.println(num);
+```
