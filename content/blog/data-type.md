@@ -64,6 +64,17 @@ byte、short、char —> int —> long —> float —> double
 
 ### 强制类型转换（手动实现）
 
+常用场景：将容量大的变量转换成容量小的。
+
+注意：可能有精度丢失的问题。
+
+```java
+double d1 = 12;
+int i1 = (int)d1;
+System.out.println(i1)
+```
+
+
 # JavaScript基本数据类型
 
 1.	Number - 数字类型，包含整数和浮点数。
