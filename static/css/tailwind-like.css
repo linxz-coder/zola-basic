@@ -162,4 +162,11 @@ p code, li code, td code {
   transition: all 0.2s ease; /* 添加过渡效果 */
 }
 
-
+/* 加粗效果 */
+strong {
+    font-weight: 800;
+    color: #000;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 1px rgba(0,0,0,0.3);  /* 添加轻微阴影 */
+    padding: 0 2px;  /* 两边加点间距 */
+}
