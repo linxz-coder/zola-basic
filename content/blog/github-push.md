@@ -33,6 +33,9 @@ git add .
 
 这样就把”new folder”中的所有文件都添加到了暂存区。
 
+## git reset
+如果发现不小心添加了秘密文档，比如`.env`，可以用`git rest`撤回命令。或者忘记添加`.gitignore`，导致上传文档内容太大，都可以用这个命令撤回暂存区的文件。
+
 # 3. git commit -m “first commit”
 
 输入：
