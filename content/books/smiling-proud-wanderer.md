@@ -1,7 +1,7 @@
 +++
 title = "《笑傲江湖》"
 date = 2024-11-11
-authors = ["余华"]
+authors = ["金庸"]
 [taxonomies] 
 tags = ["理解", "人生"]
 +++
