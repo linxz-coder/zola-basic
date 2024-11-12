@@ -4,14 +4,13 @@ date = 2024-11-13
 +++
 
 
-### 1. 认识什么是小程序
-
 注意：以下文档来源于[尚硅谷教程](https://www.youtube.com/watch?v=Ema-220eFdU&list=PLmOn9nNkQxJFNVz63MqzicjYFXOZACIEA)。
 
 
+
+### 1. 认识什么是小程序
+
 **什么是微信小程序**
-
-
 
 微信小程序是一种运行在微信内部的 轻量级 应用程序。
 
