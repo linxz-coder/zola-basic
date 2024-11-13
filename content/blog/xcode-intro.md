@@ -112,3 +112,43 @@ x轴是离左边框多远，y轴是离上边框多远。
 
 在原项目的AppIcon文件夹右键，选择`show in Finder`，把下载来的文件拖进去即可。
 
+# 预览
+
+## 电脑预览
+
+最上面选择合适的手机尺寸，单机左上角播放按钮。
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411121822237.png)
+
+## 手机预览
+
+1.  查看xcode和手机的版本是否兼容。总原则是两者版本尽量都高一点。
+2. 登记开发者账号。在settings-accounts，加入自己的苹果账号。
+3. app签名。在文档配置页，signing & Capability 里面，选择自己的账号即可。
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411121834290.png)
+
+4. USB连接你的iPhone
+
+首先需要在手机打开`开发者模式`。Settings -> Privacy & Security，点击启动`开发者模式`。
+
+
+选择`我的iPhone`，点击左上角播放按钮，就会自动进入build流程。
+
+注意，如果一直提示要打开`开发者模式`，需要拔掉USB插头查新插。
+
+### 信任设备
+
+手机打开`通用-VPN与设备管理`，然后选择信任开发者就行。
+
+[故障排除](https://appbrewery.com/p/ios-course-resources)，查找`trouble shooting`关键词。
+
+5. 无线连接
+
+首先确保有线连接完成，xcode有了你手机的资料，才可以用无线连接。
+
+无线连接方式应该是默认连接的，USB线拔掉后可以试一下，如果不行，可以遵照以下步骤：
+
+顶部菜单-window-Devices and Simulators，在`connect via network`处打钩即可。
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411131003634.png)
