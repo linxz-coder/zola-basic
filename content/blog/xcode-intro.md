@@ -152,3 +152,13 @@ x轴是离左边框多远，y轴是离上边框多远。
 顶部菜单-window-Devices and Simulators，在`connect via network`处打钩即可。
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411131003634.png)
+
+# xcode的block显示-swift
+
+如果你双击大括号结束的右边，就会高亮左边的大括号。
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411131415821.png)
+
+如果双击大括号的左边，就会选择所有大括号内的内容。
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411131416369.png)
