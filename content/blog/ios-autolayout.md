@@ -1,9 +1,9 @@
 +++
 title = "ios-autoLayout 自适应画面"
 date = 2024-11-14
+[extra]
+toc = true
 +++
-
-[TOC]
 
 如何实现ios的自适应画面？
 

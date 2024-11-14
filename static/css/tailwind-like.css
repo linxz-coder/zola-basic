@@ -167,3 +167,20 @@ strong {
     text-shadow: 0 0 1px rgba(0,0,0,0.3);  /* 添加轻微阴影 */
     padding: 0 2px;  /* 两边加点间距 */
 }
+
+/* 目录效果 */
+.toc {
+  background: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.toc ul {
+  list-style: none;
+}
+
+.toc a {
+  color: rgb(25, 153, 203);
+  text-decoration: none;
+
+}
