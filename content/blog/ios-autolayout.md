@@ -40,7 +40,7 @@ constraint下面可以点选，选中其他图片，再填写距离的数字，�
 
 # constraint 和 alignment的区别
 
-** constraint是绝对距离，指离边框的距离。**
+**constraint是绝对距离，指离边框的距离。**
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411141416506.png)
 
@@ -48,6 +48,6 @@ constraint下面可以点选，选中其他图片，再填写距离的数字，�
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411141416638.png)
 
-** alignment指从中心向外侧的偏移，适用于不同屏幕状态的居中或者保持元素间的相对距离。**
+**alignment指从中心向外侧的偏移，适用于不同屏幕状态的居中或者保持元素间的相对距离。**
 
 ![alignment-diff](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411141418480.png)
