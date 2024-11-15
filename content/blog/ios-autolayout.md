@@ -17,6 +17,13 @@ toc = true
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411141134324.png)
 
+
+## 不用调整superview（父视图）的方法
+要想背景图布满屏幕，只需要在调整constraints的时候选择`view`，而不是`safe area`。
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411151030243.png)
+
+
 ## 激活constraint
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411141137548.png)
