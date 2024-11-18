@@ -38,7 +38,7 @@ ViewController.swift
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411131145664.png)
 
-## 最好的重命名方式
+## iOS-IBAction最好的重命名方式
 选中变量名-右键-refactor-rename
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411131148343.png)

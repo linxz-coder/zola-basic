@@ -190,4 +190,11 @@ let numbers: [i32; 3] = [1, 2, 3];
 let person: (i32, &str, bool) = (30, "Alice", true);
 ```
 
-
+# Swift数据类型
+1. 整型Int
+2. 浮点型Float
+3. 浮点型Double
+4. 布尔型Bool
+5. 字符串String
+6. 数组Array
+7. 字典Dictionary

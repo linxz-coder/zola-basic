@@ -57,6 +57,20 @@ let result = add(5,3);
 console.log("5+3的结果是：", result);
 ```
 
+JavaScript还有箭头函数`()=>{}`的形式。
+
+# swift函数
+
+```swift
+func greeting2(whoToGreet: String){
+    print("Hello \(whoToGreet)")
+    
+}
+
+greeting2(whoToGreet: "Linxz")
+
+```
+
 # 为什么Java和Rust的代码更复杂？
 
 ## 编译型和解释性语言

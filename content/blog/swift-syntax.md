@@ -71,3 +71,47 @@ var a = 4
 print("The result of 2 + 2 = \(2+2)")
 print("The result of 2 + 2 = \(a)”)
 ```
+
+# swift的function
+
+格式：
+
+```swift
+func getMilk(){ //do stuff }
+```
+
+# swift的Optinal语法?!
+
+`Optional`解决的是值为空时，会抛出错误中断程序的问题。
+
+## 问号：
+
+代表Optional类型，即可能有值，可能是nil：
+
+```swift
+var name: String? // name 可以是 String 或 nil
+```
+
+### 安全解包：
+
+```swift
+var petName: String? = "Buddy"
+print(petName?.uppercased()) // 如果 petName 有值，输出大写；否则输出 nil
+```
+
+## 感叹号：
+
+代表一定有值。但是若值为空时则抛出错误。
+
+```swift
+var name: String? = "孝中"
+print(name!) // 输出：孝中
+```
+
+### 强制解包
+若值为nil时，程序崩溃。
+
+```swift
+var nickname: String? = nil
+print(nickname!) // 运行时崩溃
+```
