@@ -38,6 +38,14 @@ Vimium C 是一款 Chrome 浏览器插件，可以让你不用鼠标浏览网页
 
 以上就是我常用的按键，更多功能可以查看插件的快捷键列表。
 
+# 排除特定网站
+
+如果需要排除特定网站，需要输入`:https://www.youtube.com/`这样的形式，如果需要排除所有快捷键，则后面内容留空即可。
+
+这样一来，可以解决特定网站快捷键冲突的问题。
+
+![vimium-c-exclude](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411181532247.png)
+
 # 项目地址
 项目是开源的。
 
