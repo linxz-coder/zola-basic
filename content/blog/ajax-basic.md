@@ -1,6 +1,7 @@
 +++
 title = "AJAX基础知识"
 date = 2024-09-27
+authors = ["小中"]
 +++
 
 # 什么是AJAX
