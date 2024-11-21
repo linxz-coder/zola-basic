@@ -17,3 +17,6 @@ cmd+d
 
 # 选中多行：
 control + shift + 上下
+
+# 重新indent缩进,调整格式
+control + i
