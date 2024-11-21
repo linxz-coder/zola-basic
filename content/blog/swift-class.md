@@ -61,4 +61,11 @@ dragon.attack()
 
 ![swift-ui-class](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411211537694.png)
 
+## swift的struct和class的区别
 
+1. struct不能继承，class可以。
+2. class需要init()，即self.health=health，struct不需要init()。
+3. struct修改property时，需要`mutating func`，而class不用。
+4. class是浅拷贝，s2=s1会对应同一个对象；stuct是深拷贝，不会互相影响。
+
+因为安全拷贝的原因，苹果推荐优先使用`Struct`，可以参考[Choosing Between Structures and Classes](https://developer.apple.com/documentation/swift/choosing-between-structures-and-classes)
