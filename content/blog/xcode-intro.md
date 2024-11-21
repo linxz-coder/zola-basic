@@ -162,3 +162,15 @@ x轴是离左边框多远，y轴是离上边框多远。
 如果双击大括号的左边，就会选择所有大括号内的内容。
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411131416369.png)
+
+# xcode的错误Error
+
+## no assistant results
+
+错误表现：
+xcode main无法连接代码，错误显示`no assistant results`。
+
+通常，退出xcode，重新打开项目即可。
+
+
+[stackoverflow](https://stackoverflow.com/questions/38314310/no-assistant-results)

@@ -52,3 +52,27 @@ print(anotherTown.name)
 anotherTown.citizens.append("Wilson")
 print(anotherTown.citizens)
 ```
+
+## mutating func
+
+swift struct内部不可更改属性property，哪怕是用`var`定义的。
+
+比如：
+
+```swift
+struct QuizBrain{
+var questionNumber = 0
+questionNumber = 1 //这一行会报错
+}
+```
+
+如果一定要更改，可以用`mutating`放在func的前面
+
+```swift
+struct QuizBrain{
+ var questionNumber = 0
+ mutating func changeNumber(){
+	questionNumber = 1 
+ } 
+}
+```
