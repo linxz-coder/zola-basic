@@ -186,7 +186,7 @@ strong {
 }
 
 /* 微信分享按钮样式 */
-.modal {
+/* .modal {
   display: none;
   position: fixed;
   top: 0;
@@ -240,4 +240,4 @@ strong {
 
 .share-button:hover {
   background-color: #06AD56;
-}
+} */
