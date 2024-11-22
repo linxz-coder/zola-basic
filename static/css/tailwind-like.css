@@ -69,6 +69,11 @@ h1 {
   margin-bottom: 1rem;
 }
 
+section h1:not(.title):not(.section-title) {
+  padding-left: 1rem;
+  border-left: 4px solid #000;
+}
+
 h2 {
   font-size: 1.6rem;
   font-weight: 600;
