@@ -58,13 +58,19 @@ nav a:hover {
 }
 
 /* Typography */
+.title{
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
 h1 {
-  font-size: 2.0rem;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
 }
 
 h2 {
-  font-size: 1.875rem;
+  font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
 }
