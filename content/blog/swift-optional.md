@@ -3,27 +3,37 @@ title = "swift的optional语法"
 date = 2024-11-22
 +++
 
-# 处理Optional的五种方式
+处理Optional的五种方式
 
-1.强制解包 Force Unwrapping	
+# 1. Force Unwrapping - 强制解包	
 
-`optional!`
+````
+optional!
+````
 
-2. Check for nil value	
+# 2. Check for nil value	
 
-`if optional ! = nil { option!}`
+````
+if optional ! = nil { option!}
+````
 
-3. Optional Binding		
+# 3. Optional Binding		
 
-`if let safeOptional = optioanal{safeOptional}`
+````
+if let safeOptional = optioanal{safeOptional}
+````
 
-4. Nil Coalescing Operator	
+# 4. Nil Coalescing Operator	
 
-`optional ?? defalutValue`
+````
+optional ?? defalutValue
+````
 
-5. Optional Chaining	
+# 5. Optional Chaining	
 
-`optional?.property / optioanl?.method`
+````
+optional?.property / optioanl?.method
+````
 
 示例代码：
 
