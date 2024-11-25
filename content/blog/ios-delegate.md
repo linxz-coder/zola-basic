@@ -24,6 +24,20 @@ protocol UITextFieldDelegate{
 }
 ```
 
+### delegate内部的方法也可以是可选的Optional
+
+```swift
+// UITextFieldDelegate 的简化定义（实际上是 Objective-C 定义的）
+@objc protocol UITextFieldDelegate: NSObjectProtocol {
+    // 注意 @objc optional 关键字
+    @objc optional func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
+    @objc optional func textFieldDidBeginEditing(_ textField: UITextField)
+    @objc optional func textFieldShouldEndEditing(_ textField: UITextField) -> Bool
+    @objc optional func textFieldDidEndEditing(_ textField: UITextField)
+    // ... 还有更多方法
+}
+```
+
 ## UITextField的内部结构
 
 这样一来，所有UITextField就可以复用这些method
@@ -43,6 +57,11 @@ func textFieldDidBeginEditing(){
 }
 ```
 
+### 关键点：
+
+1. UITextFieldDelegate 协议定义了`能做什么`，即have the functions.
+2. WeatherViewController 实现这些方法定义了`怎么做`，即define the function.
+3. delegate = self 告诉 UITextField `谁来做`，即call the function.
 
 过程示例：
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411242306527.png)
