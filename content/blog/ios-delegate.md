@@ -65,3 +65,67 @@ func textFieldDidBeginEditing(){
 
 过程示例：
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411242306527.png)
+
+## delegate的急救案例
+
+```swift
+protocol AdvancedLifeSupport{
+    func performCPR()
+}
+
+class EmergencyCallHandler{
+    var delegate: AdvancedLifeSupport?
+    
+    func assessSituation(){
+        print("Can you tell me what happened?")
+    }
+    
+    func medicalEmergency(){
+        delegate?.performCPR()
+    }
+}
+
+struct Parametic: AdvancedLifeSupport{
+    init(handler: EmergencyCallHandler){
+        handler.delegate = self
+    }
+    
+    func performCPR() {
+        print("The paramedic does chest compressions, 30 per second.")
+    }
+}
+
+class Doctor: AdvancedLifeSupport{
+    init(handler: EmergencyCallHandler){
+        handler.delegate = self
+    }
+    
+    func performCPR() {
+        print("The doctor does chest compressions, 30 per second.")
+    }
+    
+    func useStethescope(){
+        print("Listening for heart sounds.")
+    }
+}
+
+class Surgeon: Doctor{
+    
+    override func performCPR() {
+        super.performCPR()
+        print("Sings stying alive by the BeeGees.")
+    }
+    
+    func useElectricDrill(){
+        print("Whirr..")
+    }
+}
+
+let emilio = EmergencyCallHandler()
+//let pete = Parametic(handler: emilio)
+
+let angela = Surgeon(handler: emilio)
+
+emilio.assessSituation()
+emilio.medicalEmergency()
+```
