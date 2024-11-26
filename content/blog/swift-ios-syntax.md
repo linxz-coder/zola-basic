@@ -80,6 +80,20 @@ print("The result of 2 + 2 = \(a)”)
 func getMilk(){ //do stuff }
 ```
 
+# swift的external和internal参数
+
+external参数用在call function的时候；
+
+internal参数放在定义function的时候。
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411252317892.png)
+
+## 省略参数名称的方法：
+
+只要把external参数设为下划线_即可，就不用输入name: value，只需要输入value即可。
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411252318564.png)
+
 # swift-ios的dictionary
 
 Key - value对
