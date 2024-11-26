@@ -31,6 +31,10 @@ cmd+ctl+option + Enter，可以出现`assistant view`，就可以调试代码和
 
 选择`Present Modally`
 
+或者选择某一个按钮，直接拉到其他屏幕上：
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411261604169.png)
+
 ## 更改名字Identifier
 
 选中箭头，在inspector窗口(cmd+option+5)里面修改`Identifier`。

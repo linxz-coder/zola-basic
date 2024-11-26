@@ -168,6 +168,80 @@ let numbers = [1, 2, 3, 4, 5]
 let slice = numbers[...3]  // 包含索引 0 到 3 的元素 [1, 2, 3, 4]
 ```
 
+# swift loop语法
+
+## For In Loops
+
+```swift
+let names = ["Anna", "Alex", "Brian", "Jack"]
+for name in names {
+	print("Hello, \(name)!")
+}
+
+for number in 1…5{
+	//do something
+}
+
+//简单写法
+for _ in 1…5{}
+```
+
+
+不同数据类型的for…in loop写法
+
+```swift
+let fruits: Array = ["Apple", "Pear", "Orange"] //这里type也可以是Set，但是Set打印出来就不按顺序
+let contacts = ["Adam": 123456789, "James": 987654321, "Amy":912837365]
+let word = "supercalifragilisticexplaindocious"
+let halfOpenRange = 1..<5
+let closeRange = 1...5
+
+for fruit in fruits {
+    print(fruit)
+}
+
+for person in contacts{
+    print(person.key)
+    print(person.value)
+}
+
+for letter in word{
+    print(letter)
+}
+
+for number in halfOpenRange{
+    print(number)
+}
+
+for number in closeRange{
+    print(number)
+}
+
+```
+
+## while loop
+
+```swift
+while somethingIsTrue{
+	//do something
+}
+```
+
+示例代码
+
+```swift
+import Foundation
+var now = Date().timeIntervalSince1970
+
+let oneSecondFromNow = now + 1
+
+while now < oneSecondFromNow {
+    now = Date().timeIntervalSince1970
+    print("waiting")
+}
+```
+
+
 # swift的Optinal语法?!
 
 Optional是用来处理`不知道是否有值`存在的情况，防止程序因为空值崩溃。
