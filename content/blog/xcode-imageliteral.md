@@ -9,7 +9,15 @@ date = 2024-11-13
 
 2.	使用UIImage初始化方法：直接使用UIImage的初始化方法加载图片，例如：
 
+```swift
 let image = UIImage(named: "image_name")
+```
+
+或者：
+
+```swift
+let image = UIImage(imageLiteralResourceName: "DiceOne")
+```
 
 其中，"image_name"是您在项目资源中添加的图片名称。
 
