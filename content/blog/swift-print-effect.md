@@ -3,6 +3,8 @@ title = "swift实现打字机动画"
 date = 2024-11-26
 +++
 
+# 方法一：for loop实现
+
 基本思路：
 for loop打印每个字出来，每个字出现需要间隔（设定定时器）。
 
@@ -23,3 +25,16 @@ for loop打印每个字出来，每个字出现需要间隔（设定定时器）
         }
 ```
 
+# 方法二： 引入pods - CLTypingLabel
+
+```swift
+import CLTypingLabel
+
+@IBOutlet weak var titleLabel: CLTypingLabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        titleLabel.text = "⚡️FlashChat"
+}
+```
