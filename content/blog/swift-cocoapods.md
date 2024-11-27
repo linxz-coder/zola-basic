@@ -54,7 +54,7 @@ ruby -v
 
 ```bash
 sudo gem install cocoapods -V
-
+```
 
 ### 可选：国内安装速度慢，可以换成国内源：
 
