@@ -5,6 +5,12 @@ date = 2024-11-22
 
 # 方法一：新建Cocoa touch类
 
+## 利用storyboard创建第二屏的结构
+
+选择`ViewController`插入。
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411282303603.png)
+
 ## cocoa touch class
 
 比用代码创建更方便
