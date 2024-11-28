@@ -94,6 +94,21 @@ internal参数放在定义function的时候。
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411252318564.png)
 
+### 也可以使用from:
+
+用`from`可以很直观地使用内部参数，输入from: value即可以，不用输入name: value。
+
+```swift
+func findNemo(from animals: [Animal]) {
+    print(animals)
+}
+
+
+//调用时
+findNemo(from: animals)
+```
+
+
 # swift-ios的dictionary
 
 Key - value对
