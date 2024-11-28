@@ -13,8 +13,12 @@ date = 2024-11-27
 
 viewDidLoad里面完成delegate，这里是dataSource
 
+register用于注册我们后面要使用的cell。用nibName来区分是哪个风格cell，为的是寻找对应的.xlb文件（一般也是Class的名字），这个可以复用。而identifier则不可以复用。一个nibName可以对应多个identifier。
+
 ```swift
 tableView.dataSource = self
+
+tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
 ```
 
 最后面创建一个extension来用protocol:
