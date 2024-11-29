@@ -41,5 +41,66 @@ messageBubble.layer.cornerRadius = messageBubble.frame.size.height / 8
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411281122261.png)
 
+# 不让用户选择cell
 
+即选中时不会呈现灰色背景。
+
+inspectors - Interaction - 不要勾选`User Interation Enabled`即可
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411291021480.png)
+
+# 对话气泡
+
+首先，做一个左右的对话UI
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411291046702.png)
+
+## 条件选择
+
+根据登陆者是当前账号或者其他账号，显示不同的UI，以及隐藏左边/右边的头像。
+
+```swift
+//每个cell都使用的方法
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let message = messages[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for:indexPath) as! MessageCell //as!强制类型下降
+        cell.label.text = message.body
+        
+        // This is a message from the current user
+        if message.sender == Auth.auth().currentUser?.email {
+            cell.leftImageView.isHidden = true
+            cell.rightImageView.isHidden = false
+            cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.lightPurple)
+            cell.label.textColor = UIColor(named: K.BrandColors.purple)
+        } else {
+            // This is a message from the another sender.
+            cell.leftImageView.isHidden = false
+            cell.rightImageView.isHidden = true
+            cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.purple)
+            cell.label.textColor = UIColor(named: K.BrandColors.lightPurple)
+        }
+        
+
+        return cell
+        
+    }
+```
+
+# 如何每次自动跳到最下面的对话
+
+在loadMessages()里面加上这个代码即可。
+
+```swift
+//后台运行异步任务
+DispatchQueue.main.async {
+   self.tableView.reloadData()
+                                
+   //表格可以区分不同section，像apple设置里面一样，我们没有设置，所以是0
+   let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+                                
+   self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+}
+```
 
