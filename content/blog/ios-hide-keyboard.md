@@ -55,6 +55,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 IQKeyboardManager.shared.enableAutoToolbar = true
 ```
 
+注意，以上办法已经废弃，应该这样使用：
+
+```swift
+import IQKeyboardToolbarManager
+IQKeyboardToolbarManager.shared.isEnabled = true
+```
+
 [其他属性参考](https://github.com/hackiftekhar/IQKeyboardManager/wiki/Properties-&-Functions)
 
 ## 点击键盘外区域退出键盘
