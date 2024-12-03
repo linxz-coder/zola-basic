@@ -3,6 +3,8 @@ title = "guard在ios-optional里面的用法"
 date = 2024-12-02
 +++
 
+guard 主要解决的是 if let 产生的 `多重嵌套`的问题。
+
 guard let 和 if let 都是处理optional的方法。
 
 两者区别是：
