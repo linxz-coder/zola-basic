@@ -107,3 +107,34 @@ ctrl + 单击 -> Extract Subview
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202412021628235.png)
 
+# swiftUI的list
+
+```swift
+List{
+	//元素
+}
+```
+
+# 如何刷新预览
+
+cmd + option + P
+
+# swift获取api
+
+```swift
+    func fetchData(){
+        guard let url = URL(string: "https://hn.algolia.com/api/v1/search?tags=front_page") else {return}
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) {(data, response, error) in
+            guard error == nil else {return}
+            let decoder = JSONDecoder()
+            guard let safeData = data else {return}
+            do{
+                let result = try decoder.decode(Results.self, from: safeData)
+            } catch {
+                print(error)
+            }
+        }
+        task.resume()
+    } 
+```
