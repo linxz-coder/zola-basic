@@ -80,3 +80,16 @@ class TodoListViewController: UITableViewController {
     }
 }
 ```
+
+# swift如何给cell右边加勾选符号？
+
+storyboard中选中cell - 属性界面 - Accessory - Checkmark
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202412041518590.png)
+
+
+swift 如何添加+按钮？
+
+添加bar Button，将System Item属性改为`Add`。
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202412041533013.png)

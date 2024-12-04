@@ -66,3 +66,14 @@ let newArray = array.map {"\($0)"}
 print(newArray)
 
 ```
+
+# 一个函数作为参数的闭包closure
+
+如果只有一个参数，参数还是一个function，function后面不带括号：
+
+```swift
+alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Create New Item"
+            textField = alertTextField
+}
+```

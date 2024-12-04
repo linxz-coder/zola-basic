@@ -16,3 +16,15 @@ date = 2024-12-04
 属性-Background
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202412041252668.png)
+
+# 整个头部换掉颜色
+
+Navigation Bar属性
+
+Appearance 勾选 `Standard` 和 `Scroll Edge`。
+
+两者背景色设置成同一个颜色
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202412041541561.png)
+
+[参考答案](https://forums.developer.apple.com/forums/thread/682420)
