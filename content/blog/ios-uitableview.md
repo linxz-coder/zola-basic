@@ -51,3 +51,32 @@ extension ChatViewController: UITableViewDataSource{
 # 取消用户选择效果-变灰
 
 storyboard里面选中cell，将`selection`设置为`none`即可。现在用户就不可以选择每个cell了，这是聊天软件的正常行为，而不是像信息软件或者邮件软件那样。
+
+# 使用TableViewController
+
+非常简单，不需要delegate和protocol。
+
+```swift
+import UIKit
+
+class TodoListViewController: UITableViewController {
+    
+    let itemArray = ["Find Mike", "Buy Eggos", "Destory Demogorgon"]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    //每个分区section有多少行row
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return itemArray.count
+    }
+    
+    //用哪个cell；indexPath即对应上面的row
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
+        cell.textLabel?.text = itemArray[indexPath.row]
+        return cell   
+    }
+}
+```
