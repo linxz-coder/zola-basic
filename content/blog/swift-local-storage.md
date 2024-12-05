@@ -3,19 +3,64 @@ title = "swift-利用defaults来保存数据到本地"
 date = 2024-12-04
 +++
 
-# 在按钮加一个closure，里面加上代码
+# 什么是UserDefaults?
+
+一个本地存储的plist，可以供App在开始时读取。
+
+```swift
+/*
+ 1. UserDefaults不是数据库，只适合存放少量数据。
+ 2. 每次加载程序时，整个UserDefaults plist都会加载，因此越大的数据，程序运行越慢。
+ */
+
+import UIKit
+
+let defaults = UserDefaults.standard
+
+
+let dictionaryKey = "myDict"
+
+// 格式 - key: "Volume" value: 0.24
+defaults.set(0.24, forKey: "Volume")
+defaults.set(true, forKey: "MusicOn")
+defaults.set("Angela", forKey: "PlayerName")
+defaults.set(Date(), forKey: "AppLastOpenedByUser")
+
+let array = [1,2,3]
+defaults.set(array, forKey: "myArray")
+
+let dictionary = ["name": "Angela"]
+defaults.set(dictionary, forKey: dictionaryKey)
+
+
+let volume = defaults.float(forKey: "Volume")
+print(volume)
+
+let appLastOpen = defaults.object(forKey: "AppLastOpenedByUser") //用object，因为对应的是Any?
+print(appLastOpen!)
+
+let myArray = defaults.array(forKey: "myArray")
+print(myArray!)
+
+let myDict = defaults.dictionary(forKey: dictionaryKey)
+print(myDict!)
+```
+
+# 应用
+
+## 在按钮加一个closure，里面加上代码
 
 ```swift
 self.defaults.set(self.itemArray, forKey: "TodoListArray")
 ```
 
-# 在ViewController里面声明变量：
+## 在ViewController里面声明变量：
 
 ```swift
  let defaults = UserDefaults.standard
 ```
 
-# 在viewDidLoad里面更新item:
+## 在viewDidLoad里面更新item:
 
 ```swift
  if let items = defaults.array(forKey: "TodoListArray") as? [String] {
@@ -23,7 +68,7 @@ self.defaults.set(self.itemArray, forKey: "TodoListArray")
  }
 ```
 
-# 看到数据变化
+## 看到数据变化
 
 delegate.swift输入以下代码：
 
@@ -38,7 +83,7 @@ delegate.swift输入以下代码：
 
 文档路径里面找到preferences里面的plist，通过退出应用看看是否有增加的key-value对。
 
-# 整体代码示例：
+## 整体代码示例：
 
 ```swift
 import UIKit
