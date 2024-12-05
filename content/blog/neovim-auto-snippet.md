@@ -53,6 +53,41 @@ require("lazy").setup({
 
 现在，当你输入html5的时候，就会触发代码片段，html5的代码片段（模版）了。
 
+# 添加zola的snippet片段
+
+```lua
+local ls = require("luasnip")
+local s = ls.snippet
+local t = ls.text_node
+local i = ls.insert_node
+local f = ls.function_node
+
+local date = function() return {os.date('%Y-%m-%d')} end
+
+ls.add_snippets("markdown", {
+  -- 原有的 zfm snippet
+  s("zfm", {
+    t("+++"),
+    t({"", "title = \""}), i(1), t("\""),
+    t({"", "date = "}), f(date),
+    t({"", "+++", ""}),
+    i(0),
+  }),
+  
+  -- 新增的 zfms snippet
+  s("zfms", {
+    t("+++"),
+    t({"", "title = \""}), i(1), t("\""),
+    t({"", "date = "}), f(date),
+    t({"", "authors = [\"小中\"]"}),
+    t({"", "[taxonomies]"}),
+    t({"", "tags = [\""}), i(2), t("\"]"),
+    t({"", "+++", ""}),
+    i(0),
+  }),
+})
+```
+
 ## 参考资料
 [reddit讨论](https://www.reddit.com/r/neovim/comments/1191vuw/lazyvim_react_and_js_snippets_what_do_you_use_and/)
 
