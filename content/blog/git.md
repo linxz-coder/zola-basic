@@ -193,3 +193,15 @@ clone到本地，本地修改后可以提交pull request
 要pull request，需要登录github界面，点击pull request。
 
 [pull request教程](https://www.bilibili.com/video/BV12F4113794?spm_id_from=333.788.videopod.episodes&vd_source=52e547e5d9000389c9906e8cf67193c7&p=156)
+
+# 查看对应的远端仓库
+
+```bash
+git remote -v
+```
+
+## 改变远端仓库
+
+```bash
+git remote set-url origin https://github.com/newusername/newrepository.git
+```
