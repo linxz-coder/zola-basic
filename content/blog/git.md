@@ -100,7 +100,7 @@ Insights-Network
 将暂存区的所有文件删除
 
 ```bash
-git rm --cached -r .
+git rm --cached -rf .
 
 git add .
 
