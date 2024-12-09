@@ -41,7 +41,7 @@ tags = ["学习"]
 番茄工作法，工作45分钟，休息的5分钟可以用来放松。
 
 
-[正确设定期望]（https://www.bilibili.com/video/BV12F4113794?spm_id_from=333.788.videopod.episodes&vd_source=52e547e5d9000389c9906e8cf67193c7&p=59）
+[正确设定期望](https://www.bilibili.com/video/BV12F4113794?spm_id_from=333.788.videopod.episodes&vd_source=52e547e5d9000389c9906e8cf67193c7&p=59)
 
 编程不简单。
 
@@ -65,7 +65,7 @@ youtube上的开发者都是正常人，像你我一样的普通人。
 
 最难的事情是开始。
 
-[实践比观察重要]（https://www.bilibili.com/video/BV12F4113794?spm_id_from=333.788.videopod.episodes&vd_source=52e547e5d9000389c9906e8cf67193c7&p=73）
+[实践比观察重要](https://www.bilibili.com/video/BV12F4113794?spm_id_from=333.788.videopod.episodes&vd_source=52e547e5d9000389c9906e8cf67193c7&p=73)
 
 为什么看着别人做很简单，自己却不会？
 
@@ -85,7 +85,7 @@ youtube上的开发者都是正常人，像你我一样的普通人。
 
 回去看看刚开始的课程，回答那些初学者的问题，你会发现自己其实也懂得很多。
 
-[联系既有的知识]（https://www.bilibili.com/video/BV12F4113794?spm_id_from=333.788.videopod.episodes&vd_source=52e547e5d9000389c9906e8cf67193c7&p=105）
+[联系既有的知识](https://www.bilibili.com/video/BV12F4113794?spm_id_from=333.788.videopod.episodes&vd_source=52e547e5d9000389c9906e8cf67193c7&p=105)
 
 混合你所学的概念，使用出来。
 
@@ -115,7 +115,7 @@ youtube上的开发者都是正常人，像你我一样的普通人。
 
 设置你的“睡觉闹钟”，告诉你该睡觉了。
 
-[巩固知识的方法]（https://www.bilibili.com/video/BV12F4113794?spm_id_from=333.788.videopod.episodes&vd_source=52e547e5d9000389c9906e8cf67193c7&p=148）
+[巩固知识的方法](https://www.bilibili.com/video/BV12F4113794?spm_id_from=333.788.videopod.episodes&vd_source=52e547e5d9000389c9906e8cf67193c7&p=148)
 
 教别人知识。为什么？
 
