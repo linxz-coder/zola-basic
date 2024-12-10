@@ -77,6 +77,23 @@ PicGo是一个图床工具，可以实现本地快速上传，自动复制链接
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/20240924233803.png)
 
+# 开通全球加速
+
+如果开通时，选择的是大陆地区（比如我选了深圳），
+国外是无法访问的。
+
+解决方案是`传输加速`。
+
+打开Bucket列表，选择开启传输加速即可，不过流量费会增加。
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202412100922448.png)
+
+开通后，默认的链接比如`yourname.oss-cn-shenzhen.aliyuncs.com`还能用，但如果要全球访问，要换一个`yourname.accelerate.com`的链接。
+
+原理很简单，阿里本来有分布全球的CDN，但是不能免费给你用，用了就要流量收费。
+
+还是CloudFlare佛心啊。
+
 ## 参考
 [阿里云教程](https://developer.aliyun.com/article/787128)
 [PicGo配置教程](https://picgo.github.io/PicGo-Doc/zh/guide/config.html#%E9%98%BF%E9%87%8C%E4%BA%91oss)
