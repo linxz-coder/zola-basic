@@ -7,6 +7,26 @@ date = 2024-12-04
 
 一个本地存储的plist，可以供App在开始时读取。
 
+## 初始化
+
+```swift
+let defaults = UserDefaults.standard
+```
+
+## 存储
+
+```swift
+defaluts.set(value, forKey: "key")
+```
+
+## 提取
+
+这里要看存储的值是什么，就用什么类型提取。比如这个例子要提取的值是`float`类型。
+
+```swift
+let volume = defaults.float(forKey: "key")
+```
+
 ```swift
 /*
  1. UserDefaults不是数据库，只适合存放少量数据。
