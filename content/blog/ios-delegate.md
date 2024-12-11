@@ -21,7 +21,7 @@ date = 2024-11-24
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411242306527.png)
 
 
-# deligate的使用方式
+# delegate的使用方式
 
 delegate使用的两种方法
 
