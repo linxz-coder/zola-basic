@@ -190,3 +190,43 @@ itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         context.delete(itemArray[indexPath.row]) //从数据库删除
         itemArray.remove(at: indexPath.row) //从视图删除
 ```
+
+# 查询数据
+
+需要用到`NSPredicate`。搜索语法参考：
+
+[参考网站](https://nshipster.com/nspredicate/)
+
+[cheatsheet](http://realm.io.s3-website-us-east-1.amazonaws.com/assets/downloads/NSPredicateCheatsheet.pdf)
+
+[简单版](https://kapeli.com/cheat_sheets/NSPredicate.docset/Contents/Resources/Documents/index)
+
+
+```swift
+extension TodoListViewController: UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        
+        //[cd]指对大小写Capital和变音diacritic不敏感
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)] //只有一个rule
+        
+        loadItems(request)
+    }
+}
+```
+
+loadItem()改造。
+
+```swift
+    func loadItems(_ request: NSFetchRequest<Item> = Item.fetchRequest()){
+        do{
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context. \(error)")
+        }
+        
+        tableView.reloadData()
+    }
+```
