@@ -3,8 +3,39 @@ title = "什么是ios的delegate"
 date = 2024-11-24
 +++
 
+# delegate 是什么？
 
-# delegate design pattern
+通过定义协议（protocol），一个对象可以通知另一个对象某些事件的发生或者请求其执行某些操作。
+
+苹果预设了许多方法，比如`UITextFieldDelegate`，`UITableViewDelegate`，`UICollectionViewDelegate`等等，这些方法可以让我们在特定的事件发生时，执行我们自己的代码。
+
+比如，在`UITextFieldDelegate`中，有`textFieldDidBeginEditing`，`textFieldDidEndEditing`等方法，可以让我们在文本框开始编辑和结束编辑时，执行我们自己的代码。
+
+## 关键点：
+
+1. UITextFieldDelegate 协议定义了`能做什么`，即have the functions.
+2. WeatherViewController 实现这些方法定义了`怎么做`，即define the function.
+3. delegate = self 告诉 UITextField `谁来做`，即call the function.
+
+过程示例：
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411242306527.png)
+
+
+# deligate的使用方式
+
+delegate使用的两种方法
+
+## 在videDidLoad里面定义
+
+```swift
+searchBar.delegate = self
+```
+
+## 直接在storyboard里面连接
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202412111119702.png)
+
+# delegate的应用
 
 ## UITextView对protocol的应用
 
@@ -56,15 +87,6 @@ func textFieldDidBeginEditing(){
 	//do something
 }
 ```
-
-### 关键点：
-
-1. UITextFieldDelegate 协议定义了`能做什么`，即have the functions.
-2. WeatherViewController 实现这些方法定义了`怎么做`，即define the function.
-3. delegate = self 告诉 UITextField `谁来做`，即call the function.
-
-过程示例：
-![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411242306527.png)
 
 ## delegate的急救案例
 
