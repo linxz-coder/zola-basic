@@ -97,3 +97,26 @@ struct ContentView: View {
 }
 
 ```
+
+
+# ios如何同时收起键盘和光标：
+
+```swift
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+```
+
+## DispatchQueue.main.async 的作用：
+
+强制代码块在主线程上异步执行。 因为涉及到UI的更新，一定要在主线程上操作，否则可能产生问题。
+
+searchBar.resignFirstResponder() 用于取消 searchBar 的第一响应者状态，通常会导致键盘收起。该操作本身需要在主线程上完成，否则可能不会生效。
+
+## ios程序的多线程
+
+每个线程都是一个Thread。
+
+网络请求通常都是在Background运行，以致不影响到main Thread。
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202412111424361.png)
