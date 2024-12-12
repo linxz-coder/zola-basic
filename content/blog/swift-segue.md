@@ -3,6 +3,92 @@ title = "swift如何连接第二屏Segue"
 date = 2024-11-22
 +++
 
+# storyboard-segue跳转的知识汇总
+
+## segue的四种跳转方式
+
+show：切换至第二屏，需要和Navigation Controller配合使用，否则和present modally一样效果。
+
+Navigation Controller需要点中主屏幕黄点，Editor-Embed in-Navigation Controller设置。
+
+present modally： 新一屏覆盖上一屏，下拉消失。
+
+show detail：右侧详情设置
+
+present as popover：小窗口，一般是iPad用到。
+
+[四种方式的gif展示](https://stackoverflow.com/questions/25966215/whats-the-difference-between-all-the-selection-segues)
+
+## segue的跳转代码
+
+```swift
+performSegue(withIdentifier: "goToSecond", sender: self)
+```
+
+## segue的回头代码
+
+当segue是`present modally`才是有效的。
+
+```swift
+self.dismiss(animated: true)
+```
+
+## segue数据通信
+
+通过prepare函数进行：
+
+```swift
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToSecond" {
+            if let secondVC = segue.destination as? SecondViewController {
+                secondVC.secondValue = "Hell"
+            }
+        }
+    }
+```
+
+为什么不在performSegue中一同进行，还有多加个函数？因为performSegue是指Storyboard传递，不能直接由代码传递，因此识别不了页面切换外的代码。
+
+# swiftUI页面切换
+
+## 通过navigationLink跳转
+
+优点：直观。
+
+缺点：必须通过NavigationView，结构不简洁。
+
+```swift
+        NavigationView {
+            NavigationLink(destination: SecondView()) {
+                Text("跳转")
+                    .font(.largeTitle)
+            }
+        }
+```
+
+## 通过@state和.sheet条件跳转
+
+优点：适合条件跳转。
+
+缺点：代码复杂。
+
+
+```swift
+    @State var showSecondView = false
+    
+    var body: some View {
+        Button("跳转"){
+            showSecondView = true
+        }
+        .font(.largeTitle)
+        .sheet(isPresented: $showSecondView){
+            SecondView()
+        }
+    }
+```
+
+---
+
 # 方法一：新建Cocoa touch类
 
 ## 利用storyboard创建第二屏的结构
