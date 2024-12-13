@@ -72,6 +72,45 @@ override func viewWillDisappear(_ animated: Bool) {
     }
 ```
 
+## 改变其他元素颜色
+
+### back按钮
+
+.tintColor
+
+### 导航条标题
+
+appearance.titleTextAttributes
+
+代码示例：
+
+```swift
+ guard let menuColor = UIColor(hexString: colorHex) else {
+                fatalError("Error color")}
+            
+            // 保存默认外观配置，以便后续恢复
+            defaultAppearance = navBar.standardAppearance.copy()
+            
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = UIColor(hexString: colorHex)
+            
+            //改变back按钮颜色
+            navBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn: menuColor , isFlat: true)
+            
+            //改变标题颜色
+            appearance.titleTextAttributes = [.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: menuColor, isFlat: true)]
+            
+            // 设置 Large Title 的颜色
+              appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(contrastingBlackOrWhiteColorOn: menuColor, isFlat: true)]
+            
+            navBar.standardAppearance = appearance
+            navBar.scrollEdgeAppearance = appearance
+            
+
+            
+            searchBar.barTintColor = UIColor(hexString: colorHex)
+```
+
 # 全局设置navigation bar
 
 在AppDelegate的第一个func里面输入：
