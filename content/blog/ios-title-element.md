@@ -31,7 +31,48 @@ navigationItem.hidesBackButton = true
 title = "⚡️FlashChat"
 ```
 
-# 整体修改navigation bar的属性
+# swift改变导航条颜色：
+
+## 改变本页导航条颜色
+
+在`viewWillAppear`里面设置。
+
+为什么不设置在`viewDidLoad`？因为它会快于导航条的渲染。而viewWillAppear出现在导航条渲染后。
+
+```swift
+var defaultAppearance: UINavigationBarAppearance?
+
+override func viewWillAppear(_ animated: Bool) {
+	guard let navBar = navigationController?.navigationBar else {fatalError("Navigation controller does not exist")}
+            
+            // 保存默认外观配置，以便后续恢复
+            defaultAppearance = navBar.standardAppearance.copy()
+            
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = .red
+            navBar.standardAppearance = appearance
+            navBar.scrollEdgeAppearance = appearance
+}
+```
+
+## 恢复上一页导航条颜色
+
+在`viewWillDisappear`里面设置。
+
+```swift
+override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // 恢复默认外观
+        if let defaultAppearance = defaultAppearance,
+           let navBar = navigationController?.navigationBar {
+            navBar.standardAppearance = defaultAppearance
+            navBar.scrollEdgeAppearance = defaultAppearance
+        }
+    }
+```
+
+# 全局设置navigation bar
 
 在AppDelegate的第一个func里面输入：
 
