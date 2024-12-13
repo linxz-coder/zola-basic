@@ -25,6 +25,9 @@ file - add package dependencies
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411290958557.png)
 
+# 关闭xcode
+
+设置完代理后，可能也找不到包，这个时候关闭xcode，重新打开软件，再添加包即可。
 
 # 参考链接
 
