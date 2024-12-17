@@ -3,11 +3,23 @@ title = "swiftUI怎么print"
 date = 2024-12-16
 +++
 
-在view下面，输入`let _ = print()`
+# 在view里声明变量
+
+输入`let _ = print()`
 
 ```swift
 var body: some View {
         let _ = print(Realm.Configuration.defaultConfiguration.fileURL)
+}
+```
+
+# 在Button下面直接print
+
+```swift
+Button {
+    print("Button tapped")
+} label: {
+    Image(systemName: "plus")
 }
 ```
 
