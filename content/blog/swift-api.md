@@ -5,10 +5,158 @@ date = 2024-11-25
 
 四步：
 
+url - session - task - task.resume()
+
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411251511651.png)
 
+# 获取一句名言案例
 
-代码：
+## 创建ViewModel
+
+需要是一个class, 而且遵循ObservableObject的protocol，方便在视图间调用。
+
+把response变量用@Published暴露出来。
+
+```swift
+class ViewModel: ObservableObject {
+    @Published var responseText = ""
+}
+```
+
+## 使用ViewModel
+
+```swift
+@StateObject var viewModel = ViewModel()
+
+```swift
+Button {
+    viewModel.fetchData()
+} label: {
+    Text("获取一句名言")
+}
+```
+
+## ViewModel四步连接
+
+### 创建url
+
+```swift
+guard let url = URL(string: "https://api.apiopen.top/api/sentences") else { return }
+```
+
+### 创建session
+
+```swift
+let session = URLSession(configuration: .default)
+```
+
+### 创建task
+
+```swift
+let task = session.dataTask(with: url) { data, response, error in
+            // 错误处理
+            guard error == nil else {
+                print("Error: \(error!.localizedDescription)")
+                return
+            }
+            
+            // 检查响应状态
+            guard let httpResponse = response as? HTTPURLResponse,
+                  httpResponse.statusCode == 200 else {
+                print("Invalid response")
+                return
+            }
+            
+            guard let data = data else {
+                print("No data received")
+                return
+            }
+            
+            // 解析 JSON 数据
+            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                  let result = json["result"] as? [String: Any],
+                  let content = result["name"] as? String else {
+                print("JSON Parsing Error or unexpected structure")
+                return
+            }
+            
+            //测试返回值
+            print(json)
+            
+            DispatchQueue.main.async {
+                self.responseText = content  // 更新界面上的文字内容
+            }
+        }
+```
+
+### 开始task
+
+因为task创造时属于挂起状态，所以启用时有`恢复`的意思，这符合操作系统的用词习惯，因此这里用的是resume。
+
+```swift
+task.resume()
+```
+
+### 完整代码参考
+
+```swift
+import SwiftUI
+
+class ViewModel: ObservableObject {
+    @Published var responseText = ""
+    
+    //MARK: - GET请求
+    func fetchData(){
+        //创建url
+        guard let url = URL(string: "https://api.apiopen.top/api/sentences") else { return }
+        
+        //创建session
+        let session = URLSession(configuration: .default)
+        
+        //创建task
+        let task = session.dataTask(with: url) { data, response, error in
+            // 错误处理
+            guard error == nil else {
+                print("Error: \(error!.localizedDescription)")
+                return
+            }
+            
+            // 检查响应状态
+            guard let httpResponse = response as? HTTPURLResponse,
+                  httpResponse.statusCode == 200 else {
+                print("Invalid response")
+                return
+            }
+            
+            guard let data = data else {
+                print("No data received")
+                return
+            }
+            
+            // 解析 JSON 数据
+            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                  let result = json["result"] as? [String: Any],
+                  let content = result["name"] as? String else {
+                print("JSON Parsing Error or unexpected structure")
+                return
+            }
+            
+            //测试返回值
+            print(json)
+            
+            DispatchQueue.main.async {
+                self.responseText = content  // 更新界面上的文字内容
+            }
+        }
+        
+        task.resume()
+    }
+}
+```
+
+[参考项目-LoveTalkApi](https://github.com/linxz-coder/LoveTalkApi)
+
+# 其他案例代码：
 
 ```swift
 import Foundation
