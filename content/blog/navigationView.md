@@ -3,6 +3,8 @@ title = "NavigationView和NavigationLink介绍"
 date = 2024-12-20
 +++
 
+注意：NavigationView已弃用，使用`NavigationStack`。参考[苹果开发者手册](https://developer.apple.com/documentation/swiftui/navigationview/)。
+
 # 为什么要用NavigationView？
 
 1. 可以用顶部菜单
