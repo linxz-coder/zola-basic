@@ -5,6 +5,16 @@ date = 2024-12-22
 
 # 颜色
 
+## 怎么用colotLiteral
+
+输入以下模式就可以自选颜色了。
+
+```swift
+var customColor = #colorLiteral(
+```
+
+## 基本颜色
+
 ```swift
 struct ColorsBootcamp: View {
     var body: some View {
