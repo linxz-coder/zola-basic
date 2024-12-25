@@ -5,9 +5,9 @@ date = 2024-12-24
 
 # 主体文件
 
-app.js 入口
-app.json 配置
-app.wxss 样式
+`app js` 入口
+`app json` 配置
+`app wxss` 样式
 
 # 页面文件
 

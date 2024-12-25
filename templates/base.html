@@ -105,44 +105,36 @@
   {# meili search的js代码 #}
   <script>
 
-    console.log('meili search prevent logo code');
-    // 取消logo图标引用，加快加载速度
+    // 1. 定义修改模板的函数
     function modifySearchBarTemplate() {
-        const footerClass = 'docs-searchbar-footer';
+        console.log('Modifying template...'); // 添加调试日志
         if (window.docsSearchBar) {
-            window.docsSearchBar.prototype.templates = window.docsSearchBar.prototype.templates || {};
-            window.docsSearchBar.prototype.templates.footer = `
-            <div class="${footerClass}">
-                Powered by
-                <a href="https://www.meilisearch.com" target="_blank">
-                Meilisearch
-                </a>
-            </div>
-            `;
+        const footerClass = 'docs-searchbar-footer';
+        window.docsSearchBar.prototype.templates = window.docsSearchBar.prototype.templates || {};
+        window.docsSearchBar.prototype.templates.footer = 
+            `<div class="${footerClass}">Powered by <a href="https://www.meilisearch.com" target="_blank">Meilisearch</a></div>`;
+        console.log('Template modified:', window.docsSearchBar.prototype.templates.footer); // 添加调试日志
+        } else {
+        console.log('docsSearchBar not found'); // 添加调试日志
         }
     }
 
-  // 2. 在加载 docs-searchbar.js 之前执行模板修改
-  modifySearchBarTemplate()
+    // 2. 等待 script 加载完成后再修改模板
+    function waitForDocsSearchBar() {
+        if (window.docsSearchBar) {
+        modifySearchBarTemplate();
+        } else {
+        setTimeout(waitForDocsSearchBar, 100);
+        }
+    }
+
+    // 3. 开始等待
+    waitForDocsSearchBar();
 
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/docs-searchbar.js@latest/dist/cdn/docs-searchbar.min.js"></script>
   <script>
-    // 取消logo图标引用，加快加载速度
-    // if (window.docsSearchBar) {
-    //     const footerClass = 'docs-searchbar-footer';
-    //     window.docsSearchBar.prototype.templates = window.docsSearchBar.prototype.templates || {};
-    //     window.docsSearchBar.prototype.templates.footer = `
-    //     <div class="${footerClass}">
-    //         Powered by
-    //         <a href="https://www.meilisearch.com" target="_blank">
-    //         Meilisearch
-    //         </a>
-    //     </div>
-    //     `;
-    // }
-
     docsSearchBar({
       hostUrl: 'https://meilisearch.linxz.online',
       apiKey: 'VEw9h1k99fgUolpnU6htXtLp20eEFYqte0WRxsWfjaY',
