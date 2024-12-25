@@ -105,6 +105,20 @@
   {# meili search的js代码 #}
   <script src="https://cdn.jsdelivr.net/npm/docs-searchbar.js@latest/dist/cdn/docs-searchbar.min.js"></script>
   <script>
+    // 取消logo图标引用，加快加载速度
+    if (window.docsSearchBar) {
+        const footerClass = 'docs-searchbar-footer';
+        window.docsSearchBar.prototype.templates = window.docsSearchBar.prototype.templates || {};
+        window.docsSearchBar.prototype.templates.footer = `
+        <div class="${footerClass}">
+            Powered by
+            <a href="https://www.meilisearch.com" target="_blank">
+            Meilisearch
+            </a>
+        </div>
+        `;
+    }
+
     docsSearchBar({
       hostUrl: 'https://meilisearch.linxz.online',
       apiKey: 'VEw9h1k99fgUolpnU6htXtLp20eEFYqte0WRxsWfjaY',
