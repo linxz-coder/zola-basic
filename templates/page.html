@@ -91,56 +91,6 @@
           }
       });
   });
-
-  //添加微信分享脚本
-//   function shareToWeChat() {
-//         var isWeChat = /MicroMessenger/i.test(navigator.userAgent);
-        
-//         if (isWeChat) {
-//             // 在微信内直接调用分享
-//             if (typeof WeixinJSBridge !== 'undefined') {
-//                 WeixinJSBridge.invoke('shareTimeline', {
-//                     title: '{{ page.title }}',
-//                     desc: '{{ page.description | default(value=page.content | striptags | truncate(length=100)) }}',
-//                     link: window.location.href,
-//                     imgUrl: 'https://linxz.online/icons8-pen-32.png'
-//                 });
-//             }
-//         } else {
-//             // 在非微信环境下显示二维码
-//             showQRCode();
-//         }
-//     }
-    
-    // function showQRCode() {
-    //     // 清除旧的二维码
-    //     document.getElementById('qrcode').innerHTML = '';
-        
-    //     // 生成当前页面的二维码
-    //     var qrcode = new QRCode(document.getElementById('qrcode'), {
-    //         text: window.location.href,
-    //         width: 200,
-    //         height: 200,
-    //         colorDark : '#000',
-    //         colorLight : '#fff',
-    //         correctLevel : QRCode.CorrectLevel.H
-    //     });
-        
-    //     // 显示弹窗
-    //     document.getElementById('qrCodeModal').style.display = 'block';
-    // }
-    
-    // // 关闭弹窗
-    // document.querySelector('.close-button').onclick = function() {
-    //     document.getElementById('qrCodeModal').style.display = 'none';
-    // };
-    
-    // // 点击弹窗外部关闭
-    // document.getElementById('qrCodeModal').onclick = function(event) {
-    //     if (event.target === this) {
-    //         this.style.display = 'none';
-    //     }
-    // };
 </script>
 
 
