@@ -186,3 +186,28 @@ console.log(this.data.num)
       list: newList
     })
 ```
+
+# 小程序数据双向绑定
+
+## 单向绑定
+
+数据能影响页面，但页面不能影响数据。比如`<input value="{{value}}"/>`
+
+## 简易双向绑定
+
+数据能影响页面，页面输入能影响数据。在属性之前加入`model:`前缀即可，比如`<input model:value="{{value}}"/>
+
+## 注意
+
+简易双向绑定的属性值如下限制：
+
+1. 只能是一个单一字段的绑定，例如：错误用法：`\<input model：value=“值为｛value｝｝“/>`
+
+2. 尚不能写 data 路径，也就是`不支持数组和对象`，例如：错误用法：`\<input model：value=“｛ a.b｝｝ >`
+
+## 如何看到调试数据？
+
+调试界面 - AppData
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202412261454017.png)
+
