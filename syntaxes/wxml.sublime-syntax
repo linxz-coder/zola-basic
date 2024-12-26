@@ -1,0 +1,107 @@
+name: WXML
+scope: text.html.wxml
+file_extensions:
+  - wxml
+
+variables:
+  # 定义常用的微信指令
+  wx_directives: 'wx:(if|elif|else|for|for-item|for-index|key|model|class|style|model-prop|model-event)'
+  # 定义事件绑定
+  event_binding: 'bind\w+|catch\w+'
+
+contexts:
+  main:
+    # 标签开始
+    - match: (<)(\/?)(\w+)
+      captures:
+        1: punctuation.definition.tag.begin.wxml
+        2: punctuation.definition.tag.begin.wxml
+        3: entity.name.tag.wxml
+      push: tag-attributes
+    
+    # 数据绑定表达式 {{}}
+    - match: '{{'
+      scope: punctuation.section.embedded.begin.wxml
+      push: expression
+    
+    # 注释
+    - match: <!--
+      scope: punctuation.definition.comment.wxml
+      push: comment
+
+  # 标签属性上下文
+  tag-attributes:
+    # 标签结束
+    - match: '/?>'
+      scope: punctuation.definition.tag.end.wxml
+      pop: true
+    
+    # 微信指令属性
+    - match: '{{wx_directives}}'
+      scope: entity.other.attribute-name.wxml keyword.control.directive.wxml
+    
+    # 事件绑定
+    - match: '{{event_binding}}'
+      scope: entity.other.attribute-name.wxml support.function.wxml
+    
+    # 普通属性
+    - match: '\b[\w-]+\b'
+      scope: entity.other.attribute-name.wxml
+    
+    # 属性值
+    - match: '='
+      scope: punctuation.separator.key-value.wxml
+      push: attribute-value
+
+  # 属性值上下文
+  attribute-value:
+    # 双引号字符串
+    - match: '"'
+      scope: punctuation.definition.string.begin.wxml
+      push: double-quoted-string
+    # 单引号字符串
+    - match: "'"
+      scope: punctuation.definition.string.begin.wxml
+      push: single-quoted-string
+
+  # 双引号字符串
+  double-quoted-string:
+    - meta_scope: string.quoted.double.wxml
+    - match: '"'
+      scope: punctuation.definition.string.end.wxml
+      pop: true
+    - include: expression-interpolated
+
+  # 单引号字符串
+  single-quoted-string:
+    - meta_scope: string.quoted.single.wxml
+    - match: "'"
+      scope: punctuation.definition.string.end.wxml
+      pop: true
+    - include: expression-interpolated
+
+  # 表达式内容
+  expression:
+    - meta_scope: source.wxml.embedded.expression
+    - match: '}}'
+      scope: punctuation.section.embedded.end.wxml
+      pop: true
+    - match: '\b(true|false|null|undefined)\b'
+      scope: constant.language.wxml
+    - match: '\b\d+\b'
+      scope: constant.numeric.wxml
+    - match: '\b[a-zA-Z_]\w*\b'
+      scope: variable.other.wxml
+
+  # 表达式插值
+  expression-interpolated:
+    - match: '{{'
+      scope: punctuation.section.embedded.begin.wxml
+      push: expression
+
+  # 注释
+  comment:
+    - meta_scope: comment.block.wxml
+    - match: '-->'
+      scope: punctuation.definition.comment.wxml
+      pop: true

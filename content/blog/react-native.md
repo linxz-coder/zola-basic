@@ -59,7 +59,7 @@ npm install -g sharp-cli
 ```
 
 # 全局安装expo
-```bah
+```bash
 npm install -g expo-cli
 ```
 

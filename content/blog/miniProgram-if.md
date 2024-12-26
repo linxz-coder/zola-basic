@@ -18,7 +18,7 @@ wxif 和hidden 二者的区别：
 
 # wxif属性组代码：
 
-```
+```wxml
 <!-- wx:if 属性组 -->
 <!-- wx:if wx:elif wx:else -->
 <!-- 只有对应的条件成立，属性所在的组件才会进行展示 -->
@@ -29,6 +29,6 @@ wxif 和hidden 二者的区别：
 
 # hidden属性代码：
 
-```
+```wxml
 <view hidden="{{ !isFlag }}">如果 isFlag 是 true，展示结构，否则隐藏结构</view>
 ```

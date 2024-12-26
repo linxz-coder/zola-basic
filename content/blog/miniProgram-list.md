@@ -13,7 +13,7 @@ date = 2024-12-26
 
 # 示例代码
 
-```
+```wxml
 <!-- wx:key 的属性值不需要使用双大括号进行包裹，直接写遍历的数组 中 item 的某个属性 -->
 <view wx:for="{{ fruitList }}" wx:key="id">{{ item.name }}</view>
 
@@ -25,7 +25,7 @@ date = 2024-12-26
 
 # index可能指下标或者key
 
-```
+```wxml
 <!-- 如果渲染的是数组，item：数组的每一项，index：下标 -->
 <view wx:for="{{ numList }}">{{ item }} - {{ index }}</view>
 
@@ -38,7 +38,7 @@ date = 2024-12-26
 
 利用`wx:for-item`和`wx:for-index`
 
-```
+```wxml
 <view wx:for="{{ obj }}" wx:key="key" wx:for-item="value" wx:for-index="key">
   {{ value }} - {{ key }}
 </view>
@@ -48,7 +48,7 @@ date = 2024-12-26
 
 不像view标签一样是个组件，只是一个包装块，不会正式渲染。
 
-```
+```wxml
 <block wx:for="{{ fruitList }}" wx:key="id" wx:for-item="fruitItem" wx:for-index="i">
   <view>名字：{{ fruitItem.name }}</view>
   <view>价格：{{ fruitItem.price }}</view>

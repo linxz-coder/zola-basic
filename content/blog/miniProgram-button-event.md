@@ -47,6 +47,6 @@ date = 2024-12-26
 
 注意：可以一并获得父节点的mark数据。
 
-```wsml
+```wxml
 <view mark:id="100" bindtap="handler" />
 ```
