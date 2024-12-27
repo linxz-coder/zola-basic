@@ -14,6 +14,8 @@ tags = ["理解", "人生"]
 
 当然，也可能是写的时候查阅书籍。但是书中五岳各派特点，可能也不是临时起意，肯定胸中有七八成墨水了。
 
+[五岳山脉位置](https://zh.wikipedia.org/zh-cn/File:China_great_mountains_map_zh-CN.jpg)
+
 # 心理咨询师视角下的岳不群
 
 其实岳不群做得还可以了。
