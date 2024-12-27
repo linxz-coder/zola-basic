@@ -19,6 +19,8 @@ date = 2024-12-26
 <button type="primary">绑定事件</button>
 ```
 
+如果需要有边框无背景的按钮，加一个`plain`属性就行
+
 ## 按钮尺寸
 
 用size属性，选择mini即可。
