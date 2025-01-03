@@ -70,3 +70,18 @@ onLoad和onReady，每个页面只会出现一次。
 1. tabBar 页面之间相互切换，页面不会被销毁
 
 2. 点击左上角，返回上一个页面，会销毁当前页面
+
+# 生命周期大总结
+
+## 小程序冷启动，钩子函数执行顺序
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202501031700950.png)
+
+## 保留当前页面跳转 或 关闭当前页面跳转
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202501031702658.png)
+
+## 小程序热启动，钩子函数执行顺序
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202501031705780.png)
+
