@@ -26,3 +26,16 @@ Component({
 	}
 })
 ```
+
+# 外部样式类
+
+如果想修改自定义组件样式，并摈除样式嵌套影响，可以使用外部样式类。
+
+如果styleIsolation属性是`shared`，那么externalClasses会失效。
+
+```js
+Component({
+	externalClasses: [],
+})
+```
+
