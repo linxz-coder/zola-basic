@@ -14,8 +14,8 @@ authors = ["小中"]
 
 `ns2.alidns.com`
 
-3. 添加A记录和CNAME记录：
+3. 添加A记录和CNAME记录
 
-添加两条A记录，一条是www，一条是@，指向公网IP
+添加两条A记录，一条是www，一条是@，指向公网IP即可
 
 ![aliyun-dns1](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/aliyun-dns1.png)
