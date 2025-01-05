@@ -10,9 +10,9 @@ authors = ["小中"]
 
 2. 点击`解析设置`，修改DNS地址为以下地址：
 
-ns1.alidns.com
+`ns1.alidns.com`
 
-ns2.alidns.com
+`ns2.alidns.com`
 
 3. 添加A记录和CNAME记录：
 
