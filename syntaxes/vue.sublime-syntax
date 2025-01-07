@@ -4,65 +4,187 @@ name: Vue Component
 scope: text.html.vue
 version: 2
 
-# 移除 extends，直接在当前文件中定义所有需要的语法规则
 file_extensions:
   - vue
   - we
   - wpy
 
 variables:
-  # Vue specific variables
-  template_content_begin: (?:\s*\n|\s+)
-  template_content_end: (?=\s*</(?i:template)\b)
-  vue_directive_break: (?=[\s=/>:."'])
-  vue_directive_char: '[A-Za-z0-9_-]'
-  vue_parameter_break: (?=[\s=/>."'])
-
-  # HTML Variables
-  word_char: '[A-Za-z0-9_-]'
-  tag_name_char: '[A-Za-z0-9_:.-]'
-  tag_name_break: (?!{{tag_name_char}})
-  attribute_name_char: '[A-Za-z0-9_:.-]'
-  attribute_name_break: (?!{{attribute_name_char}})
+  # Common variables
+  space: '[ \t]'
+  spaces: '[ \t]+'
+  newline: '\n'
+  
+  # HTML specific
+  tag_name: '[A-Za-z][A-Za-z0-9]*(?::[A-Za-z][A-Za-z0-9]*)?'
+  attribute_name: '[a-zA-Z_:][a-zA-Z0-9_:.-]*'
+  
+  # Vue specific
+  vue_directive: 'v-[a-zA-Z][a-zA-Z0-9_-]*'
+  vue_interpolation: '\{\{[^}]*\}\}'
 
 contexts:
   main:
-    - include: html-comments
+    - include: comments
+    - include: doctype
     - include: tags
-    - include: entities
-    - include: vue-specific
+    - include: vue-interpolation
 
-  # HTML basic syntax
-  html-comments:
+  # Comments
+  comments:
     - match: <!--
-      scope: punctuation.definition.comment.begin.html
-      push: html-comment-content
+      scope: punctuation.definition.comment.html
+      push:
+        - meta_scope: comment.block.html
+        - match: '-->'
+          scope: punctuation.definition.comment.html
+          pop: true
+        - match: '--'
+          scope: invalid.illegal.bad-comments-or-CDATA.html
 
-  html-comment-content:
-    - meta_scope: comment.block.html
-    - match: --\s*>
-      scope: punctuation.definition.comment.end.html
-      pop: true
-    - match: -{2,}
-      scope: invalid.illegal.bad-comments-or-CDATA.html
+  # DOCTYPE
+  doctype:
+    - match: '(?i)<!DOCTYPE'
+      scope: punctuation.definition.tag.html
+      push:
+        - meta_scope: meta.tag.sgml.doctype.html
+        - match: '>'
+          scope: punctuation.definition.tag.html
+          pop: true
 
+  # Tags
+  tags:
+    - match: (<)({{tag_name}})
+      captures:
+        1: punctuation.definition.tag.begin.html
+        2: entity.name.tag.html
+      push:
+        - meta_scope: meta.tag.any.html
+        - match: (/?>)
+          scope: punctuation.definition.tag.end.html
+          pop: true
+        - include: tag-attributes
+
+    - match: (</)(\w+)(>)
+      scope: meta.tag.any.html
+      captures:
+        1: punctuation.definition.tag.begin.html
+        2: entity.name.tag.html
+        3: punctuation.definition.tag.end.html
+
+  # Tag attributes
+  tag-attributes:
+    # Vue directives
+    - match: '(v-[a-zA-Z][a-zA-Z0-9_:-]*)'
+      scope: entity.other.attribute-name.vue-directive.html
+      push:
+        - match: '='
+          scope: punctuation.separator.key-value.html
+          set: attribute-value
+        - match: '(?=\s|>|/>)'
+          pop: true
+
+    # Vue shorthand directives
+    - match: '(@[a-zA-Z][a-zA-Z0-9_:-]*|:[a-zA-Z][a-zA-Z0-9_:-]*)'
+      scope: entity.other.attribute-name.vue-directive.html
+      push:
+        - match: '='
+          scope: punctuation.separator.key-value.html
+          set: attribute-value
+        - match: '(?=\s|>|/>)'
+          pop: true
+
+    # Regular attributes
+    - match: '{{attribute_name}}'
+      scope: entity.other.attribute-name.html
+      push:
+        - match: '='
+          scope: punctuation.separator.key-value.html
+          set: attribute-value
+        - match: '(?=\s|>|/>)'
+          pop: true
+
+  # Attribute values
+  attribute-value:
+    - match: '"'
+      scope: punctuation.definition.string.begin.html
+      push:
+        - meta_scope: string.quoted.double.html
+        - match: '"'
+          scope: punctuation.definition.string.end.html
+          pop: true
+        - include: vue-interpolation
+        - include: entities
+
+    - match: "'"
+      scope: punctuation.definition.string.begin.html
+      push:
+        - meta_scope: string.quoted.single.html
+        - match: "'"
+          scope: punctuation.definition.string.end.html
+          pop: true
+        - include: vue-interpolation
+        - include: entities
+
+  # Vue interpolation
+  vue-interpolation:
+    - match: '\{\{'
+      scope: punctuation.section.embedded.begin.vue
+      push:
+        - meta_scope: source.js.embedded.vue
+        - match: '\}\}'
+          scope: punctuation.section.embedded.end.vue
+          pop: true
+        - include: vue-expression
+
+  # Vue expressions
+  vue-expression:
+    - include: strings
+    - include: comments-js
+    - include: keywords
+    - include: numbers
+    - include: operators
+    - include: function-calls
+
+  # JavaScript elements
+  strings:
+    - match: '"'
+      scope: punctuation.definition.string.begin.js
+      push:
+        - meta_scope: string.quoted.double.js
+        - match: '"'
+          scope: punctuation.definition.string.end.js
+          pop: true
+        - match: \\.
+          scope: constant.character.escape.js
+
+  comments-js:
+    - match: /\*
+      scope: punctuation.definition.comment.begin.js
+      push:
+        - meta_scope: comment.block.js
+        - match: \*/
+          scope: punctuation.definition.comment.end.js
+          pop: true
+
+  keywords:
+    - match: \b(if|else|for|while|do|break|continue|return|function|var|let|const)\b
+      scope: keyword.control.js
+
+  numbers:
+    - match: \b(-)?[0-9.]+\b
+      scope: constant.numeric.js
+
+  operators:
+    - match: '[-+/*=<>!&|^~?:%]'
+      scope: keyword.operator.js
+
+  function-calls:
+    - match: \b([a-zA-Z_]\w*)\s*\(
+      captures:
+        1: entity.name.function.js
+
+  # HTML entities
   entities:
     - match: '&([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+);'
       scope: constant.character.entity.html
-
-  tags:
-    - include: template-tag
-    - include: script-tag
-    - include: style-tag
-    - include: vue-directives
-    - include: mustache-interpolations
-
-  # Vue specific contexts
-  vue-specific:
-    - include: mustache-interpolations
-    - include: vue-directives
-    - include: template-tag
-    - include: script-tag
-    - include: style-tag
-
-  # [其余代码保持不变...]
