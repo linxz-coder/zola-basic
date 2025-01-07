@@ -1,0 +1,68 @@
+%YAML 1.2
+---
+name: Vue Component
+scope: text.html.vue
+version: 2
+
+# 移除 extends，直接在当前文件中定义所有需要的语法规则
+file_extensions:
+  - vue
+  - we
+  - wpy
+
+variables:
+  # Vue specific variables
+  template_content_begin: (?:\s*\n|\s+)
+  template_content_end: (?=\s*</(?i:template)\b)
+  vue_directive_break: (?=[\s=/>:."'])
+  vue_directive_char: '[A-Za-z0-9_-]'
+  vue_parameter_break: (?=[\s=/>."'])
+
+  # HTML Variables
+  word_char: '[A-Za-z0-9_-]'
+  tag_name_char: '[A-Za-z0-9_:.-]'
+  tag_name_break: (?!{{tag_name_char}})
+  attribute_name_char: '[A-Za-z0-9_:.-]'
+  attribute_name_break: (?!{{attribute_name_char}})
+
+contexts:
+  main:
+    - include: html-comments
+    - include: tags
+    - include: entities
+    - include: vue-specific
+
+  # HTML basic syntax
+  html-comments:
+    - match: <!--
+      scope: punctuation.definition.comment.begin.html
+      push: html-comment-content
+
+  html-comment-content:
+    - meta_scope: comment.block.html
+    - match: --\s*>
+      scope: punctuation.definition.comment.end.html
+      pop: true
+    - match: -{2,}
+      scope: invalid.illegal.bad-comments-or-CDATA.html
+
+  entities:
+    - match: '&([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+);'
+      scope: constant.character.entity.html
+
+  tags:
+    - include: template-tag
+    - include: script-tag
+    - include: style-tag
+    - include: vue-directives
+    - include: mustache-interpolations
+
+  # Vue specific contexts
+  vue-specific:
+    - include: mustache-interpolations
+    - include: vue-directives
+    - include: template-tag
+    - include: script-tag
+    - include: style-tag
+
+  # [其余代码保持不变...]

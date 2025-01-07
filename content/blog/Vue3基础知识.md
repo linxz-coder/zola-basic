@@ -27,7 +27,7 @@ tags = ["vue"]
 
 ```vue
 <script setup>
-	function fn(){
+	function sayHello(){
 		return "hello world"
 	}
 </script>
@@ -36,7 +36,7 @@ tags = ["vue"]
 调用：
 
 ```vue
-<view>{{ fn() }}</view>
+<view>{{\ sayHello() \}}</view>
 ```
 
 # 响应式数据（页面渲染）
