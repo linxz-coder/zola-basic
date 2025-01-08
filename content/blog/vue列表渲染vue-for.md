@@ -4,13 +4,12 @@ date = 2025-01-08
 authors = ["小中"]
 [taxonomies]
 tags = ["vue"]
-
 +++
 
 # 数组用法 - template标签内
 
 ```vue
-<view v-for="(item,index) in 10" :key="inde">v-for用法</view>
+<view v-for="(item,index) in 10" :key="index">v-for用法</view>
 ```
 
 # 对象用法- template标签内
@@ -34,4 +33,3 @@ tags = ["vue"]
 删除数组后元素会错位。
 
 [视频讲解](https://www.bilibili.com/video/BV1Yg4y127Fp?t=576.2&p=19)
-
