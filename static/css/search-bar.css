@@ -18,6 +18,7 @@
     font-size: 16px !important;
     padding: 10px !important;
     max-width: 100% !important; /* 确保不会超出父容器 */
+    position: relative; /* 添加相对定位 */
   }  
 /* 针对移动设备的样式 */
 @media screen and (max-width: 480px) {

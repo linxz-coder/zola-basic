@@ -24,7 +24,7 @@
     <link type="image/png" sizes="16x16" rel="icon" href="/icons8-pen-16.png">
     <link type="image/png" sizes="32x32" rel="icon" href="/icons8-pen-32.png">
     <!-- 引入通用的CSS文件 -->
-    <link rel="stylesheet" href="/css/tailwind-like.css?v=202412261435">
+    <link rel="stylesheet" href="/css/tailwind-like.css?v=202501081435">
     <!-- 引入新的 section-styles.css 文件 -->
     <link rel="stylesheet" href="/css/section-styles.css">
     {# 引入markdown-table样式 #}
@@ -71,9 +71,14 @@
     </nav>
   
     <div class="container">
-        <!-- 搜索框 -->
-        {# meili search #}
-        <input type="search" id="search-bar-input" placeholder="寻寻觅觅..." />
+        <div class="header-content">
+            <!-- 搜索框 -->
+            {# meili search #}
+            <input type="search" id="search-bar-input" placeholder="寻寻觅觅..." />
+
+            <!-- 小鸡图片 -->
+            <img id="chicken-img" src="https://linxz.online/chicken.gif" style="display: none;" alt="Chicken">
+        </div>
 
         <br>
         <section class="section">
@@ -81,21 +86,42 @@
         </section>
     </div>
 
-  {# 加快字体加载速度 #}
-  <!-- <script>
-    // 创建一个 FontFace 对象，使用 WOFF2 文件
-    const font = new FontFace('Taipei-Sans-TC-Beta-Light-2', 'url(/fonts/Taipei-Sans-TC-Beta-Light-2.woff2)');
+  {# 小鸡图标 #}
+  <script>
+    const searchInput = document.getElementById('search-bar-input');
+    const chickenImg = document.getElementById('chicken-img');
 
-    // 加载字体
-    font.load().then(function(loadedFont) {
-        // 将加载的字体添加到文档中
-        document.fonts.add(loadedFont);
-        // 应用自定义字体
-        document.body.classList.add('custom-font');
-    }).catch(function(error) {
-        console.error('字体加载失败:', error);
+    // 鼠标移入显示图片
+    searchInput.addEventListener('focus', () => {
+        chickenImg.style.display = 'block';
     });
-</script> -->
+
+    // 鼠标移出隐藏图片
+    searchInput.addEventListener('blur', () => {
+        chickenImg.style.display = 'none';
+    });
+
+    // 获取搜索框的左边距离
+    const searchBar = document.getElementById('search-bar-input');
+    const chicken = document.getElementById('chicken-img');
+
+    function updateChickenPosition() {
+        const searchBarRect = searchBar.getBoundingClientRect();
+        const headerContent = searchBar.closest('.header-content');
+        const headerRect = headerContent.getBoundingClientRect();
+        
+        // 计算搜索框相对于 header-content 的左边距离
+        const searchBarLeft = searchBarRect.left - headerRect.left;
+        
+        // 设置 CSS 变量
+        headerContent.style.setProperty('--search-bar-left', `${searchBarLeft}px`);
+    }
+
+    // 页面加载和窗口调整时更新位置
+    window.addEventListener('load', updateChickenPosition);
+    window.addEventListener('resize', updateChickenPosition);
+  </script>
+
 
   {# meili search的js代码 #}
 

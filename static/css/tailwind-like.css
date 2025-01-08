@@ -33,13 +33,24 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  
 }
 
-/* 新增一个类用于应用自定义字体，提高加载速度 */
-/* .custom-font {
-  font-family: 'Taipei-Sans-TC-Beta-Light-2', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-} */
+.header-content {
+  position: relative;
+}
 
+/* 小鸡图片 */
+#chicken-img {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: -24px; /* 调整图片在输入框上方的位置 */
+  /* 计算位置：搜索框左边距离 + (搜索框宽度的一半) - (小鸡图片宽度) */
+  left: calc(var(--search-bar-left) + (200px / 2) - 24px); 
+  max-width: 24px;
+  box-shadow: none; /* 清除全局的 box-shadow */
+}
 
 /* Navigation */
 nav {
