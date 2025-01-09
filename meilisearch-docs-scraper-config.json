@@ -1,50 +1,78 @@
 {
-    "index_uid": "docs",
-    "start_urls": ["https://linxz.online/blog/"],
-    "sitemap_urls": ["https://linxz.online/sitemap.xml"],
+  "index_uid": "docs",
+  "start_urls": ["https://linxz.online/blog/"],
+  "sitemap_urls": ["https://linxz.online/sitemap.xml"],
 
-    "searchableAttributes": [
-      "content",
-      "hierarchy_lvl0",
-      "hierarchy_lvl1",
-      "hierarchy_lvl2",
-      "hierarchy_lvl3",
-      "hierarchy_lvl4",
-      "hierarchy_lvl5",
-      "hierarchy_lvl6"
-    ],
-    "rankingRules": [
-      "words",
-      "typo",
-      "proximity",
-      "attribute",
-      "exactness",
-      "page_rank:desc",
-      "level:desc",
-      "position:asc"
-    ],
-    "distinctAttribute": null,
-    "typoTolerance": {
-      "enabled": true,
-      "minWordSizeForTypos": {
-        "oneTypo": 4,
-        "twoTypos": 8
-      }
-    },
-    "faceting": {
-      "maxValuesPerFacet": 100
-    },
-    "pagination": {
-      "maxTotalHits": 1000
-    },
-    "synonyms": {
-      "vue": ["vuejs", "vue.js"]
-    },
+  "searchableAttributes": [
+    "hierarchy_lvl0", 
+    "hierarchy_lvl1",
+    "hierarchy_lvl2",
+    "hierarchy_lvl3",
+    "content"
+  ],
 
-    "selectors": {
-      "lvl0": "section h1",
-      "lvl1": "section ul li",
-      "lvl2": "section h1 h2 p",
-      "text": "p, li, td, th, blockquote"
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "exactness",
+    "page_rank:desc",
+    "level:desc",
+    "position:asc"
+  ],
+
+  "distinctAttribute": null,
+  
+  "typoTolerance": {
+    "enabled": true,
+    "minWordSizeForTypos": {
+      "oneTypo": 4,
+      "twoTypos": 8
     }
-  }
+  },
+
+  "faceting": {
+    "maxValuesPerFacet": 100
+  },
+
+  "pagination": {
+    "maxTotalHits": 1000
+  },
+
+  "synonyms": {
+    "vue": ["vuejs", "vue.js"]
+  },
+
+  "selectors": {
+    "lvl0": {
+      "selector": ".title",
+      "global": true
+    },
+    "lvl1": "section h1:not(.title)",
+    "lvl2": "section h2",
+    "lvl3": "section h3",
+    "content": "section p:not(.subtitle)"
+  },
+
+  "displayedAttributes": [
+    "hierarchy_lvl0",
+    "hierarchy_lvl1",
+    "hierarchy_lvl2",
+    "hierarchy_lvl3",
+    "content",
+    "url"
+  ],
+
+  "attributesToSnippet": [
+    "content:80"
+  ],
+
+  "attributesToHighlight": [
+    "hierarchy_lvl0",
+    "hierarchy_lvl1",
+    "hierarchy_lvl2",
+    "hierarchy_lvl3",
+    "content"
+  ]
+}

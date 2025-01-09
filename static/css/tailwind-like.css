@@ -38,6 +38,9 @@ body {
 
 .header-content {
   position: relative;
+  display: flex;
+  justify-content: center;
+  width: 180px;
 }
 
 /* 小鸡图片 */
@@ -45,10 +48,11 @@ body {
   width: 24px;
   height: 24px;
   position: absolute;
+  margin-right: 12px; 
   top: -24px; /* 调整图片在输入框上方的位置 */
   /* 计算位置：搜索框左边距离 + (搜索框宽度的一半) - (小鸡图片宽度) */
-  left: calc(var(--search-bar-left) + (200px / 2) - 24px); 
-  max-width: 24px;
+  /* left: calc(var(--search-bar-left) + (200px / 2) - 24px); 
+  max-width: 24px; */
   box-shadow: none; /* 清除全局的 box-shadow */
 }
 

@@ -100,32 +100,10 @@
     searchInput.addEventListener('blur', () => {
         chickenImg.style.display = 'none';
     });
-
-    // 获取搜索框的左边距离
-    const searchBar = document.getElementById('search-bar-input');
-    const chicken = document.getElementById('chicken-img');
-
-    function updateChickenPosition() {
-        const searchBarRect = searchBar.getBoundingClientRect();
-        const headerContent = searchBar.closest('.header-content');
-        const headerRect = headerContent.getBoundingClientRect();
-        
-        // 计算搜索框相对于 header-content 的左边距离
-        const searchBarLeft = searchBarRect.left - headerRect.left;
-        
-        // 设置 CSS 变量
-        headerContent.style.setProperty('--search-bar-left', `${searchBarLeft}px`);
-    }
-
-    // 页面加载和窗口调整时更新位置
-    window.addEventListener('load', updateChickenPosition);
-    window.addEventListener('resize', updateChickenPosition);
   </script>
 
 
   {# meili search的js代码 #}
-
-  <!-- <script src="https://cdn.jsdelivr.net/npm/docs-searchbar.js@latest/dist/cdn/docs-searchbar.min.js"></script> -->
   <script src="/docs-searchbar.js"></script>
   <script>
     docsSearchBar({
@@ -133,7 +111,7 @@
       apiKey: 'VEw9h1k99fgUolpnU6htXtLp20eEFYqte0WRxsWfjaY',
       indexUid: 'docs',
       inputSelector: '#search-bar-input',
-      debug: true, // Set debug to true if you want to inspect the dropdown
+      debug: false, // Set debug to true if you want to inspect the dropdown
       meilisearchOptions: {
         limit: 10,
       },
