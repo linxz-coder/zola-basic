@@ -14,11 +14,13 @@ tags = ["vue"]
 # 花括号可以写表达式（需要有返回值）
 
 ```vue
-{{ 2+3 }}
-{{ a + 5 }}
-{{ Date.now() }}
-{{ Math.random() }}
-{{ 1<2 ? '张三' : '李四' }}
+<template>
+    {{ 2+3 }}
+    {{ a + 5 }}
+    {{ Date.now() }}
+    {{ Math.random() }}
+    {{ 1<2 ? '张三' : '李四' }}
+</template>
 ```
 
 # 函数基本调用
@@ -36,7 +38,7 @@ tags = ["vue"]
 调用：
 
 ```vue
-<view>{{\ sayHello() \}}</view>
+<view>{{\ sayHello() }}</view>
 ```
 
 # 响应式数据（页面渲染）
@@ -59,7 +61,7 @@ tags = ["vue"]
 
 而针对对象，可以用reactive()，取值就不用加.value。不过开发中一般都是用ref()，容易记。
 
-```vue
+```js
 let car = reactive({ brand: 'benz', price: 100 })
 ```
 

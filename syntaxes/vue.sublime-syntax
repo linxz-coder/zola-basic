@@ -22,10 +22,28 @@ contexts:
       push:
         - include: comments
         - include: doctype
+        - include: template-tag  # 新增这一行
         - include: script-tag
         - include: style-tag
+        - include: miniprogram-tags
         - include: tags
         - include: entities
+        
+
+# 新增：微信小程序标签规则
+  miniprogram-tags:
+    - match: (<)(view|button|switch|text|image|scroll-view)\b
+      captures:
+        1: punctuation.definition.tag.begin.html
+        2: entity.name.tag.miniprogram.html
+      push: tag-attributes-section
+    - match: (<\/)(view|button|switch|text|image|scroll-view)(>)
+      captures:
+        1: punctuation.definition.tag.begin.html
+        2: entity.name.tag.miniprogram.html
+        3: punctuation.definition.tag.end.html
+      pop: true
+
 
   # Comments
   comments:
@@ -56,21 +74,48 @@ contexts:
       pop: true
     - match: .
       scope: meta.tag.sgml.doctype.html
+  
+  # Template 标签规则
+  template-tag:
+    - match: (<)(template)\b
+      captures:
+        1: punctuation.definition.tag.begin.html
+        2: entity.name.tag.template.html
+      push: template-tag-head
+
+  template-tag-head:
+    - meta_scope: meta.tag.template.begin.html
+    - match: '>'
+      scope: punctuation.definition.tag.end.html
+      set: template-content
+    - match: /?>
+      scope: punctuation.definition.tag.end.html
+      pop: true
+    - include: tag-attributes
+
+  # 修改 template-content，包含小程序标签
+  template-content:
+    - match: (<\/)(template)(>)
+      captures:
+        1: punctuation.definition.tag.begin.html
+        2: entity.name.tag.template.html
+        3: punctuation.definition.tag.end.html
+      pop: true
+    - include: miniprogram-tags  # 优先匹配小程序标签
+    - include: tags             # 然后是普通标签
+    - include: entities
 
   # Script tag
   script-tag:
-    - match: (<)(script)\b
+    - match: (<)(script)(?:\s+(setup))?\b
       captures:
         1: punctuation.definition.tag.begin.html
         2: entity.name.tag.script.html
+        3: entity.other.attribute-name.setup.html
       push: script-tag-head
 
   script-tag-head:
     - meta_scope: meta.tag.script.begin.html
-    - match: setup\b
-      scope: entity.other.attribute-name.html
-    - match: lang\b
-      scope: entity.other.attribute-name.html
     - match: '>'
       scope: punctuation.definition.tag.end.html
       set: script-content
@@ -80,7 +125,11 @@ contexts:
     - include: tag-attributes
 
   script-content:
-    - match: (?=</script>)
+    - match: (<\/)(script)(>)
+      captures:
+        1: punctuation.definition.tag.begin.html
+        2: entity.name.tag.script.html
+        3: punctuation.definition.tag.end.html
       pop: true
     - match: (?=\S)
       push: js-source
@@ -141,9 +190,18 @@ contexts:
         1: punctuation.definition.tag.begin.html
         2: entity.name.tag.html
       push: tag-attributes-section
+    - match: (<\/)({{tag_name}})(>) 
+      captures:
+        1: punctuation.definition.tag.begin.html
+        2: entity.name.tag.html
+        3: punctuation.definition.tag.end.html
+      pop: true
 
   tag-attributes-section:
     - meta_scope: meta.tag.any.html
+    - match: '>'
+      scope: punctuation.definition.tag.end.html
+      pop: true
     - match: /?>
       scope: punctuation.definition.tag.end.html
       pop: true
@@ -168,12 +226,13 @@ contexts:
       pop: true
 
   attribute-value:
+    - meta_content_scope: meta.string.html
     - match: '"'
       scope: punctuation.definition.string.begin.html
-      push: double-quoted-attribute
+      set: double-quoted-attribute
     - match: "'"
       scope: punctuation.definition.string.begin.html
-      push: single-quoted-attribute
+      set: single-quoted-attribute
     - match: '{{space}}'
       pop: true
 
@@ -182,15 +241,55 @@ contexts:
     - match: '"'
       scope: punctuation.definition.string.end.html
       pop: true
+    - match: '\{'           # 匹配对象字面量的开始
+      push: 
+        - meta_scope: source.js.embedded.html
+        - match: '\}'
+          pop: true
+        - include: js-embeded
     - include: entities
     - match: '\{\{'
       push: vue-interpolation
+  
+  # 添加 js-embedded 规则专门处理嵌入的 JavaScript
+  js-embedded:
+    - match: '"'
+      push: js-string-double
+    - match: "'"
+      push: js-string-single
+    - match: '\{'
+      push: js-object-literal
+    - include: js-keywords
+    - include: js-numbers
+    - include: js-operators
+
+  js-string-double:
+    - meta_scope: string.quoted.double.js
+    - match: '"'
+      pop: true
+
+  js-string-single:
+    - meta_scope: string.quoted.single.js
+    - match: "'"
+      pop: true
+
+  js-object-literal:
+    - match: '\}'
+      pop: true
+    - include: js-embedded
+
 
   single-quoted-attribute:
     - meta_scope: string.quoted.single.html
     - match: "'"
       scope: punctuation.definition.string.end.html
       pop: true
+    - match: '\{'
+      push: 
+        - meta_scope: source.js.embedded.html
+        - match: '\}'
+          pop: true
+        - include: js-embedded
     - include: entities
     - match: '\{\{'
       push: vue-interpolation
@@ -199,7 +298,7 @@ contexts:
     - meta_scope: source.js.embedded.html
     - match: '\}\}'
       pop: true
-    - include: js-source
+    - include: js-embedded
 
   entities:
     - match: '&([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+);'
