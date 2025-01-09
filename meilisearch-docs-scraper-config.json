@@ -49,7 +49,7 @@
       "selector": ".title",
       "global": true
     },
-    "lvl1": "section h1:not(.title)",
+    "lvl1": "section h1[id]",
     "lvl2": "section h2",
     "lvl3": "section h3",
     "content": "section p:not(.subtitle)"
