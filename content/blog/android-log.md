@@ -26,3 +26,12 @@ Log.d("ning", "OnCreate");
 可以筛选日志：
 
 ![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202411152325422.png)
+
+通过`package:mine`过滤我的项目的日志。
+
+通过`tag:...`过滤具体的某个日志。
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202501131214128.png)
+
+通过`level:error`来看不同级别的日志，比如error代表错误级别。
+
