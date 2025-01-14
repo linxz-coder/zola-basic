@@ -12,6 +12,8 @@ tags = ["安卓", "kotlin"]
 
 [kotlin文档](https://kotlinlang.org/docs/home.html)
 
+[udemy-eu-基本教程](https://tutorials.eu/exploring-basic-kotlin-syntax-and-structure-day-2-android-14-masterclass/)
+
 # 基本数据类型
 
 [官方指引](https://kotlinlang.org/docs/basic-types.html)
@@ -118,4 +120,35 @@ fun main() {
 }
 ```
 
+## when赋值
+
+类似于switch的功能。
+
+### 变量有多个值
+
+```kt
+computerChoice = when (randomNumber) {
+    1 -> {
+        "Rock"
+    }
+    2 -> {
+        "Paper"
+    }
+    else -> {
+        "Scissors"
+    }
+}
+```
+
+### 多种情况判断
+
+```kt
+val winner = when {
+    playerChoice == computerChoice -> "Tie"
+    playerChoice == "Rock" && computerChoice == "Scissors" -> "You win!"
+    playerChoice == "Scissors" && computerChoice == "Paper" -> "You win!"
+    playerChoice == "Paper" && computerChoice == "Rock" -> "You win!"
+    else -> "You Lose! Try again."
+}
+```
 
