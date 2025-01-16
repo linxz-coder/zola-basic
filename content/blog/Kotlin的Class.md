@@ -41,6 +41,63 @@ data class CoffeeDetails(
 )
 ```
 
+# copy对象
+
+使用.copy方法，同时可以修改属性
+
+```kt
+val blueRoseVase = Vase(color = "Blue", design = "Rose")
+val redRoseVase = blueRoseVase.copy(color = "Red")
+
+data class Vase(val color: String, val design: String)
+```
+
+# 继承class
+
+## 父class需要加上open关键字
+
+`open class BaseClass{}`
+
+如果需要在后面override函数，也需要加上open关键字
+
+`open fun thingsToOverride(){}`
+
+### 示例
+
+```kt
+override fun role(){
+	super.role() //继承所有
+	//其他代码
+}
+```
+
+## 继承class需要加上括号
+
+`class Secondary: BaseClass(){}`
+
+## interface 接口
+
+一样是继承的概念，主要解决`多重继承`的问题。
+
+但是父亲不需要`open`关键字
+
+定义
+
+```kt
+interface Archer{
+	fun archer(){
+		println("Archer skills from Sir Secondary")
+	}
+}
+```
+
+使用
+
+```kt
+class Offsprint: Secondary(), Archer{
+}
+```
+
 # 参考资料
 
 [udemy-eu-function-and-class](https://tutorials.eu/basic-kotlin-syntax-functions-objects-and-classes-in-kotlin-day-3-android-14-masterclass/)

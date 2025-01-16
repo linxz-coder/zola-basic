@@ -38,4 +38,11 @@ fun main() {
 }
 ```
 
+# map方法
 
+将每个值按照function过滤一遍
+
+```kt
+val numbers = listOf(1,2,3)
+val doubled = numbers.map { it * 2 }
+```
