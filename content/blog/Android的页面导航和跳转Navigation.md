@@ -1,10 +1,9 @@
 +++
-title = "Android的页面导航和跳转Navigation"
+title = "Android的页面导航和跳转"
 date = 2025-01-17
 authors = ["小中"]
 [taxonomies]
 tags = ["安卓"]
-
 +++
 
 [官方Navigation参考](https://developer.android.com/guide/navigation#kts)
