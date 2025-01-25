@@ -51,38 +51,76 @@ React native 和 Expo的关系，相当于React和nextjs的关系，是在原有
 
 # Expo环境安装
 
-[React Native官网环境搭建](https://reactnative.cn/docs/environment-setup)
+[React Native Udemy 课件](https://github.com/academind/react-native-practical-guide-code/tree/01-getting-started)
 
-# 安装图片优化工具
+推荐使用expo来安装react Native。
+
+这是一个第三方工具，但是完全免费。
+
+封装许多功能，让你少写很多代码。
+
+随时都可以转换成原生。
+
+为什么使用expo？
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202501222313967.png)
+
+[React Native官网环境搭建 - React Native中文网](https://reactnative.cn/docs/environment-setup)
+
+[React Native英文官网](https://reactnative.dev/docs/environment-setup)
+
+## 使用Expo安装项目
+
+之所以用pnpx，就是要用到`pnpm`，这个在国内下包比较快，而且有处理过程。
+
+另外，如果下载速度慢，需要切换到国外代理。
+
 ```bash
-npm install -g sharp-cli
+pnpx create-expo-app RNCourse --template blank
 ```
 
-# 全局安装expo
+注意，如果不用blank的模版，会包括typescript。我们暂时不想要这么复杂。
+
+## 预览
+
+下载`Expo Go`这个App
+
+`npm start`启动应用，出现一个二维码。
+
+如果是苹果手机，打开相机扫描二维码，选择从Expo Go打开链接。
+
+### 安卓模拟器预览
+
+选择支持`play store`的模拟器。按`a`即可开启预览。
+
+### iPhone模拟器预览
+
+按`i`即可。
+
+## watchman错误
+
+新建.watchmanconfig文件，输入
+
 ```bash
-npm install -g expo-cli
+{
+    "root": true
+}
+
 ```
 
-# 查看expo版本
+重新启动watchman
+
 ```bash
-expo -V
+watchman shutdown-server 
+pnpm start --reset-cache
 ```
 
-# 开始新项目
-```bash
-expo init <projectName>
-```
+[参考答案](https://stackoverflow.com/questions/72451781/cant-use-watchman-operation-not-permitted)
 
-# 运行
-```bash
-yarn start
-yarn android
-yarn ios
-yarn web
-```
+
 # React native基础环境搭建
 
-因为React Natice还在测试阶段，还没有1.0版本，所以经常会变，建议参考官方教程：
+因为React Native还在测试阶段，还没有1.0版本，所以经常会变，建议参考官方教程：
 [官方搭建环境教程](https://reactnative.cn/docs/environment-setup)
 
 # 安装Node.js
