@@ -27,9 +27,16 @@ struct Todoey_swiftDataApp: App {
 }
 ```
 
+
 ## 如果需要存储两个表怎么办？
 
 Item.self是一个表的名字，如果需要增加表，则`modelContainer`要改成数组形式，如`modelContainer(for: [Item.self, Category.self])`。
+
+## 如何预览SwiftData里面的数据？
+
+根据`print(URL.applicationSupportDirectory.path(percentEncoded: false))`，运行程序后会打印出数据库的路径，然后用`DB Browser for SQLite`打开这个路径下的数据库文件，就可以看到数据了。
+
+
 
 # 添加数据
 
@@ -137,3 +144,11 @@ context.delete()
                             }
                         }
 ```
+
+# SwiftData的教程
+
+[swiftData教程-Paul Hudson-HackingWithSwift](https://www.youtube.com/watch?v=qn_Fw8t0GMU)
+
+以上的教程还有[CoreData版本](https://www.youtube.com/watch?v=bvm3ZLmwOdU&list=PLPUcPNTKcAB42LisUPBCsFOTHCCVM0Bj7&index=1)
+
+更多教程，可以参考[100天SwiftUI](https://youtu.be/dJPUIW9Shyc?si=3icI8JDshcceTXPV)
