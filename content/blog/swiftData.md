@@ -27,6 +27,9 @@ struct Todoey_swiftDataApp: App {
 }
 ```
 
+## 如果需要存储两个表怎么办？
+
+Item.self是一个表的名字，如果需要增加表，则`modelContainer`要改成数组形式，如`modelContainer(for: [Item.self, Category.self])`。
 
 # 添加数据
 
