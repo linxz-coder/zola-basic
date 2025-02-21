@@ -63,6 +63,16 @@ cmd+g将图片和矩形分组，图片上方，矩形在下方。右键点击矩
 
 直接导出即可。
 
+### 官方控件支持
+
+如果你是用figma或者sketch，可以选择[官方控件](https://developer.apple.com/design/resources/#macos-apps)。
+
+右键`与控件解绑`状态。
+
+直接把图片复制进来，放进AppIcon的控件即可。这样就会形成蒙版效果，拉大图像即可以填满整个控件。
+
+![img](https://linxz-aliyun.oss-cn-shenzhen.aliyuncs.com/images/202502211120674.png)
+
 ## 生成标准图标
 
 登入[wuruihong](https://icon.wuruihong.com/)，进行Icon的裁剪。
@@ -125,3 +135,6 @@ cmd+g将图片和矩形分组，图片上方，矩形在下方。右键点击矩
 
 这里就多多发挥创意啦，总之是元素和颜色的组合。
 
+# 官方指引
+
+关于App设计的[官方指引](https://developer.apple.com/cn/design/human-interface-guidelines/app-icons#Best-practices)，总之就是要简洁啦。
