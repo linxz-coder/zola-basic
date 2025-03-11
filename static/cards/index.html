@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三八妇女节贺卡</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #f8bbd0, #e1bee7);
+        }
+        
+        .card {
+            width: 320px;
+            height: 450px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: transform 0.5s;
+        }
+        
+        .card:hover {
+            transform: perspective(1000px) rotateY(5deg);
+        }
+        
+        .card-header {
+            height: 120px;
+            background: linear-gradient(135deg, #ff4081, #c2185b);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .card-header h1 {
+            margin: 0;
+            font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-header .date {
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .card-body {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .message {
+            color: #333;
+            line-height: 1.6;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .flower {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+        }
+        
+        .flower1 {
+            top: 20px;
+            left: 30px;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .flower2 {
+            bottom: 20px;
+            right: 30px;
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            top: -50px;
+            font-size: 20px;
+            color: #ff4081;
+            animation: fall linear forwards;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(calc(100vh + 50px));
+            }
+        }
+        
+        .signature {
+            margin-top: 30px;
+            font-style: italic;
+            color: #888;
+        }
+        
+        .ribbon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+        }
+        
+        .ribbon-text {
+            position: absolute;
+            top: 25px;
+            right: -25px;
+            transform: rotate(45deg);
+            background: #c2185b;
+            color: white;
+            padding: 5px 40px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h1>三八妇女节快乐</h1>
+            <div class="date">2024年3月8日</div>
+        </div>
+        <div class="card-body">
+            <div class="message">
+                <p>致最美丽、最坚强的您：</p>
+                <p>感谢您用智慧和勇气</p>
+                <p>绽放生命的光彩</p>
+                <p>您的坚韧与柔情</p>
+                <p>让这个世界更加美好</p>
+                <p>祝您节日快乐，幸福安康！</p>
+            </div>
+            <div class="signature">
+                ——献给所有杰出的女性
+            </div>
+        </div>
+        <div class="ribbon">
+            <div class="ribbon-text">Happy Women's Day</div>
+        </div>
+        <div class="hearts"></div>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heart.style.opacity = Math.random() * 0.7 + 0.3;
+            heart.style.fontSize = Math.random() * 15 + 10 + 'px';
+            
+            document.querySelector('.hearts').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
