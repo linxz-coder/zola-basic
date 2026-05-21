@@ -9,8 +9,8 @@
     <!-- 默认的 meta 标签 -->
     <meta property="og:title" content="凡学子的博客">
     <meta property="og:description" content="凡学子的博客">
-    <meta property="og:image" content="https://linxz.online/icons8-pen-32.png">
-    <meta property="og:url" content="https://linxz.online">
+    <meta property="og:image" content="https://lxzblog.fun/icons8-pen-32.png">
+    <meta property="og:url" content="https://lxzblog.fun">
     {% endblock meta %}
 
     <!-- 百度站点验证 -->
@@ -61,27 +61,30 @@
 </head>
 
 <body>
-    <nav>
-        <div class="container">
-            <a href="/">题匾</a>
-            <a href="/shorts/">片念</a>
-            <a href="/blog/">修斋</a>
-            <a href="/books/">书卷</a>
-            <a href="/about/">无我</a>
-            <a href="/social/">江湖</a>
-            <a href="/family-letters/">林氏家书</a>
-            <a href="/starry-night/">星辰</a>
+    <nav class="site-nav">
+        <div class="container nav-inner">
+            <a class="site-brand" href="/">凡学子</a>
+            <div class="nav-links" aria-label="主要导航">
+                <a href="/">题匾</a>
+                <a href="/shorts/">片念</a>
+                <a href="/blog/">修斋</a>
+                <a href="/books/">书卷</a>
+                <a href="/about/">无我</a>
+                <a href="/social/">江湖</a>
+                <a href="/family-letters/">林氏家书</a>
+                <a href="/starry-night/">星辰</a>
+            </div>
         </div>
     </nav>
   
     <div class="container">
-        <div class="header-content">
+        <div class="header-content search-shell">
             <!-- 搜索框 -->
             {# meili search #}
             <input type="search" id="search-bar-input" placeholder="寻寻觅觅..." />
 
             <!-- 小鸡图片 -->
-            <img id="chicken-img" src="https://linxz.online/chicken.gif" style="display: none;" alt="Chicken">
+            <img id="chicken-img" src="/chicken.gif" style="display: none;" alt="Chicken">
         </div>
 
         <br>

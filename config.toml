@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://linxz.online"
+base_url = "https://lxzblog.fun"
 
 # 标签
 taxonomies = [
@@ -23,4 +23,3 @@ extra_syntaxes_and_themes = ["syntaxes", "syntaxes/wxml.sublime-syntax",  "synta
 
 [extra]
 # Put all your custom variables here
-
