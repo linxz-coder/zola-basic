@@ -1,18 +1,16 @@
 /* 博客目录页-section-styles.css */
 
 .section-container {
-    margin-top: 1.25rem;
+    margin-top: 2rem;
     max-width: 100%;
-    padding: 0;
+    padding: 0 1rem;
 }
 
 .section-title {
-    font-size: clamp(2rem, 6vw, 3rem);
-    line-height: 1.18;
+    font-size: 2.25rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
-    color: var(--ink);
-    letter-spacing: 0;
+    color: #2d3748;
 }
 
 .section-list {
@@ -21,8 +19,8 @@
 }
 
 .section-item {
-    border-bottom: 1px solid var(--line);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-bottom: 1px solid #e2e8f0;
+    transition: background-color 0.3s ease;
 }
 
 .section-item:last-child {
@@ -31,31 +29,12 @@
 
 .section-link {
     display: block;
-    padding: 1rem 0.75rem;
-    color: #334155;
+    padding: 1rem 0.5rem;
+    color: #4a5568;
     text-decoration: none;
-    font-size: 1.05rem;
-    line-height: 1.5;
-    border-radius: 0.75rem;
+    font-size: 1.125rem;
 }
 
 .section-link:hover {
-    background-color: rgba(255, 255, 255, 0.72);
-    color: var(--primary-strong);
-}
-
-@media (max-width: 680px) {
-    .section-container {
-        margin-top: 1rem;
-    }
-
-    .section-title {
-        margin-bottom: 1rem;
-    }
-
-    .section-link {
-        min-height: 52px;
-        padding: 0.85rem 0.5rem;
-        font-size: 1rem;
-    }
+    background-color: #f7fafc;
 }

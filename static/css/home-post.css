@@ -1,24 +1,19 @@
 /* Blog post list styles */
 .posts {
-    display: grid;
-    gap: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
   }
   
   .post {
-    background-color: rgba(255, 255, 255, 0.84);
-    border: 1px solid var(--line);
-    border-radius: 1rem;
-    padding: 1.25rem;
-    margin-bottom: 0;
-    box-shadow: 0 14px 35px rgba(15, 32, 51, 0.07);
-    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.3s ease;
   }
   
   .post:hover {
-    border-color: rgba(15, 118, 110, 0.22);
-    box-shadow: 0 20px 48px rgba(15, 32, 51, 0.11);
-    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
   
   .post-title {
@@ -27,19 +22,18 @@
   
   .post-title-link {
     color: var(--primary);
-    font-size: clamp(1.12rem, 3vw, 1.35rem);
-    font-weight: 800;
-    line-height: 1.35;
+    font-size: 1.25rem;
+    font-weight: 600;
     text-decoration: none;
     transition: color 0.2s;
   }
   
   .post-title-link:hover {
-    color: var(--primary-strong);
+    color: #2779bd;
   }
   
   .post p {
-    color: var(--muted);
+    color: #4a5568;
     margin-bottom: 1rem;
   }
   
@@ -48,23 +42,12 @@
   }
   
   .read-more a {
-    color: var(--accent);
+    color: var(--primary);
     font-weight: 600;
     text-decoration: none;
     transition: color 0.2s;
   }
   
   .read-more a:hover {
-    color: #be123c;
+    color: #2779bd;
   }
-
-@media (max-width: 680px) {
-  .posts {
-    gap: 0.85rem;
-  }
-
-  .post {
-    border-radius: 0.9rem;
-    padding: 1rem;
-  }
-}

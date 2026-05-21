@@ -5,21 +5,18 @@
 
 /* 减小搜索框下拉菜单宽度 */
 .meilisearch-autocomplete .dsb-dropdown-menu {
-    max-width: min(800px, 92vw) !important; /* 或者更小，根据你的需求调整 */
-    min-width: min(350px, 92vw) !important; /* 允许宽度自适应内容 */
-    width: min(800px, 92vw) !important;
-    border-radius: 16px !important;
-    overflow: hidden !important;
-    box-shadow: 0 24px 60px rgba(15, 32, 51, 0.18) !important;
+    max-width: 800px !important; /* 或者更小，根据你的需求调整 */
+    min-width: 350px !important; /* 允许宽度自适应内容 */
+    width: auto !important;
 }
 
 /* 增大搜索框 */
 /* 默认样式（适用于所有屏幕尺寸） */
 #search-bar-input {
-    width: min(100%, 420px) !important;
-    height: 48px !important;
+    width: 180px !important;
+    height: 30px !important;
     font-size: 16px !important;
-    padding: 10px 18px !important;
+    padding: 10px !important;
     max-width: 100% !important; /* 确保不会超出父容器 */
     position: relative; /* 添加相对定位 */
   }  
@@ -27,8 +24,8 @@
 @media screen and (max-width: 480px) {
 #search-bar-input {
     width: 100% !important; /* 占满容器宽度 */
-    height: 48px !important;
-    font-size: 16px !important;
-    padding: 10px 16px !important;
+    height: 36px !important; /* 稍微减小高度 */
+    font-size: 14px !important; /* 稍微减小字体 */
+    padding: 8px !important; /* 稍微减小内边距 */
 }
 }

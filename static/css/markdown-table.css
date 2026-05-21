@@ -1,11 +1,9 @@
 /* 针对markdown表格的样式 */
 .section table {
-    display: block;
+    display: table;
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
     margin: 1em 0;
     font-size: 0.9em;
     border: 1px solid #ddd;
@@ -18,7 +16,6 @@
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-    min-width: 8rem;
   }
   
   .section table th {
@@ -58,15 +55,3 @@
   .section table tr:last-child td:last-child {
     border-bottom-right-radius: 5px;
   }
-
-@media (max-width: 680px) {
-  .section table {
-    font-size: 0.85em;
-    border-radius: 0.75rem;
-  }
-
-  .section table th,
-  .section table td {
-    padding: 10px 12px;
-  }
-}

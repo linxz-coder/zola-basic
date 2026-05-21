@@ -8,7 +8,7 @@
   .article-content img {
     display: block;
     margin: 1em 0; /* 移除左右边距，只保留上下边距 */
-    width: min(100%, 420px); /* 设置固定宽度，可以根据需要调整 */
+    width: 300px; /* 设置固定宽度，可以根据需要调整 */
     height: auto; /* 保持宽高比 */
     object-fit: cover; /* 确保图片填满容器 */
     border-radius: 8px; /* 添加圆角 */
@@ -45,15 +45,3 @@
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 999;
   }
-
-@media (max-width: 680px) {
-  .article-content img {
-    width: 100%;
-    margin: 1rem 0;
-    border-radius: 0.75rem;
-  }
-
-  .article-content p {
-    text-align: left;
-  }
-}
