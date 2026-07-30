@@ -19,7 +19,7 @@ github:
 
 - [chatfun-react](https://chatfun.site)：基于 React 的 ChatGPT 风格 AI 对话应用。
 
-- [chatfun-vue](https://183441.xyz)：基于 Vue 的 ChatGPT 风格 AI 对话应用。
+- [chatfun-vue](https://lxzblog.fun)：基于 Vue 的 ChatGPT 风格 AI 对话应用。
 
 - [星级酒店捡漏雷达](https://star.linxz.online/)：追踪高星酒店的价格机会，通过同类型日期比价发现值得捡漏的酒店。
 
