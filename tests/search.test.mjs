@@ -45,7 +45,7 @@ test('empty queries, no matches, result limits and snippets are handled', () => 
   assert.equal(result.total, 30);
   assert.equal(result.results.length, 20);
   assert.match(result.results[0].snippet, /检索命中/);
-  assert.ok(result.results[0].snippet.length <= 152);
+  assert.ok(result.results[0].snippet.length <= 92);
 });
 
 test('index handles nested sections and deduplicates pages; external URLs are rejected', () => {

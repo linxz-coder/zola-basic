@@ -3,7 +3,7 @@ let indexPromise;
 async function loadIndex() {
   if (!indexPromise) {
     indexPromise = Promise.all([
-      import('./search-engine.mjs?v=20261030'),
+      import('./search-engine.mjs?v=20261030-2'),
       fetch('/search-index/', { cache: 'no-cache', signal: AbortSignal.timeout(20000) }).then(response => {
         if (!response.ok) throw new Error('Search index unavailable');
         return response.json();

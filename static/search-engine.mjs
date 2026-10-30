@@ -48,11 +48,11 @@ export function prepareIndex(data) {
   return [...documents.values()];
 }
 
-function snippet(text, terms, length = 150) {
+function snippet(text, terms, length = 90) {
   const normalized = normalize(text);
   const positions = terms.map(term => normalized.indexOf(term)).filter(position => position >= 0);
   const first = positions.length ? Math.min(...positions) : 0;
-  const start = Math.max(0, first - 35);
+  const start = Math.max(0, first - 18);
   return (start ? '…' : '') + text.slice(start, start + length) + (start + length < text.length ? '…' : '');
 }
 

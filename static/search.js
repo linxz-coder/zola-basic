@@ -4,20 +4,54 @@ const panel = document.getElementById('site-search-panel');
 const status = document.getElementById('site-search-status');
 const list = document.getElementById('site-search-results');
 const retry = document.getElementById('site-search-retry');
+const closeButton = document.getElementById('site-search-close');
+const mobile = window.matchMedia('(max-width: 600px)');
 let worker;
 let requestId = 0;
 let timer;
 let composing = false;
 let links = [];
+let savedScroll = null;
+
+function fitViewport() {
+  if (panel.hidden || !mobile.matches) return;
+  const viewport = window.visualViewport;
+  container.style.setProperty('--search-viewport-height', `${viewport?.height || window.innerHeight}px`);
+  container.style.setProperty('--search-viewport-top', `${viewport?.offsetTop || 0}px`);
+}
+
+function syncMobileLayout() {
+  const expanded = !panel.hidden && mobile.matches;
+  if (expanded && savedScroll === null) {
+    savedScroll = window.scrollY;
+    document.body.style.setProperty('--search-scroll-top', `${-savedScroll}px`);
+    document.documentElement.classList.add('mobile-search-open');
+  } else if (!expanded && savedScroll !== null) {
+    const scroll = savedScroll;
+    savedScroll = null;
+    document.documentElement.classList.remove('mobile-search-open');
+    document.body.style.removeProperty('--search-scroll-top');
+    window.scrollTo(0, scroll);
+  }
+  container.setAttribute('role', expanded ? 'dialog' : 'search');
+  if (expanded) container.setAttribute('aria-modal', 'true');
+  else container.removeAttribute('aria-modal');
+  fitViewport();
+}
 
 function show() {
   panel.hidden = false;
+  container.classList.add('is-open');
   input.setAttribute('aria-expanded', 'true');
+  syncMobileLayout();
 }
 
 function close() {
+  if (mobile.matches && container.contains(document.activeElement)) document.activeElement.blur();
   panel.hidden = true;
+  container.classList.remove('is-open');
   input.setAttribute('aria-expanded', 'false');
+  syncMobileLayout();
 }
 
 // Use text nodes, including for article titles and snippets; indexed HTML is never executed.
@@ -95,7 +129,7 @@ function run() {
   try {
     if (!worker) {
       // No worker, engine, or index request occurs until the visitor actually searches.
-      worker = new Worker('/search-worker.js?v=20261030');
+      worker = new Worker('/search-worker.js?v=20261030-2');
       worker.onmessage = event => render(event.data);
       worker.onerror = () => { worker.terminate(); worker = undefined; failed(); };
     }
@@ -118,10 +152,26 @@ input.addEventListener('compositionstart', () => { composing = true; requestId +
 input.addEventListener('compositionend', () => { composing = false; changed(); });
 input.addEventListener('focus', show);
 retry.addEventListener('click', () => { input.focus(); requestId += 1; run(); });
-container.addEventListener('focusout', event => { if (!container.contains(event.relatedTarget)) close(); });
+closeButton.addEventListener('click', close);
+container.addEventListener('focusout', event => {
+  // Safari touch taps blur the input with relatedTarget=null before firing click.
+  // Keep the link in place; only a known outside focus target closes the panel.
+  if (event.relatedTarget && !container.contains(event.relatedTarget)) close();
+});
 document.addEventListener('pointerdown', event => { if (!container.contains(event.target)) close(); });
+window.visualViewport?.addEventListener('resize', fitViewport);
+window.visualViewport?.addEventListener('scroll', fitViewport);
+mobile.addEventListener('change', syncMobileLayout);
+window.addEventListener('pageshow', event => { if (event.persisted) close(); });
 container.addEventListener('keydown', event => {
   if (event.isComposing || composing) return;
+  if (event.key === 'Tab' && mobile.matches && !panel.hidden) {
+    const controls = [input, closeButton, ...links, ...(!retry.hidden ? [retry] : [])];
+    const current = controls.indexOf(document.activeElement);
+    if (event.shiftKey && current <= 0) { event.preventDefault(); controls.at(-1).focus(); }
+    else if (!event.shiftKey && current === controls.length - 1) { event.preventDefault(); input.focus(); }
+    return;
+  }
   if (event.key === 'Escape') { event.preventDefault(); input.focus(); close(); return; }
   if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
     event.preventDefault();

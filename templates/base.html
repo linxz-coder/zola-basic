@@ -34,7 +34,7 @@
     <!-- 引入page-beauty的css文件 -->
     <link rel="stylesheet" href="/css/page-beauty.css">
     {# 站内搜索样式 #}
-    <link rel="stylesheet" href="/css/search-bar.css?v=20261030">
+    <link rel="stylesheet" href="/css/search-bar.css?v=20261030-2">
 
     <!--引入数学公式 -->
     <!-- 添加 KaTeX CSS -->
@@ -49,7 +49,7 @@
     <script defer src="/lib/katex/katex.min.js"></script>
     <script defer src="/lib/katex/auto-render.min.js"></script>
 
-    <script type="module" src="/search.js?v=20261030"></script>
+    <script type="module" src="/search.js?v=20261030-2"></script>
 
 </head>
 
@@ -71,9 +71,13 @@
         <div class="header-content">
             <!-- 搜索框 -->
             <div class="site-search" role="search" aria-label="站内搜索">
-                <input type="search" id="search-bar-input" placeholder="寻寻觅觅..."
-                    aria-label="搜索文章" aria-controls="site-search-panel" aria-expanded="false"
-                    autocomplete="off" enterkeyhint="search" maxlength="160" />
+                <div class="site-search-toolbar">
+                    <input type="search" id="search-bar-input" placeholder="寻寻觅觅..."
+                        aria-label="搜索文章" aria-controls="site-search-panel" aria-expanded="false"
+                        autocomplete="off" autocapitalize="off" spellcheck="false"
+                        enterkeyhint="search" maxlength="160" />
+                    <button id="site-search-close" type="button" aria-label="关闭搜索">取消</button>
+                </div>
                 <div id="site-search-panel" class="site-search-panel" hidden>
                     <p id="site-search-status" role="status" aria-live="polite">输入关键词，查找文章</p>
                     <ul id="site-search-results" aria-label="搜索结果"></ul>
