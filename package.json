@@ -1,5 +1,8 @@
 {
-  "dependencies": {
-    "docs-searchbar.js": "^2.5.0"
-  }
+  "name": "linxz-blog",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/search.test.mjs"
+  },
+  "dependencies": {}
 }

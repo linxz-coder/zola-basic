@@ -1,27 +1,30 @@
-name: Update Search Index
+name: Validate Site Search
 on:
   workflow_dispatch:
   push:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
-  update-search-index:
+  validate-search:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Wait for Cloudflare Pages to update
-        run: sleep 2m
-      
-      - name: Run docs-scraper
-        env:
-          HOST_URL: ${{ secrets.MEILISEARCH_URL }}
-          API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
-          CONFIG_FILE_PATH: ${{ github.workspace }}/meilisearch-docs-scraper-config.json
+      - uses: actions/checkout@v7.0.1
+      - name: Install Zola
         run: |
-          docker run -t --rm \
-            -e MEILISEARCH_HOST_URL=$HOST_URL \
-            -e MEILISEARCH_API_KEY=$API_KEY \
-            -v $CONFIG_FILE_PATH:/docs-scraper/config.json \
-            getmeili/docs-scraper:v0.12.12 pipenv run ./docs_scraper config.json
+          curl --fail --location --retry 3 \
+            https://github.com/getzola/zola/releases/download/v0.19.2/zola-v0.19.2-x86_64-unknown-linux-gnu.tar.gz \
+            -o "$RUNNER_TEMP/zola.tar.gz"
+          tar -xzf "$RUNNER_TEMP/zola.tar.gz" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
+      - name: Build site and static search index
+        run: zola build
+      - name: Verify search ranking and generated links
+        env:
+          ZOLA_SEARCH_DIR: public
+        run: |
+          node --test tests/search.test.mjs
