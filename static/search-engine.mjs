@@ -56,7 +56,7 @@ function snippet(text, terms, length = 90) {
   return (start ? '…' : '') + text.slice(start, start + length) + (start + length < text.length ? '…' : '');
 }
 
-export function search(documents, query, limit = 20) {
+export function search(documents, query, limit = 20, offset = 0) {
   const terms = queryTerms(query);
   if (!terms.length) return { total: 0, results: [] };
   const phrase = normalize(query).trim().replace(/\s+/g, ' ');
@@ -82,7 +82,7 @@ export function search(documents, query, limit = 20) {
     || a.doc.url.localeCompare(b.doc.url));
   return {
     total: matches.length,
-    results: matches.slice(0, limit).map(({ doc, tier, heading }) => ({
+    results: matches.slice(offset, offset + limit).map(({ doc, tier, heading }) => ({
       title: doc.title,
       url: doc.url + (tier === 1 && heading?.id ? '#' + encodeURIComponent(heading.id) : ''),
       heading: tier === 1 ? heading?.title || '' : '',

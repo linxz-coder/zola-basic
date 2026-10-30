@@ -55,6 +55,20 @@ test('index handles nested sections and deduplicates pages; external URLs are re
   assert.equal(plainText('A &amp; B &#x4e2d;&#25991; &lt;x&gt;'), 'A & B 中文 <x>');
 });
 
+test('batches preserve global ranking with no duplicate or missing results, including the final partial batch', () => {
+  const docs = index(Array.from({ length: 47 }, (_, n) =>
+    n < 15 ? entry('学习' + n, '')
+      : n < 30 ? entry('文章' + n, '', [heading('学习', 'learn')])
+        : entry('文章' + n, '学习')));
+  const batches = [0, 20, 40].map(offset => search(docs, '学习', 20, offset));
+  assert.deepEqual(batches.map(batch => batch.results.length), [20, 20, 7]);
+  assert.ok(batches.every(batch => batch.total === 47));
+  const combined = batches.flatMap(batch => batch.results);
+  assert.deepEqual(combined, search(docs, '学习', 100).results);
+  assert.equal(new Set(combined.map(result => result.url)).size, 47);
+  assert.equal(search(docs, '学习', 20, 60).results.length, 0);
+});
+
 test('the real Zola index contains published content and valid page/heading URLs', { skip: !process.env.ZOLA_SEARCH_DIR }, () => {
   const root = process.env.ZOLA_SEARCH_DIR;
   const data = JSON.parse(fs.readFileSync(path.join(root, 'search-index/index.html'), 'utf8'));

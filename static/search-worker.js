@@ -3,7 +3,7 @@ let indexPromise;
 async function loadIndex() {
   if (!indexPromise) {
     indexPromise = Promise.all([
-      import('./search-engine.mjs?v=20261030-2'),
+      import('./search-engine.mjs?v=20261030-3'),
       fetch('/search-index/', { cache: 'no-cache', signal: AbortSignal.timeout(20000) }).then(response => {
         if (!response.ok) throw new Error('Search index unavailable');
         return response.json();
@@ -20,8 +20,8 @@ self.onmessage = async ({ data }) => {
   try {
     const { engine, documents } = await loadIndex();
     if (data.id !== latestId) return;
-    self.postMessage({ id: data.id, ...engine.search(documents, data.query) });
+    self.postMessage({ id: data.id, offset: data.offset, ...engine.search(documents, data.query, 20, data.offset) });
   } catch {
-    if (data.id === latestId) self.postMessage({ id: data.id, error: true });
+    if (data.id === latestId) self.postMessage({ id: data.id, offset: data.offset, error: true });
   }
 };

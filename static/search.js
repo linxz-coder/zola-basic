@@ -4,6 +4,8 @@ const panel = document.getElementById('site-search-panel');
 const status = document.getElementById('site-search-status');
 const list = document.getElementById('site-search-results');
 const retry = document.getElementById('site-search-retry');
+const more = document.getElementById('site-search-more');
+const end = document.getElementById('site-search-end');
 const closeButton = document.getElementById('site-search-close');
 const mobile = window.matchMedia('(max-width: 600px)');
 let worker;
@@ -12,6 +14,7 @@ let timer;
 let composing = false;
 let links = [];
 let savedScroll = null;
+let loading = false;
 
 function fitViewport() {
   if (panel.hidden || !mobile.matches) return;
@@ -74,9 +77,19 @@ function clearResults() {
   list.replaceChildren();
   links = [];
   retry.hidden = true;
+  more.hidden = true;
+  end.hidden = true;
+  loading = false;
 }
 
-function failed() {
+function failed(append = false) {
+  loading = false;
+  if (append) {
+    status.textContent = '下一批加载失败，已显示的结果仍可查看。';
+    more.disabled = false;
+    more.textContent = '重试加载更多';
+    return;
+  }
   clearResults();
   status.textContent = '搜索暂时无法加载，请重试。';
   retry.hidden = false;
@@ -84,12 +97,14 @@ function failed() {
 
 function render(data) {
   if (data.id !== requestId) return;
-  clearResults();
-  if (data.error) { failed(); return; }
+  const append = data.offset > 0;
+  if (append && data.offset !== links.length) return;
+  if (data.error) { failed(append); return; }
+  const scrollTop = append ? panel.scrollTop : 0;
+  const moveFocus = append && document.activeElement === more;
+  if (!append) clearResults();
+  loading = false;
   if (!input.value.trim()) { status.textContent = '输入关键词，查找文章'; return; }
-  status.textContent = data.total
-    ? `找到 ${data.total} 篇${data.total > data.results.length ? `，显示前 ${data.results.length} 篇` : ''}`
-    : '没有找到相关文章，换个关键词试试。';
   for (const result of data.results) {
     const li = document.createElement('li');
     const link = document.createElement('a');
@@ -114,9 +129,20 @@ function render(data) {
     list.append(li);
   }
   links = [...list.querySelectorAll('a')];
+  status.textContent = data.total
+    ? `找到 ${data.total} 篇，已显示 ${links.length} 篇`
+    : '没有找到相关文章，换个关键词试试。';
+  more.hidden = links.length >= data.total;
+  more.disabled = false;
+  more.textContent = '加载更多';
+  end.hidden = !data.total || !more.hidden;
+  end.textContent = `已显示全部 ${data.total} 篇`;
+  // Keep existing rows and the reader's scroll position when appending a batch.
+  if (moveFocus && links[data.offset]) links[data.offset].focus({ preventScroll: true });
+  panel.scrollTop = scrollTop;
 }
 
-function run() {
+function run(offset = 0) {
   clearTimeout(timer);
   if (composing) return;
   const query = input.value.trim();
@@ -125,22 +151,27 @@ function run() {
     status.textContent = '输入关键词，查找文章';
     return;
   }
-  status.textContent = '正在搜索…';
+  loading = true;
+  if (offset > 0) {
+    more.disabled = true;
+    more.textContent = '加载中…';
+  } else status.textContent = '正在搜索…';
   try {
     if (!worker) {
       // No worker, engine, or index request occurs until the visitor actually searches.
-      worker = new Worker('/search-worker.js?v=20261030-2');
+      worker = new Worker('/search-worker.js?v=20261030-3');
       worker.onmessage = event => render(event.data);
-      worker.onerror = () => { worker.terminate(); worker = undefined; failed(); };
+      worker.onerror = () => { worker.terminate(); worker = undefined; failed(links.length > 0); };
     }
-    worker.postMessage({ id: requestId, query });
-  } catch { failed(); }
+    worker.postMessage({ id: requestId, query, offset });
+  } catch { failed(offset > 0); }
 }
 
 function changed() {
   requestId += 1; // Invalidate old responses immediately, including during IME composition.
   clearTimeout(timer);
   clearResults();
+  panel.scrollTop = 0;
   show();
   if (!input.value.trim()) { status.textContent = '输入关键词，查找文章'; return; }
   status.textContent = '正在搜索…';
@@ -152,6 +183,11 @@ input.addEventListener('compositionstart', () => { composing = true; requestId +
 input.addEventListener('compositionend', () => { composing = false; changed(); });
 input.addEventListener('focus', show);
 retry.addEventListener('click', () => { input.focus(); requestId += 1; run(); });
+more.addEventListener('click', () => {
+  if (loading || composing || more.hidden) return;
+  requestId += 1;
+  run(links.length);
+});
 closeButton.addEventListener('click', close);
 container.addEventListener('focusout', event => {
   // Safari touch taps blur the input with relatedTarget=null before firing click.
@@ -166,7 +202,7 @@ window.addEventListener('pageshow', event => { if (event.persisted) close(); });
 container.addEventListener('keydown', event => {
   if (event.isComposing || composing) return;
   if (event.key === 'Tab' && mobile.matches && !panel.hidden) {
-    const controls = [input, closeButton, ...links, ...(!retry.hidden ? [retry] : [])];
+    const controls = [input, closeButton, ...links, ...(!more.hidden && !more.disabled ? [more] : []), ...(!retry.hidden ? [retry] : [])];
     const current = controls.indexOf(document.activeElement);
     if (event.shiftKey && current <= 0) { event.preventDefault(); controls.at(-1).focus(); }
     else if (!event.shiftKey && current === controls.length - 1) { event.preventDefault(); input.focus(); }
