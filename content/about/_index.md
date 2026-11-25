@@ -9,7 +9,7 @@ page_template = "page.html"
 
 小红书：
 
-[长期腰颈酸痛委员](https://www.xiaohongshu.com/user/profile/63c2cc7f000000002502dd4f)
+[凡学子](https://www.xiaohongshu.com/user/profile/63c2cc7f000000002502dd4f)
 
 小红书号：`color_fool`
 
